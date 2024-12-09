@@ -1,0 +1,33 @@
+.intro {
+    padding: 30px;
+}
+
+.courses {
+    padding: 20px;
+}
+
+.course-list {
+    display: flex;
+    overflow: hidden;
+    overflow-x: scroll;
+}
+
+.course-item {
+    min-width: 300px;
+    margin-right: 20px;
+}
+
+.item-shape {
+    padding: 17px;
+    border-radius: 8px;
+    background-color: #0a5db03d;
+    margin-bottom: 20px;
+}
+
+.item-python {
+    background-color: #ace4f16f;
+}
+
+.modern-comparison {
+    padding: 30px;
+}
