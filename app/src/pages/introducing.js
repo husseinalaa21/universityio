@@ -1,16 +1,16 @@
 import React, { useRef, useState } from 'react';
-import './main.css';
-import './introducing.css'
+import '../style/main.css';
+import '../style/introducing.css'
 
-import meteor from './svg/meteor-solid.svg'
-import earth from './svg/earth-americas-solid.svg'
-import business_logo from './svg/business-time-solid.svg'
-import code_logo from './svg/code-solid.svg'
-import computer_logo from './svg/computer-solid.svg'
-import money_logo from './svg/money-bill-transfer-solid.svg'
-import python_logo from './svg/python-brands-solid.svg'
-import arrow_right from './svg/angle-right-solid.svg'
-import arrow_left from './svg/angle-left-solid.svg'
+import meteor from '../svg/meteor-solid.svg'
+import earth from '../svg/earth-americas-solid.svg'
+import business_logo from '../svg/business-time-solid.svg'
+import code_logo from '../svg/code-solid.svg'
+import computer_logo from '../svg/computer-solid.svg'
+import money_logo from '../svg/money-bill-transfer-solid.svg'
+import python_logo from '../svg/python-brands-solid.svg'
+import arrow_right from '../svg/angle-right-solid.svg'
+import arrow_left from '../svg/angle-left-solid.svg'
 
 const App = () => {
   var logo_size = '20px'
@@ -137,7 +137,7 @@ const App = () => {
 
       <section className="Qa_uio">
         <div className='Qa_head_group'>
-          <h2>Why Choose University IO?</h2>
+          <h2>Benefits </h2>
           <div className="Qa_controls">
             {showLeftButton_b && <button onClick={() => scroll('left', scrollContainerRef_b)}><img src={arrow_left} width='15px' /></button>}
             <button onClick={() => scroll('right', scrollContainerRef_b)}><img src={arrow_right} width='15px' /></button>

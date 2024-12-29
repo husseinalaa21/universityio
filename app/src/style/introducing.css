@@ -9,7 +9,8 @@
 .course-list {
     display: flex;
     overflow: hidden;
-    overflow-x: scroll;
+    scroll-behavior: smooth;
+    gap: 20px;
 }
 
 .course-item {
@@ -102,8 +103,7 @@
 
 .Qa_group {
     display: flex;
-    overflow-x: auto;
-    overflow-y: hidden;
+    overflow: hidden;
     padding-bottom: 20px;
 }
 
@@ -121,7 +121,7 @@
 
 .Qa_group {
     display: flex;
-    overflow-x: auto;
+    overflow-x: hidden;
     scroll-behavior: smooth;
     gap: 20px;
 }
