@@ -28,6 +28,121 @@
     background-color: #ace4f16f;
 }
 
-.modern-comparison {
-    padding: 30px;
+.item-logo {
+    display: flex;
+    align-items: center;
+}
+
+.item-logo img {
+    margin-right: 13px;
+}
+
+.join {
+    margin: 20px;
+    padding: 20px;
+    background-color: #deeef4;
+    border-radius: 4px;
+    color: rgb(23, 23, 23);
+    position: relative;
+    overflow: hidden;
+    z-index: 100;
+}
+
+.earth {
+    z-index: -100;
+    position: absolute;
+    top: 0;
+    left: -100px;
+    filter: invert(36%) sepia(50%) saturate(1500%) hue-rotate(190deg) brightness(95%) contrast(105%) blur(5px);
+}
+
+.meteor {
+    z-index: -100;
+    position: absolute;
+    top: 10px;
+    left: 100px;
+    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(30deg) brightness(118%) contrast(119%) blur(5px);
+}
+
+.btn-group {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.btn-primary {
+    background-color: #39cf75;
+    padding: 10px;
+    font-weight: 900;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 3px solid #2eb263;
+    border-right: 3.5px solid #2eb263;
+    width: 40%;
+    color: aliceblue;
+}
+
+.btn-primary- {
+    background-color: #90bbbd;
+    padding: 10px;
+    font-weight: 900;
+    border-radius: 3px;
+    text-align: center;
+    cursor: pointer;
+    border-bottom: 3px solid #8db1aa;
+    border-right: 3.5px solid #7da39e;
+    width: 40%;
+    color: aliceblue;
+}
+
+.Qa_uio {
+    margin: 40px 20px 30px 20px;
+}
+
+.Qa_group {
+    display: flex;
+    overflow-x: auto;
+    overflow-y: hidden;
+    padding-bottom: 20px;
+}
+
+.Qa_in {
+    min-width: 300px;
+    height: 200px;
+    margin-right: 10px;
+    border-radius: 3px;
+    background-color: #deeef4;
+    padding: 20px;
+    cursor: pointer;
+    border-bottom: 20px solid #2e70b2;
+}
+
+
+.Qa_group {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+}
+
+.Qa_head_group {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.Qa_controls button {
+    border: 0;
+    background: none;
+    cursor: pointer;
+    width: 50px;
+}
+
+.courses_head {
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }

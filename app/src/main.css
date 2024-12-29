@@ -13,19 +13,12 @@ code {
     monospace;
 }
 
-.note {
-  padding: 10px;
-  background-color: #04b3f2;
-  font-size: 16px;
-  font-weight: bold;
-}
-
 .main_header {
   background-color: #F2F9FF;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 20px 30px 20px 30px;
   color: hsl(210, 6%, 35%);
 }
 
@@ -100,4 +93,34 @@ code {
   background-color: #F2F9FF;
   padding: 20px;
   
+}
+
+
+.header-ask {
+    display: flex;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+.header-login {
+    padding: 10px;
+}
+
+.header-login:hover {
+    padding: 10px;
+    color: black;
+}
+
+.header-signup {
+    padding: 10px;
+    background-color: #108ae7;
+    color: aliceblue;
+    margin-left: 10px;
+    border-radius: 3px;
+}
+
+.header-signup:hover {
+    background-color: #038eff;
 }

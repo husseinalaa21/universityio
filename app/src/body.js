@@ -9,13 +9,25 @@ var isLogin = false;
 function App() {
   return (
     <>
-      <div className='note'> Lunching Soon! </div>
       <div className='main'>
         <header className="main_header">
-          <img className="logo" src={logo} alt="logo" />
-          <div className="profile_logo">
-            <img className="profile_icon" src={profile_logo} alt="profile" />
+          <div className='logo-main'>
+            <img className="logo" src={logo} alt="logo" />
           </div>
+
+          {isLogin ?
+            <div className="profile_logo">
+              <img className="profile_icon" src={profile_logo} alt="profile" />
+            </div> :
+            <div className='header-ask'>
+              <div className='header-login'>
+                Login
+              </div>
+              <div className='header-signup'>
+                Sign UP
+              </div>
+            </div>
+          }
         </header>
 
         {/* THE BODY (HOME OR LOGIN OR INSIDE) */}
@@ -28,9 +40,6 @@ function App() {
         <div className='end'>
           <section className="modern-footer">
             <div className="container">
-              <h2>Step Into Your Future with University IO</h2>
-              <p>Take the leap today. Sign up and start your journey to success.</p>
-              <a href="#signup" className="btn-primary">Sign Up</a>
               <p>&copy; 2025 University IO. All Rights Reserved.</p>
               <p>Powered by AI Tool</p>
             </div>

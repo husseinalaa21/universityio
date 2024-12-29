@@ -1,8 +1,40 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import './main.css';
 import './introducing.css'
 
+import meteor from './svg/meteor-solid.svg'
+import earth from './svg/earth-americas-solid.svg'
+import business_logo from './svg/business-time-solid.svg'
+import code_logo from './svg/code-solid.svg'
+import computer_logo from './svg/computer-solid.svg'
+import money_logo from './svg/money-bill-transfer-solid.svg'
+import python_logo from './svg/python-brands-solid.svg'
+import arrow_right from './svg/angle-right-solid.svg'
+import arrow_left from './svg/angle-left-solid.svg'
+
 const App = () => {
+  var logo_size = '20px'
+  const scrollContainerRef = useRef(null)
+  const scrollContainerRef_A = useRef(null)
+
+  const scroll = (direction, part) => {
+    const scrollAmount = 300; // Adjust the scroll distance as needed
+    if (part.current) {
+      if (direction === 'left') {
+        part.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
+      } else if (direction === 'right') {
+        part.current.scrollBy({ left: scrollAmount, behavior: 'smooth' });
+      }
+    }
+  };
+
+  var qa = (q, n) => {
+    return <div className="Qa_in">
+      <h3>{q}</h3>
+      <p>{n}</p>
+    </div>
+  }
+
   return (
     <>
       <div className='intro'>
@@ -17,32 +49,50 @@ const App = () => {
 
       <section id="courses" className="courses modern-courses">
         <div className="container">
-          <h2>Available Courses</h2>
-          <div className="course-list">
+          <div className=' courses_head'>
+            <h2>Available Courses</h2>
+            <div className="Qa_controls">
+              <button onClick={() => scroll('left', scrollContainerRef_A)}><img src={arrow_left} width='15px' /></button>
+              <button onClick={() => scroll('right', scrollContainerRef_A)}><img src={arrow_right} width='15px' /></button>
+            </div>
+          </div>
+          <div className="course-list" ref={scrollContainerRef_A}>
             <div className="course-item">
               <div className='item-python item-shape'>
-                <h3>Python Programming</h3>
+                <div className='item-logo'>
+                  <img src={python_logo} width={logo_size} />
+                  <h3>Python Programming</h3>
+                </div>
                 <p>Learn Python-3 the main language for programming AI</p>
               </div>
               <div className='item-learning-part-a item-shape'>
-                <i className="fas fa-code"></i>
-                <h3>Programming Essentials</h3>
+                <div className='item-logo'>
+                  <img src={code_logo} width={logo_size} />
+                  <h3>Programming Essentials</h3>
+                </div>
                 <p>Master the building blocks of programming with hands-on projects in Python, JavaScript, and more.</p>
               </div>
             </div>
             <div className="course-item item-shape">
-              <i className="fas fa-laptop"></i>
-              <h3>IT Skills Training</h3>
+              <div className='item-logo'>
+                <img src={computer_logo} width={logo_size} />
+                <h3>IT Skills Training</h3>
+              </div>
               <p>Gain in-demand skills to excel in today's tech-driven world.</p>
             </div>
             <div className="course-item">
               <div className='item-business item-shape'>
-                <i className="fas fa-briefcase"></i>
-                <h3>Business Development</h3>
+                <div className='item-logo'>
+                  <img src={business_logo} width={logo_size} />
+                  <h3>Business Development</h3>
+                </div>
                 <p>Learn to innovate, plan, and execute your entrepreneurial vision with expert guidance.</p>
               </div>
               <div className='item-selling item-shape'>
-                <h3> Selling </h3>
+                <div className='item-logo'>
+                  <img src={money_logo} width={logo_size} />
+                  <h3> Selling </h3>
+                </div>
                 <p> Learn how to sell online </p>
               </div>
             </div>
@@ -50,27 +100,36 @@ const App = () => {
         </div>
       </section>
 
-      <section id="comparison" className="comparison modern-comparison">
-        <div className="container">
+      <section className='join'>
+        <div className='join_back_a'>
+          <img src={earth} width='200px' className='earth'></img>
+        </div>
+        <div className='join_back_b'>
+          <img src={meteor} width='30px' className='meteor'></img>
+        </div>
+        <h2>Step Into Your Future with University IO</h2>
+        <p>Take the leap today. Sign up and start your journey to success.</p>
+        <div className='btn-group'>
+          <div className="btn-primary"> Sign UP </div>
+          <div className="btn-primary-"> Login </div>
+        </div>
+
+      </section>
+
+
+      <section className="Qa_uio">
+        <div className='Qa_head_group'>
           <h2>Why Choose University IO?</h2>
-          <div className="comparison-grid">
-            <div className="feature">
-              <h3>Expert Instructors</h3>
-              <p><i className="fas fa-check-circle"></i> Learn from the best in the industry.</p>
-            </div>
-            <div className="feature">
-              <h3>Flexible Learning</h3>
-              <p><i className="fas fa-check-circle"></i> Study at your own pace, anytime, anywhere.</p>
-            </div>
-            <div className="feature">
-              <h3>Affordable Pricing</h3>
-              <p><i className="fas fa-check-circle"></i> Top-quality education at a fraction of the cost.</p>
-            </div>
-            <div className="feature">
-              <h3>Community Support</h3>
-              <p><i className="fas fa-check-circle"></i> Join a thriving community of learners and mentors.</p>
-            </div>
+          <div className="Qa_controls">
+            <button onClick={() => scroll('left', scrollContainerRef)}><img src={arrow_left} width='15px' /></button>
+            <button onClick={() => scroll('right', scrollContainerRef)}><img src={arrow_right} width='15px' /></button>
           </div>
+        </div>
+        <div className="Qa_group" ref={scrollContainerRef}>
+          {qa('Expert Instructors', 'Learn from the best in the industry.')}
+          {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
+          {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}
+          {qa('Community Support', 'Join a thriving community of learners and mentors.')}
         </div>
       </section>
     </>
