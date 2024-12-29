@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import './main.css';
 import './introducing.css'
 
@@ -14,10 +14,13 @@ import arrow_left from './svg/angle-left-solid.svg'
 
 const App = () => {
   var logo_size = '20px'
-  const scrollContainerRef = useRef(null)
-  const scrollContainerRef_A = useRef(null)
+  const scrollContainerRef_a = useRef(null),
+    scrollContainerRef_b = useRef(null);
 
-  const scroll = (direction, part) => {
+  const [showLeftButton_a, setShowLeftButton_a] = useState(false);
+  const [showLeftButton_b, setShowLeftButton_b] = useState(false);
+
+  var scroll = (direction, part) => {
     const scrollAmount = 300; // Adjust the scroll distance as needed
     if (part.current) {
       if (direction === 'left') {
@@ -27,6 +30,20 @@ const App = () => {
       }
     }
   };
+
+  const handleScroll_a = () => {
+    if (scrollContainerRef_a.current) {
+      const { scrollLeft } = scrollContainerRef_a.current;
+      setShowLeftButton_a(scrollLeft > 0); // Show the left button if scrolled right
+    }
+  };
+  const handleScroll_b = () => {
+    if (scrollContainerRef_b.current) {
+      const { scrollLeft } = scrollContainerRef_b.current;
+      setShowLeftButton_b(scrollLeft > 0); // Show the left button if scrolled right
+    }
+  };
+
 
   var qa = (q, n) => {
     return <div className="Qa_in">
@@ -52,11 +69,12 @@ const App = () => {
           <div className=' courses_head'>
             <h2>Available Courses</h2>
             <div className="Qa_controls">
-              <button onClick={() => scroll('left', scrollContainerRef_A)}><img src={arrow_left} width='15px' /></button>
-              <button onClick={() => scroll('right', scrollContainerRef_A)}><img src={arrow_right} width='15px' /></button>
+              {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
+              <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
             </div>
           </div>
-          <div className="course-list" ref={scrollContainerRef_A}>
+          <div className="course-list" ref={scrollContainerRef_a}
+            onScroll={handleScroll_a}>
             <div className="course-item">
               <div className='item-python item-shape'>
                 <div className='item-logo'>
@@ -121,11 +139,11 @@ const App = () => {
         <div className='Qa_head_group'>
           <h2>Why Choose University IO?</h2>
           <div className="Qa_controls">
-            <button onClick={() => scroll('left', scrollContainerRef)}><img src={arrow_left} width='15px' /></button>
-            <button onClick={() => scroll('right', scrollContainerRef)}><img src={arrow_right} width='15px' /></button>
+            {showLeftButton_b && <button onClick={() => scroll('left', scrollContainerRef_b)}><img src={arrow_left} width='15px' /></button>}
+            <button onClick={() => scroll('right', scrollContainerRef_b)}><img src={arrow_right} width='15px' /></button>
           </div>
         </div>
-        <div className="Qa_group" ref={scrollContainerRef}>
+        <div className="Qa_group" ref={scrollContainerRef_b} onScroll={handleScroll_b}>
           {qa('Expert Instructors', 'Learn from the best in the industry.')}
           {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
           {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}

@@ -146,3 +146,11 @@
     align-items: center;
     justify-content: space-between;
 }
+
+.vis_none {
+    display: none;
+}
+
+.vis_block {
+    display: block;
+}
