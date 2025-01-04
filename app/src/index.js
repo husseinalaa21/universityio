@@ -3,7 +3,7 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './style/index.css';
-import App from './pages/body';
+import Introducing from './pages/introducing';
 import LoginSignup from './pages/LoginSignup';
 import Inside from './pages/inside';
 
@@ -14,7 +14,7 @@ root.render(
     <Router>
       <Routes>
         {/* Home route */}
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Introducing />} />
         
         {/* Login and Sign Up route */}
         <Route path="/auth" element={<LoginSignup />} />
