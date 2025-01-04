@@ -83,7 +83,7 @@ const Footer = () => {
                 logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
               />
               <SocialLink
-                platform="X (Twitter)"
+                platform=" "
                 url="https://x.com/your-profile"
                 bgColor="#1DA1F2" // Twitter Blue
                 logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
