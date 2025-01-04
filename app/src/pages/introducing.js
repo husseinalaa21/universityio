@@ -3,6 +3,7 @@ import '../style/main.css';
 import '../style/introducing.css'
 import logo from '../logos/logo.png';
 import { useNavigate } from 'react-router-dom';
+import End from './end'
 
 import meteor from '../svg/meteor-solid.svg'
 import earth from '../svg/earth-americas-solid.svg'
@@ -184,13 +185,7 @@ const App = () => {
       {/* END THE BODY */}
 
       {/* END */}
-      <div className='end'>
-        <section className="modern-footer">
-          <div className="container">
-            <p>&copy; 2025 University IO. All Rights Reserved.</p>
-          </div>
-        </section>
-      </div>
+      <End />
     </>
   );
 };

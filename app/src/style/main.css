@@ -115,9 +115,112 @@
 
 .page_login_signup {
   padding: 20px;
-  width: fit-content;
+  max-width: 700px;
   margin: auto;
 }
 .page_login_signup h2 {
-  font-size: 26px;
+  font-size: 22px;
+  font-weight: 800;
+  color:#474a50;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.page_login_signup form{
+  margin-top: 10px;
+}
+.enter_message {
+  padding: 20px;
+  font-size: 17px;
+  background-color: #ade3f3ee;
+  border-radius: 4px;
+}
+.form-group {
+  padding: 7px;
+  background-color: #F2F9FF;
+  position: relative;
+  margin-top: 20px;
+  border-radius: 2px;
+}
+.form-group label{
+  position: absolute;
+  top: -14px;
+  left: 15px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #474a50;
+}
+.form-group input{
+  padding: 10px;
+  border: 0;
+  background: none;
+  width: 95%;
+  font-size: 16px;
+  outline: 0;
+  border: 0;
+}
+.form-group select{
+  padding: 10px;
+  width: 100%;
+  font-size: 16px;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+.btn {
+  padding: 10px;
+  margin-top: 20px;
+  width: 100%;
+  font-size: 17px;
+  border: 0;
+  background-color: #108ae7;
+  color: #F2F9FF;
+  font-weight: bold;
+  border-bottom: 3px solid #1079c9;
+  border-right: 3px solid #1079c9;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 600px) {
+  .inputs_group {
+    display: flex;
+    justify-content: space-between;
+  }
+  
+  .inputs_group .form-group{
+    width: 46% !important;
+  }
+}
+
+.toggleAny {
+  padding: 10px;
+  font-size: 17px;
+  font-weight: bold;
+  color: #474a50;
+  margin-top: 10px;
+}
+.toggle-btn- {
+  padding: 10px;
+  font-size: 15px;
+  color: #474a50;
+  font-weight: bold;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+}
+.toggle-btn {
+  padding: 10px;
+  font-size: 15px;
+  color: #474a50;
+  font-weight: bold;
+  border: 0;
+  width: 100%;
+  cursor: pointer;
+  background-color: #0b9c9a;
+  color: #F2F9FF;
+  border-bottom: 3px solid #087674;
+  border-right: 3px solid #087674;
+}
+.toggle-btn:hover{
+  background-color: #087674;
+  color: #F2F9FF;
 }

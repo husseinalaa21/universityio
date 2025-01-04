@@ -12,3 +12,97 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
         monospace;
 }
+
+
+/* BOTTOM PAGE */
+.footer-section {
+    background-color: #e2effb;
+}
+.footer-container {
+    background-color: #F2F9FF;
+    text-align: center;
+    border-top-right-radius: 200px;
+}
+
+.developer-details {
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.input-group {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.input-label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.input-field,
+.textarea-field {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.submit-button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 2px;
+    cursor: pointer;
+    width: 100%;
+    font-size: 17px;
+    font-weight: 500;
+}
+
+.submit-button:hover {
+    background-color: #0056b3;
+}
+
+
+.footer-bottom-section {
+    background-color: #C5D3E8;
+    margin-top: 20px;
+    padding: 10px;
+    font-weight: 600;
+}
+
+.footer-text {
+    font-size: 0.9rem;
+    color: #666;
+
+    padding: 20px;
+}
+
+.social-links {
+    display: grid;
+    grid-template-columns: auto auto; /* Two columns */
+    justify-items: center; /* Center items horizontally */
+    margin: 0;
+    margin-top: 30px;
+  }
+  
+.social-link {
+  display: flex;
+  cursor: pointer;
+  font-weight: bold;
+  padding: 12px;
+  width: 100%;
+  align-items: center;
+  text-align: center;
+
+}
+
+
+.social-logo {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  border-radius: 50%;
+  margin-right: 10px;
+}
