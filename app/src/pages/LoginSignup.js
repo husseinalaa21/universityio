@@ -88,7 +88,7 @@ function LoginSignup() {
     if (isRest) {
       try {
         setLoading(true);
-        const response = await retryAxiosRequest(`${API_BASE_URL}/reset-password`, {
+        const response = await retryAxiosRequest(`${API_BASE_URL}/restart`, {
           email: formData.email,
         });
         setLoading(false);
