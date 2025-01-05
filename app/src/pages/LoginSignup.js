@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import logo from '../logos/logo.png';
 import '../style/main.css';
-import End from './end'
+import End from './end';
 
 // Determine the API base URL
 const API_BASE_URL =
@@ -23,6 +23,7 @@ function LoginSignup() {
   });
   const [isRest, setRest] = useState(false);
   const [message, setMessage] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -61,21 +62,44 @@ function LoginSignup() {
     return age;
   };
 
+  const retryAxiosRequest = async (url, data, retries = 3) => {
+    for (let attempt = 1; attempt <= retries; attempt++) {
+      try {
+        const response = await axios.post(url, data, {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          withCredentials: true,
+        });
+        return response;
+      } catch (error) {
+        if (error.response?.status === 504 && attempt < retries) {
+          console.warn(`Retrying request... Attempt ${attempt}`);
+          continue;
+        }
+        throw error;
+      }
+    }
+  };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
     if (isRest) {
       try {
-        const response = await axios.post(`${API_BASE_URL}/reset-password`, {
+        setLoading(true);
+        const response = await retryAxiosRequest(`${API_BASE_URL}/reset-password`, {
           email: formData.email,
         });
+        setLoading(false);
         if (response.data.success) {
           setMessage('Reset password link has been sent to your email.');
         } else {
           setMessage(response.data.message || 'An unexpected error occurred.');
         }
       } catch (error) {
-        if (error.response && error.response.data && error.response.data.message) {
+        setLoading(false);
+        if (error.response?.data?.message) {
           setMessage(error.response.data.message);
         } else {
           setMessage('An error occurred. Please try again later.');
@@ -96,6 +120,7 @@ function LoginSignup() {
     }
 
     try {
+      setLoading(true);
       const endpoint = isLogin ? '/login' : '/signup';
       const payload = isLogin
         ? { email: formData.email, pass: formData.password }
@@ -108,15 +133,17 @@ function LoginSignup() {
             sex: formData.sex,
           };
 
-      const response = await axios.post(`${API_BASE_URL}${endpoint}`, payload);
+      const response = await retryAxiosRequest(`${API_BASE_URL}${endpoint}`, payload);
+      setLoading(false);
 
       if (response.data.valid) {
-        setMessage('Success! ' + (isLogin ? 'You are logged in.' : 'Your account has been created.'));
+        setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
       } else {
         setMessage(response.data.message || 'An unexpected error occurred.');
       }
     } catch (error) {
-      if (error.response && error.response.data && error.response.data.message) {
+      setLoading(false);
+      if (error.response?.data?.message) {
         setMessage(error.response.data.message);
       } else {
         setMessage('An error occurred. Please try again later.');
@@ -154,16 +181,17 @@ function LoginSignup() {
       </header>
 
       <div className='page_login_signup'>
+        {loading && <p className="loading-message">Please wait...</p>}
         {!isRest && (
           <>
             <h2>{isLogin ? 'Login' : 'Sign Up'}</h2>
             <form onSubmit={handleSubmit}>
               {!isLogin && (
                 <>
-                <div className='inputs_group'>
-                  {form_input('First Name', 'firstName', 'text', formData.firstName, 'Enter your first name')}
-                  {form_input('Last Name', 'lastName', 'text', formData.lastName, 'Enter your last name')}
-                </div>
+                  <div className='inputs_group'>
+                    {form_input('First Name', 'firstName', 'text', formData.firstName, 'Enter your first name')}
+                    {form_input('Last Name', 'lastName', 'text', formData.lastName, 'Enter your last name')}
+                  </div>
                   {form_input('Date of Birth', 'dateOfBirth', 'date', formData.dateOfBirth, 'Enter your date of birth')}
                   <div className="form-group">
                     <label htmlFor="sex">Gender</label>
@@ -204,15 +232,15 @@ function LoginSignup() {
         )}
 
         {message && <p className="message">{message}</p>}
-          {isLogin && (
-        <div className='toggleAny'>
+        {isLogin && (
+          <div className='toggleAny'>
             <button onClick={toggleRest} className="toggle-btn-">
               {isRest ? 'Return to the login page' : 'Reset your password?'}
             </button>
-        </div>
-          )}
+          </div>
+        )}
         {!isRest && (
-        <div className='toggleAny'>
+          <div className='toggleAny'>
             {isLogin ? <p>Don't have an account?</p> : <p>Already have an account?</p>}
             <button onClick={toggleForm} className="toggle-btn">
               {isLogin ? 'Sign Up' : 'Login'}
