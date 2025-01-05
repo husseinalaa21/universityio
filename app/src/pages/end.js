@@ -10,7 +10,7 @@ const SocialLink = ({ platform, url, bgColor, logo }) => {
     <div
       className="social-link"
       onClick={handleClick}
-      style={{ backgroundColor: bgColor, color: "white"}}
+      style={{ borderCollapse: bgColor, color: bgColor}}
     >
       <img src={logo} className="social-logo" />
       {platform}
@@ -22,7 +22,7 @@ const SocialLink = ({ platform, url, bgColor, logo }) => {
 const ContactForm = () => {
   return (
     <form
-      action="mailto:your-email@example.com"
+      action="mailto:universityio.office@gmail.com"
       method="POST"
       encType="multipart/form-data"
       className="contact-form"
@@ -78,25 +78,25 @@ const Footer = () => {
             <div className="social-links">
               <SocialLink
                 platform="Gmail"
-                url="mailto:your-email@gmail.com"
+                url="mailto:universityio.office@gmail.com"
                 bgColor="#D44638" // Gmail Red
                 logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
               />
               <SocialLink
                 platform=" "
-                url="https://x.com/your-profile"
+                url="https://x.com/husseinalaa21/"
                 bgColor="#1DA1F2" // Twitter Blue
                 logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
               />
               <SocialLink
                 platform="LinkedIn"
-                url="https://linkedin.com/in/your-profile"
+                url="https://www.linkedin.com/company/university-io/"
                 bgColor="#0077B5" // LinkedIn Blue
                 logo="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
               />
               <SocialLink
                 platform="GitHub"
-                url="https://github.com/your-profile"
+                url="https://github.com/husseinalaa21/"
                 bgColor="#333" // GitHub Black
                 logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
               />
