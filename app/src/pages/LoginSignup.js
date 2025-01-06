@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../logos/logo.png';
+import Cookies from 'js-cookie'; // Import js-cookie
 import '../style/main.css';
-import End from './end';
+import End from './end'
+import Header from './header'
 
 // Determine the API base URL
 const API_BASE_URL =
@@ -11,6 +13,7 @@ const API_BASE_URL =
     : 'https://server.universityio.com';
 
 function LoginSignup() {
+  const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(true);
   const [formData, setFormData] = useState({
     firstName: '',
@@ -24,6 +27,7 @@ function LoginSignup() {
   const [isRest, setRest] = useState(false);
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -138,6 +142,10 @@ function LoginSignup() {
 
       if (response.data.valid) {
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
+        
+        Cookies.set('cookie', response.data.cookie, { expires: 7 }); // Set cookie to expire in 7 days
+        Cookies.set('email', formData.email, { expires: 7 });
+        setTimeout(() => navigate('/'), 3000);
       } else {
         setMessage(response.data.message || 'An unexpected error occurred.');
       }
@@ -156,30 +164,31 @@ function LoginSignup() {
     return <div className='enter_message'>{m}</div>;
   };
 
-  const form_input = (labelText, id, type, value, placeholder) => {
+  // Modified form_input to include a show/hide password toggle
+  const form_input = (labelText, id, type, value, placeholder, isPassword = false) => {
     return (
       <div className="form-group">
         <label htmlFor={id}>{labelText}</label>
         <input
-          type={type}
+          type={showPassword && isPassword ? 'text' : type}
           id={id}
           value={value}
           onChange={handleChange}
           placeholder={placeholder}
           required
         />
+        {isPassword && (
+          <button type="button" onClick={() => setShowPassword(!showPassword)}>
+            {showPassword ? 'Hide' : 'Show'}
+          </button>
+        )}
       </div>
     );
   };
 
   return (
     <div className='login_signup'>
-      <header className="main_header">
-        <div className='logo-main'>
-          <img className="logo" src={logo} alt="logo" />
-        </div>
-      </header>
-
+      <Header login={false} ask={false}/>
       <div className='page_login_signup'>
         {loading && <p className="loading-message">Please wait...</p>}
         {!isRest && (
@@ -210,8 +219,8 @@ function LoginSignup() {
                 </>
               )}
               {form_input('Email', 'email', 'email', formData.email, 'Enter your email')}
-              {form_input('Password', 'password', 'password', formData.password, 'Enter your password')}
-              {!isLogin && form_input('Re-enter Password', 'confirmPassword', 'password', formData.confirmPassword, 'Re-enter your password')}
+              {form_input('Password', 'password', 'password', formData.password, 'Enter your password', true)}
+              {!isLogin && form_input('Re-enter Password', 'confirmPassword', 'password', formData.confirmPassword, 'Re-enter your password', true)}
               <button type="submit" className="btn">
                 {isLogin ? 'Login' : 'Sign Up'}
               </button>

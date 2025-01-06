@@ -140,6 +140,7 @@
   position: relative;
   margin-top: 20px;
   border-radius: 2px;
+  display: flex;
 }
 .form-group label{
   position: absolute;
@@ -223,4 +224,15 @@
 .toggle-btn:hover{
   background-color: #087674;
   color: #F2F9FF;
+}
+
+.form-group button{
+  border: 0;
+  outline: 0;
+  color: #474a508d;
+  font-size: 13px;
+  cursor: pointer;
+  background: none;
+  font-weight: bold;
+  margin-right: 10px;
 }

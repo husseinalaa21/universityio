@@ -3,7 +3,8 @@ import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import logo from '../logos/logo.png';
 import '../style/main.css';
-import End from './end';
+import End from './end'
+import Header from './header'
 
 // Determine the API base URL
 const API_BASE_URL =
@@ -86,39 +87,36 @@ function ResetPasswordPage() {
   };
 
   return (
-    <div className="login_signup">
-      <header className="main_header">
-        <div className="logo-main">
-          <img className="logo" src={logo} alt="logo" />
+    <>
+      <Header login={false} ask={false} />
+      <div className="login_signup">
+
+        <div className="page_login_signup">
+          {loading && <p className="loading-message">Please wait...</p>}
+          {message && <p className="message">{message}</p>}
+
+          {formData.email && formData.token && (
+            <>
+              <h2>Reset Password</h2>
+              <form onSubmit={handleSubmit}>
+                {form_input('New Password', 'newPassword', 'password', formData.newPassword, 'Enter new password')}
+                {form_input(
+                  'Confirm New Password',
+                  'confirmPassword',
+                  'password',
+                  formData.confirmPassword,
+                  'Re-enter new password'
+                )}
+                <button type="submit" className="btn">
+                  {loading ? 'Resetting...' : 'Reset Password'}
+                </button>
+              </form>
+            </>
+          )}
         </div>
-      </header>
-
-      <div className="page_login_signup">
-        {loading && <p className="loading-message">Please wait...</p>}
-        {message && <p className="message">{message}</p>}
-
-        {formData.email && formData.token && (
-          <>
-            <h2>Reset Password</h2>
-            <form onSubmit={handleSubmit}>
-              {form_input('New Password', 'newPassword', 'password', formData.newPassword, 'Enter new password')}
-              {form_input(
-                'Confirm New Password',
-                'confirmPassword',
-                'password',
-                formData.confirmPassword,
-                'Re-enter new password'
-              )}
-              <button type="submit" className="btn">
-                {loading ? 'Resetting...' : 'Reset Password'}
-              </button>
-            </form>
-          </>
-        )}
       </div>
-
       <End />
-    </div>
+    </>
   );
 }
 
