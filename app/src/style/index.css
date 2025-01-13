@@ -119,6 +119,7 @@ code {
 
 .dropdown_menu {
     position: absolute;
+    z-index: 100;
     top: 100px;
     padding: 10px;
     background-color: #ebf5fe;

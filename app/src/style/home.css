@@ -1,0 +1,23 @@
+.home_header {
+    display: flex;
+    justify-content: center;
+}
+.home_header div{
+    padding: 10px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: #e9f1f8;
+}
+.home_header div img{
+    padding: 10px;
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(85%);
+
+}
+
+.active {
+    background-color: #dfe9f2 !important;
+}
+.active img{
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
