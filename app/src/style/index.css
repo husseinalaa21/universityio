@@ -110,8 +110,8 @@ code {
     align-items: center;
     border-radius: 500px;
     overflow: hidden;
-    width: 45px;
-    height: 45px;
+    width: 43px;
+    height: 43px;
     background-color: #3f8bdd;
     border: 3px solid #8cc0ee;
     cursor: pointer;
@@ -125,7 +125,7 @@ code {
     border: 1px solid #e9f5ff;
     border-top: 1.5px solid #daecfa;
     border-radius: 8px 2px 4px 4px;
-    width: 400px;
+    width: 240px;
     right: 30px;
 }
 
