@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import logo from '../logos/logo.png';
 import '../style/main.css';
 import End from './end'
 import Header from './header'

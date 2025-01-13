@@ -44,13 +44,13 @@ const retryAxiosRequest = async (url, data, retries = 3) => {
   }
 };
 // Footer Component
-const Footer = () => {
+const Footer = (props) => {
   const [isSend, setisSend] = useState(false);
   const [message, setMessage] = useState("");
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message:''
+    message: ''
   });
 
   const handleSubmit = async (e) => {
@@ -77,79 +77,81 @@ const Footer = () => {
   return (
     <div className="footer-section">
       <section className="footer-container">
-        <div className="contact-section">
-          <div className="developer-details">
-            <h4>Contact the Developer</h4>
-            <p>Have questions or feedback? Feel free to reach out:</p>
-            {isSend ? <div className='message_sent'>{message}</div> :
-              <form onSubmit={handleSubmit}
-              >
-                <div className="input-group">
-                  <label htmlFor="name" className="input-label">Your Name:</label>
-                  <input
-                    type="text"
-                    id="name"
-                    name="name"
-                    onChange={handleChange}
-                    placeholder="Enter your name"
-                    className="input-field"
-                    required
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="email" className="input-label">Your Email:</label>
-                  <input
-                    type="email"
-                    id="email"
-                    name="email"
-                    onChange={handleChange}
-                    placeholder="Enter your email"
-                    className="input-field"
-                    required
-                  />
-                </div>
-                <div className="input-group">
-                  <label htmlFor="message" className="input-label">Your Message:</label>
-                  <textarea
-                    id="message"
-                    name="message"
-                    rows="5"
-                    placeholder="Enter your message"
-                    className="textarea-field"
-                    onChange={handleChange}
-                    required
-                  ></textarea>
-                </div>
-                <button type="submit" className="submit-button">Send Message</button>
-              </form>}
-            <div className="social-links">
-              <SocialLink
-                platform="Gmail"
-                url="mailto:universityio.office@gmail.com"
-                bgColor="#D44638" // Gmail Red
-                logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
-              />
-              <SocialLink
-                platform=" Hussein A. ( X ) "
-                url="https://x.com/husseinalaa21/"
-                bgColor="#333"
-                logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
-              />
-              <SocialLink
-                platform="LinkedIn"
-                url="https://www.linkedin.com/company/university-io/"
-                bgColor="#0077B5" // LinkedIn Blue
-                logo="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-              />
-              <SocialLink
-                platform="GitHub"
-                url="https://github.com/husseinalaa21/"
-                bgColor="#333" // GitHub Black
-                logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-              />
+        {!props.login ?
+          <div className="contact-section">
+            <div className="developer-details">
+              <h4>Contact the Developer</h4>
+              <p>Have questions or feedback? Feel free to reach out:</p>
+              {isSend ? <div className='message_sent'>{message}</div> :
+                <form onSubmit={handleSubmit}
+                >
+                  <div className="input-group">
+                    <label htmlFor="name" className="input-label">Your Name:</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      onChange={handleChange}
+                      placeholder="Enter your name"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="email" className="input-label">Your Email:</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      onChange={handleChange}
+                      placeholder="Enter your email"
+                      className="input-field"
+                      required
+                    />
+                  </div>
+                  <div className="input-group">
+                    <label htmlFor="message" className="input-label">Your Message:</label>
+                    <textarea
+                      id="message"
+                      name="message"
+                      rows="5"
+                      placeholder="Enter your message"
+                      className="textarea-field"
+                      onChange={handleChange}
+                      required
+                    ></textarea>
+                  </div>
+                  <button type="submit" className="submit-button">Send Message</button>
+                </form>}
+              <div className="social-links">
+                <SocialLink
+                  platform="Gmail"
+                  url="mailto:universityio.office@gmail.com"
+                  bgColor="#D44638" // Gmail Red
+                  logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+                />
+                <SocialLink
+                  platform=" Hussein A. ( X ) "
+                  url="https://x.com/husseinalaa21/"
+                  bgColor="#333"
+                  logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
+                />
+                <SocialLink
+                  platform="LinkedIn"
+                  url="https://www.linkedin.com/company/university-io/"
+                  bgColor="#0077B5" // LinkedIn Blue
+                  logo="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+                />
+                <SocialLink
+                  platform="GitHub"
+                  url="https://github.com/husseinalaa21/"
+                  bgColor="#333" // GitHub Black
+                  logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+                />
+              </div>
             </div>
           </div>
-        </div>
+          : <></>}
         <div className="footer-bottom-section">
           <p className="footer-text">&copy; 2025 University IO. All Rights Reserved.</p>
         </div>
