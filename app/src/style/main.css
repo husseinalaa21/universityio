@@ -242,19 +242,24 @@
 
 .panel {
     position: absolute;
-    background-color: #e8f3fa;
+    background-color: #F2F9FF;
+    border-top: 1px solid #edf4f9;
     left: 0;
     right: 0;
     top: 100px;
     padding: 20px;
     display: flex;
-    justify-content:space-around;
+    justify-content:space-evenly;
     font-size: 16px;
     font-weight: 600;
-    border: 0;
 }
 .panel div{
+  text-align: center;
+  align-items: center;
+  margin: auto;
     cursor: pointer;
+    border-right: 1px solid #d0d4d9;
+    padding-right: 17px;
 }
 
 .panel_web {
@@ -263,6 +268,8 @@
   align-items: center;
   font-size: 16px;
   font-weight: 700;
+  border: none !important;
+  padding: 0 ;
 }
 .panel_web mark{
   background: none;
@@ -270,7 +277,8 @@
 }
 .panel_web div{
   text-align: center;
-  margin-right: 30px;
+  margin-right: 10px;
+  border: none !important;
 }
 .panel_web .panel_icon {
   padding: 0 0 0 30px;
@@ -285,6 +293,7 @@
   align-items: center;
   display: flex;
   justify-content: center;
+  border: none !important;
 }
 .panel_more img{
   margin-left: 10px;
