@@ -5,6 +5,7 @@
   justify-content: space-between;
   padding: 20px 30px 20px 30px;
   color: hsl(210, 6%, 35%);
+  margin-bottom: 40px;
 }
 
 .logo {
@@ -91,6 +92,9 @@
 
 .header-login {
     padding: 10px;
+    background-color: #108ae7c8;
+    color: aliceblue;
+    border-radius: 3px;
 }
 
 .header-login:hover {
@@ -100,7 +104,7 @@
 
 .header-signup {
     padding: 10px;
-    background-color: #108ae7;
+    background-color: #10d2e7e1;
     color: aliceblue;
     margin-left: 10px;
     border-radius: 3px;
@@ -235,4 +239,62 @@
   background: none;
   font-weight: bold;
   margin-right: 10px;
+}
+
+.panel {
+    position: absolute;
+    background-color: #e8f3fa;
+    left: 0;
+    right: 0;
+    top: 100px;
+    padding: 20px;
+    display: flex;
+    justify-content:space-around;
+    font-size: 16px;
+    font-weight: 600;
+    border: 0;
+    border-top: 1px solid #dfecf5;
+    border-bottom: 1px solid #dfecf5;
+}
+.panel div{
+    cursor: pointer;
+}
+
+.panel_web {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  font-weight: 700;
+}
+.panel_web mark{
+  background: none;
+  color: #038eff;
+}
+.panel_web div{
+  text-align: center;
+  margin-right: 30px;
+}
+.panel_web .panel_icon {
+  padding: 0 0 0 30px;
+}
+.panel_web img{
+  position: relative;
+  top: 3px;
+  margin-right: 10px;
+}
+
+.panel_more {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}
+.panel_more img{
+  margin-left: 10px;
+}
+
+@media only screen and (max-width: 700px) {
+  .panel_web {
+    display: none;
+  }
 }

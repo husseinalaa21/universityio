@@ -2,18 +2,23 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import logo from '../logos/logo.png';
+import caret_down from '../svg/caret-down-solid.svg'
+import fire_solid from '../svg/fire-solid.svg'
+import moon_regular from '../svg/moon-regular.svg'
+import moon_solid from '../svg/moon-solid.svg'
 import Cookies from 'js-cookie';
 
 function Header(props) {
     const navigate = useNavigate();
     const [showOptions, setShowOptions] = useState(false);
+    const [isNight, setIsNight] = useState(true)
 
     const toggleOptions = () => {
         setShowOptions(prev => !prev);
     };
 
     const toggleOptions_advance = () => {
-        if(showOptions){
+        if (showOptions) {
             setShowOptions(false)
         }
     };
@@ -41,27 +46,39 @@ function Header(props) {
                     )}
                 </>
                 : props.ask ?
-                    <div className='header-ask'>
-                        <div
-                            className='header-login'
-                            onClick={() => navigate('/auth')}
-                        >
-                            Login
+                    <div className='header_intro'>
+                        <div className='header-ask'>
+                            <div
+                                className='header-login'
+                                onClick={() => navigate('/auth')}
+                            >
+                                Login
+                            </div>
+                            <div
+                                className='header-signup'
+                                onClick={() => navigate('/auth')}
+                            >
+                                Sign Up
+                            </div>
                         </div>
-                        <div
-                            className='header-signup'
-                            onClick={() => navigate('/auth')}
-                        >
-                            Sign Up
+                        <div className='panel'>
+                            <div className='panel_web'>
+                                <div> <mark>Join</mark> today for free </div>
+                                <div className='panel_icon'> <img src={fire_solid} width="15px"></img> Top courses </div>
+                            </div>
+                            <div> About US </div>
+                            <div> Support </div>
+                            <div className='panel_more'> More <img src={caret_down} width='10px'></img>  </div>
                         </div>
                     </div> : null}
-                        {showOptions && (
-                        <div className='dropdown_menu'>
-                            <div onClick={() => navigate('/profile')}>Profile</div>
-                            <div onClick={() => navigate('/settings')}>Settings</div>
-                            <div onClick={logout}>Logout</div>
-                        </div>
-                    )}
+            {/**isNight ? <div className='night_on'> <img src={moon_solid} width='20px'></img></div> : <div className='night_off'></div>**/}
+            {showOptions && (
+                <div className='dropdown_menu'>
+                    <div onClick={() => navigate('/profile')}>Profile</div>
+                    <div onClick={() => navigate('/settings')}>Settings</div>
+                    <div onClick={logout}>Logout</div>
+                </div>
+            )}
         </header>
     );
 }
