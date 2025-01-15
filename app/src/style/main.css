@@ -5,7 +5,6 @@
   justify-content: space-between;
   padding: 20px 30px 20px 30px;
   color: hsl(210, 6%, 35%);
-  margin-bottom: 40px;
 }
 
 .logo {
@@ -253,8 +252,6 @@
     font-size: 16px;
     font-weight: 600;
     border: 0;
-    border-top: 1px solid #dfecf5;
-    border-bottom: 1px solid #dfecf5;
 }
 .panel div{
     cursor: pointer;
