@@ -84,15 +84,14 @@
 .header-ask {
   display: flex;
   justify-content: center;
-  font-weight: 700;
+  font-weight: bold;
   font-size: 16px;
   cursor: pointer;
 }
 
 .header-login {
   padding: 10px;
-  background-color: #108ae7c8;
-  color: aliceblue;
+  color: #04b3f2;
   border-radius: 3px;
 }
 
@@ -103,7 +102,7 @@
 
 .header-signup {
   padding: 10px;
-  background-color: #10d2e7e1;
+  background-color: #04b3f2;
   color: aliceblue;
   margin-left: 10px;
   border-radius: 3px;
@@ -271,7 +270,7 @@
   margin: auto;
   cursor: pointer;
   border-right: 1px solid #d0d4d9;
-  padding-right: 30px;
+  padding-right: 20px;
 }
 
 .panel_web {
