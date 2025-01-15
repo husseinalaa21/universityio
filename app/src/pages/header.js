@@ -64,7 +64,7 @@ function Header(props) {
                         <div className='panel'>
                             <div className='panel_web'>
                                 <div> <mark>Join</mark> today for free </div>
-                                <div className='panel_icon'> <img src={fire_solid} width="15px"></img> Top courses </div>
+                                <div className='panel_icon'> <img src={fire_solid} width="13px"></img> Top courses </div>
                             </div>
                             <div> About US </div>
                             <div> Support </div>

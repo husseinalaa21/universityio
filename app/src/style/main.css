@@ -77,40 +77,40 @@
 .modern-footer {
   background-color: #F2F9FF;
   padding: 20px;
-  
+
 }
 
 
 .header-ask {
-    display: flex;
-    justify-content: center;
-    font-weight: 700;
-    font-size: 16px;
-    cursor: pointer;
+  display: flex;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 16px;
+  cursor: pointer;
 }
 
 .header-login {
-    padding: 10px;
-    background-color: #108ae7c8;
-    color: aliceblue;
-    border-radius: 3px;
+  padding: 10px;
+  background-color: #108ae7c8;
+  color: aliceblue;
+  border-radius: 3px;
 }
 
 .header-login:hover {
-    padding: 10px;
-    color: black;
+  padding: 10px;
+  color: black;
 }
 
 .header-signup {
-    padding: 10px;
-    background-color: #10d2e7e1;
-    color: aliceblue;
-    margin-left: 10px;
-    border-radius: 3px;
+  padding: 10px;
+  background-color: #10d2e7e1;
+  color: aliceblue;
+  margin-left: 10px;
+  border-radius: 3px;
 }
 
 .header-signup:hover {
-    background-color: #038eff;
+  background-color: #038eff;
 }
 
 
@@ -121,22 +121,26 @@
   max-width: 700px;
   margin: auto;
 }
+
 .page_login_signup h2 {
   font-size: 22px;
   font-weight: 800;
-  color:#474a50;
+  color: #474a50;
   margin-bottom: 30px;
   text-align: center;
 }
-.page_login_signup form{
+
+.page_login_signup form {
   margin-top: 10px;
 }
+
 .enter_message {
   padding: 20px;
   font-size: 17px;
   background-color: #ade3f3ee;
   border-radius: 4px;
 }
+
 .form-group {
   padding: 7px;
   background-color: #F2F9FF;
@@ -145,7 +149,8 @@
   border-radius: 2px;
   display: flex;
 }
-.form-group label{
+
+.form-group label {
   position: absolute;
   top: -14px;
   left: 15px;
@@ -153,7 +158,8 @@
   font-weight: bold;
   color: #474a50;
 }
-.form-group input{
+
+.form-group input {
   padding: 10px;
   border: 0;
   background: none;
@@ -162,7 +168,8 @@
   outline: 0;
   border: 0;
 }
-.form-group select{
+
+.form-group select {
   padding: 10px;
   width: 100%;
   font-size: 16px;
@@ -170,6 +177,7 @@
   background: none;
   cursor: pointer;
 }
+
 .btn {
   padding: 10px;
   margin-top: 20px;
@@ -189,8 +197,8 @@
     display: flex;
     justify-content: space-between;
   }
-  
-  .inputs_group .form-group{
+
+  .inputs_group .form-group {
     width: 46% !important;
   }
 }
@@ -202,6 +210,7 @@
   color: #474a50;
   margin-top: 10px;
 }
+
 .toggle-btn- {
   padding: 10px;
   font-size: 15px;
@@ -211,6 +220,7 @@
   width: 100%;
   cursor: pointer;
 }
+
 .toggle-btn {
   padding: 10px;
   font-size: 15px;
@@ -224,12 +234,13 @@
   border-bottom: 3px solid #087674;
   border-right: 3px solid #087674;
 }
-.toggle-btn:hover{
+
+.toggle-btn:hover {
   background-color: #087674;
   color: #F2F9FF;
 }
 
-.form-group button{
+.form-group button {
   border: 0;
   outline: 0;
   color: #474a508d;
@@ -241,52 +252,56 @@
 }
 
 .panel {
-    position: absolute;
-    background-color: #F2F9FF;
-    border-top: 1px solid #edf4f9;
-    left: 0;
-    right: 0;
-    top: 100px;
-    padding: 20px;
-    display: flex;
-    justify-content:space-evenly;
-    font-size: 16px;
-    font-weight: 600;
+  position: absolute;
+  background-color: #F2F9FF;
+  border-top: 1px solid #edf4f9;
+  left: 0;
+  right: 0;
+  top: 100px;
+  padding: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  font-size: 15px;
+  font-weight: 600;
 }
-.panel div{
+
+.panel div {
   text-align: center;
   align-items: center;
   margin: auto;
-    cursor: pointer;
-    border-right: 1px solid #d0d4d9;
-    padding-right: 17px;
+  cursor: pointer;
+  border-right: 1px solid #d0d4d9;
+  padding-right: 30px;
 }
 
 .panel_web {
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   border: none !important;
-  padding: 0 ;
+  padding: 0 !important;
 }
-.panel_web mark{
+
+.panel_web mark {
   background: none;
   color: #038eff;
 }
-.panel_web div{
+
+.panel_web div {
   text-align: center;
-  margin-right: 10px;
   border: none !important;
 }
+
 .panel_web .panel_icon {
   padding: 0 0 0 30px;
 }
-.panel_web img{
+
+.panel_web img {
   position: relative;
   top: 3px;
-  margin-right: 10px;
+  margin-right: 4px;
 }
 
 .panel_more {
@@ -295,7 +310,8 @@
   justify-content: center;
   border: none !important;
 }
-.panel_more img{
+
+.panel_more img {
   margin-left: 10px;
 }
 
