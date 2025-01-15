@@ -119,7 +119,7 @@ const Intro = () => {
         </div>
       </section>
 
-      <section className='join'>
+      {/**<section className='join'>
         <div className='join_back_a'>
           <img src={earth} width='200px' className='earth'></img>
         </div>
@@ -133,7 +133,7 @@ const Intro = () => {
           <div className="btn-primary-"> Login </div>
         </div>
 
-      </section>
+      </section>**/}
 
 
       <section className="Qa_uio">
