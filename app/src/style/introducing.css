@@ -1,6 +1,85 @@
 .intro {
     padding: 30px;
     margin-top: 40px;
+    background-color: rgb(234, 242, 248);
+    position: relative;
+    min-height: 400px
+}
+
+.anime {
+    position: absolute;
+    top: 60px;
+    right: 60px;
+}
+
+.anime_tap {
+    width: 300px;
+    background-color: #c1e8ff;
+    padding: 20px;
+    border: 0;
+    border-radius: 3px;
+    font-size: 16px;
+    font-weight: bold;
+    border: 0;
+    border-right: 10px solid #d6ecf9;
+}
+
+.anime_header {
+    position: relative;
+    right: -50px;
+    padding: 20px;
+    width: 260px;
+    background-color: #369aff;
+    color: aliceblue;
+    border-radius: 6px 6px 0px 6px;
+    font-size: 15px;
+}
+
+.anime_title {
+    font-family: "Pacifico", serif;
+    font-weight: 600;
+    font-style: normal;
+    font-size: 20px;
+    text-align: center;
+    color: #369aff;
+    margin-bottom: 20px;
+}
+
+.anime_continer {
+    position: relative;
+    margin-top: 20px;
+    right: 50px;
+    padding: 20px;
+    width: 300px;
+    background-color: #a1b7be;
+    color: aliceblue;
+    border-radius: 6px 6px 6px 0px;
+    font-size: 15px;
+}
+
+.time_nn {
+    font-size: 12px;
+}
+.modern-intro {
+    max-width: 400px;
+    z-index: 100;
+    position: relative;
+}
+
+@media only screen and (max-width: 700px) {
+  .anime {
+    position:relative;
+    right: auto;
+  }
+  .modern-intro {
+      max-width: 100%;
+  }
+  .anime_tap {
+      width: 300px;
+      right: auto !important;
+      left: auto !important;
+      margin: auto !important;
+  }
 }
 
 .courses {

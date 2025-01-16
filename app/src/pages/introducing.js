@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import '../style/introducing.css'
@@ -12,6 +12,9 @@ import money_logo from '../svg/money-bill-transfer-solid.svg'
 import python_logo from '../svg/python-brands-solid.svg'
 import arrow_right from '../svg/angle-right-solid.svg'
 import arrow_left from '../svg/angle-left-solid.svg'
+import liberay_one from '../svg/liberay_one.jpg'
+import liberay_two from '../svg/liberay_two.jpg'
+import liberay_three from '../svg/liberay_three.jpg'
 
 const Intro = () => {
   var logo_size = '20px'
@@ -20,9 +23,48 @@ const Intro = () => {
 
   const [showLeftButton_a, setShowLeftButton_a] = useState(false);
   const [showLeftButton_b, setShowLeftButton_b] = useState(false);
+  const animeData = [
+    { title: 'How do I purchase courses?', text: 'Buy with a single payment and access forever.' },
+    { title: 'Can I sell my own courses?', text: 'Yes, reach a global audience on our platform.' },
+    { title: 'What do I earn from completing courses?', text: 'Receive a recognized degree upon completion.' },
+    { title: 'Are there any recurring fees?', text: 'No, pay once for lifelong access to your courses.' }
+  ];
+  const [animeTitle, setAnimeTitle] = useState(animeData[0].title);
+  const [animeText, setAnimeText] = useState(animeData[0].text);
+  const [newDate, setNewDate] = useState(formatTime());
+  const [index, setIndex] = useState(0);
+  const liberay_img = '30px'
+
+  function formatTime() {
+    let now = new Date();
+    let hours = now.getHours();
+    let minutes = now.getMinutes();
+    let ampm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    minutes = minutes < 10 ? '0' + minutes : minutes;
+    let formattedTime = hours + ':' + minutes + ' ' + ampm;
+    return formattedTime;
+  }
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      const newIndex = (index + 1) % animeData.length;
+      setAnimeTitle(animeData[newIndex].title); // Update the title first
+
+      setTimeout(() => {
+        setAnimeText(animeData[newIndex].text); // Update the text after 1 second
+        setNewDate(formatTime())
+      }, 1000);
+
+      setIndex(newIndex); // Update the index to keep track of the current item
+    }, 3000); // Move to the next item every 3 seconds
+
+    return () => clearInterval(interval);
+  }, [index, animeData]);
 
   var scroll = (direction, part) => {
-    const scrollAmount = 300; // Adjust the scroll distance as needed
+    const scrollAmount = 300;
     if (part.current) {
       if (direction === 'left') {
         part.current.scrollBy({ left: -scrollAmount, behavior: 'smooth' });
@@ -35,16 +77,15 @@ const Intro = () => {
   const handleScroll_a = () => {
     if (scrollContainerRef_a.current) {
       const { scrollLeft } = scrollContainerRef_a.current;
-      setShowLeftButton_a(scrollLeft > 0); // Show the left button if scrolled right
+      setShowLeftButton_a(scrollLeft > 0);
     }
   };
   const handleScroll_b = () => {
     if (scrollContainerRef_b.current) {
       const { scrollLeft } = scrollContainerRef_b.current;
-      setShowLeftButton_b(scrollLeft > 0); // Show the left button if scrolled right
+      setShowLeftButton_b(scrollLeft > 0);
     }
   };
-
 
   var qa = (q, n) => {
     return <div className="Qa_in">
@@ -63,6 +104,55 @@ const Intro = () => {
             <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>
           </div>
         </section>
+        <section className='anime'>
+          <div className='anime_title'>
+          Support
+          </div>
+          <div className='anime_tap'>
+            <div className='anime_header'>
+              {animeTitle}
+              <p className='time_nn'>{newDate}</p>
+            </div>
+            <div className='anime_continer'>
+              {animeText}
+              <p className='time_nn'>{newDate}</p>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <div className='liberay'>
+        <div className='liberay_title'>
+          Do more in one Place.
+        </div>
+        <div className='liberay_container'>
+          <div className='liberay_card'>
+            <div className='liberay_card_title'>
+              Publish your courses
+            </div>
+            <div className='liberay_card_img'>
+            <img src={liberay_one} width={liberay_img}></img>
+            </div>
+          </div>
+          
+          <div className='liberay_card'>
+            <div className='liberay_card_title'>
+              buy courses
+            </div>
+            <div className='liberay_card_img'>
+            <img src={liberay_two} width={liberay_img}></img>
+            </div>
+          </div>
+          
+          <div className='liberay_card'>
+            <div className='liberay_card_title'>
+              Search for courses
+            </div>
+            <div className='liberay_card_img'>
+            <img src={liberay_three} width={liberay_img}></img>
+            </div>
+          </div>
+        </div>
       </div>
 
       <section id="courses" className="courses modern-courses">
