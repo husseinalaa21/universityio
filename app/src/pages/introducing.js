@@ -16,6 +16,14 @@ import liberay_one from '../svg/liberay_one.jpg'
 import liberay_two from '../svg/liberay_two.jpg'
 import liberay_three from '../svg/liberay_three.jpg'
 
+// Import SVG files
+import ChalkboardUser from '../svg/chalkboard-user-solid.svg';
+import LinesLeaning from '../svg/lines-leaning-solid.svg';
+import School from '../svg/school-solid.svg';
+import Chalkboard from '../svg/chalkboard-solid.svg';
+import Leanpub from '../svg/leanpub-brands-solid.svg';
+import check_double from '../svg/check-double-solid.svg';
+
 const Intro = () => {
   var logo_size = '20px'
   const scrollContainerRef_a = useRef(null),
@@ -33,7 +41,18 @@ const Intro = () => {
   const [animeText, setAnimeText] = useState(animeData[0].text);
   const [newDate, setNewDate] = useState(formatTime());
   const [index, setIndex] = useState(0);
-  const liberay_img = '30px'
+  const liberay_img = '200px'
+
+  const icons = [
+    <img src={LinesLeaning} alt="Lines Leaning" className="filtered-icon" key="1" />,
+    <img src={School} alt="School" className="filtered-icon" key="2" />,
+    <img src={Chalkboard} alt="Chalkboard" className="filtered-icon" key="3" />,
+    <img src={Leanpub} alt="Leanpub" className="filtered-icon" key="4" />,
+  ];
+
+  // State for the current icon index
+  const [currentIconIndex, setCurrentIconIndex] = useState(0);
+
 
   function formatTime() {
     let now = new Date();
@@ -48,6 +67,10 @@ const Intro = () => {
   }
 
   useEffect(() => {
+    const interval_a = setInterval(() => {
+      setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons
+    }, 1000); // 1 minute interval
+
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
@@ -60,8 +83,8 @@ const Intro = () => {
       setIndex(newIndex); // Update the index to keep track of the current item
     }, 3000); // Move to the next item every 3 seconds
 
-    return () => clearInterval(interval);
-  }, [index, animeData]);
+    return () => clearInterval(interval, interval_a);
+  }, [icons.length,index, animeData]);
 
   var scroll = (direction, part) => {
     const scrollAmount = 300;
@@ -100,22 +123,26 @@ const Intro = () => {
         <title>Welcome to University IO - Empower Your Future</title>
         <section className="modern-intro">
           <div className="container">
-            <h1>Welcome to University IO</h1>
+            <div className='continer_titile'>
+              <h1>Welcome to University IO</h1>
+              <div>
+                {icons[currentIconIndex]} {/* Dynamically render the current icon */}
+              </div>
+            </div>
             <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>
           </div>
         </section>
         <section className='anime'>
-          <div className='anime_title'>
-          Support
-          </div>
+          <div className='anime_title'>Support</div>
           <div className='anime_tap'>
             <div className='anime_header'>
               {animeTitle}
-              <p className='time_nn'>{newDate}</p>
+              <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+
             </div>
             <div className='anime_continer'>
               {animeText}
-              <p className='time_nn'>{newDate}</p>
+              <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
             </div>
           </div>
         </section>
@@ -123,7 +150,7 @@ const Intro = () => {
 
       <div className='liberay'>
         <div className='liberay_title'>
-          Do more in one Place.
+          Do more in one <mark>Place.</mark>
         </div>
         <div className='liberay_container'>
           <div className='liberay_card'>
@@ -131,25 +158,25 @@ const Intro = () => {
               Publish your courses
             </div>
             <div className='liberay_card_img'>
-            <img src={liberay_one} width={liberay_img}></img>
+              <img src={liberay_one} width={liberay_img}></img>
             </div>
           </div>
-          
+
           <div className='liberay_card'>
             <div className='liberay_card_title'>
               buy courses
             </div>
             <div className='liberay_card_img'>
-            <img src={liberay_two} width={liberay_img}></img>
+              <img src={liberay_two} width={liberay_img}></img>
             </div>
           </div>
-          
+
           <div className='liberay_card'>
             <div className='liberay_card_title'>
               Search for courses
             </div>
             <div className='liberay_card_img'>
-            <img src={liberay_three} width={liberay_img}></img>
+              <img src={liberay_three} width={liberay_img}></img>
             </div>
           </div>
         </div>

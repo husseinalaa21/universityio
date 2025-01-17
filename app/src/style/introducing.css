@@ -3,8 +3,87 @@
     margin-top: 40px;
     background-color: rgb(234, 242, 248);
     position: relative;
-    min-height: 400px
+    min-height: 400px;
+    align-items: center;
 }
+
+.modern-intro {
+    position: relative;
+    /* For proper positioning */
+    backdrop-filter: blur(10px);
+    /* Blur effect */
+}
+
+.continer_titile {
+    display: flex;
+    /* Use flexbox */
+    flex-direction: column;
+    /* Stack items vertically */
+    align-items: center;
+    /* Center horizontally */
+    justify-content: center;
+    /* Center vertically */
+    text-align: center;
+    /* Ensure text is centered */
+}
+
+.container h1 {
+    font-size: 26px;
+    color: rgb(88, 93, 98);
+    text-align: center;
+    /* Redundant but ensures alignment */
+    margin-bottom: 10px;
+    /* Add space between h1 and the icon */
+}
+
+.container p {
+    font-size: 20px;
+    color: rgb(88, 93, 98);
+    text-align: center;
+}
+
+.continer_titile div {
+    display: flex;
+    /* Use flexbox */
+    justify-content: center;
+    /* Center horizontally */
+    align-items: center;
+    /* Center vertically */
+    border-radius: 50px;
+    width: 40px;
+    height: 40px;
+    background-color: #d6ecf9;
+    border: 1px solid #c8e2f1;
+    margin-top: 10px;
+    /* Add space between the icon and h1 */
+}
+
+.icon-container {
+    display: inline-block;
+    animation: fade-in 1s ease-in-out;
+    /* Smooth fade-in animation */
+}
+
+.filtered-icon {
+    width: 20px;
+    filter: invert(54%) sepia(80%) saturate(400%) hue-rotate(189deg) brightness(95%) contrast(95%);
+    /* Color filter to match #369aff */
+}
+
+/* Fade-in animation */
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+        transform: scale(0.8);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+
 
 .anime {
     position: absolute;
@@ -31,7 +110,7 @@
     width: 240px;
     background-color: #369aff;
     color: aliceblue;
-    border-radius: 6px 6px 0px 6px;
+    border-radius: 8px 8px 0px 8px;
     font-size: 15px;
 }
 
@@ -53,18 +132,32 @@
     width: 260px;
     background-color: #a1b7be;
     color: aliceblue;
-    border-radius: 6px 6px 6px 0px;
+    border-radius: 8px 8px 8px 0px;
     font-size: 15px;
+}
+
+.info_message_anime {
+    display: flex;
+    justify-content: left;
+    align-items: center
+}
+
+.info_message_anime img {
+    position: relative;
+    top: 2px;
+    filter: invert(100%) brightness(100%) contrast(100%) saturate(0%);
 }
 
 .time_nn {
     font-size: 12px;
+    margin-left: 5px;
 }
 
 .modern-intro {
     max-width: 400px;
     z-index: 100;
     position: relative;
+    top: 40px;
 }
 
 @media only screen and (max-width: 700px) {
@@ -87,7 +180,7 @@
     .anime_header {
         padding: 14px;
         width: 240px;
-        right: -50px;
+        right: -40px;
     }
 
     .anime_continer {
@@ -98,8 +191,96 @@
     .intro {
         min-height: 600px
     }
+
+    .modern-intro {
+        top: 0px;
+    }
 }
 
+.liberay {
+    padding: 20px;
+    background-color: #d6ecf9;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    min-height: 300px;
+}
+
+.liberay_title {
+    font-size: 24px;
+    margin-left: 60px;
+    font-size: 24px;
+    font-weight: 700;
+    color: rgb(89, 94, 99);
+}
+
+.liberay_title mark {
+    font-size: 24px;
+    font-family: "Pacifico", serif;
+    font-weight: 600;
+    font-style: normal;
+    background: none;
+    color: #369aff;
+}
+
+.liberay_container {
+    display:flex;
+    align-items: center;
+    position: relative;
+    margin-left: auto;
+    margin-top: -40px;
+}
+
+
+.liberay_card {
+    position: absolute;
+    padding: 20px;
+    margin: auto;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 4px;
+    cursor: pointer;
+    /* The left values below should be adjusted based on the actual width of the cards */
+}
+
+.liberay_card:nth-child(1) {
+    margin-top: 0px;
+    right: 40px; /* Adjust as necessary */
+    background-color: #e7f1fcf6;
+}
+
+.liberay_card:nth-child(2) {
+    margin-top: 40px;
+    background-color: #b6eff7f6;
+    right: 100px; /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
+}
+
+.liberay_card:nth-child(3) {
+    margin-top: 80px;
+    background-color: #a3cdfbf6;
+    right: 160px; /* Adjust as necessary */
+}
+
+.liberay_card_img {
+    padding: 10px;
+    text-align: center;
+    width: fit-content;
+    height: fit-content;
+    border-radius: 4px;
+}
+
+.liberay_card_img img{
+    border-radius: 4px;
+}
+
+
+.liberay_card_title {
+    padding: 10px;
+    font-weight: 700;
+    font-style: normal;
+    color: #fefefe;
+    font-size: 20px;
+}
 .courses {
     padding: 20px;
 }
