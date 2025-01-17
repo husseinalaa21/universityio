@@ -124,7 +124,7 @@ const Intro = () => {
               <div className='continer_titile'>
                 <h1>Welcome to University IO</h1>
                 <div>
-                  {icons[currentIconIndex]} {/* Dynamically render the current icon */}
+                  Learn New Skills.
                 </div>
               </div>
               <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>

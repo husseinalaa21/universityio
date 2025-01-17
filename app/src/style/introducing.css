@@ -49,21 +49,14 @@
 }
 
 .continer_titile div {
-    display: flex;
-    /* Use flexbox */
-    justify-content: center;
-    /* Center horizontally */
-    align-items: center;
-    /* Center vertically */
-    border-radius: 50px;
-    width: 40px;
-    height: 40px;
-    background-color: #d6ecf9;
-    border: 1px solid #c8e2f1;
-    margin-top: 10px;
-    /* Add space between the icon and h1 */
+    font-size: 16px;
+    font-weight: 700;
+    color: slategray;
 }
-
+.container p {
+    font-size: 18px;
+    text-align: left;
+}
 .icon-container {
     display: inline-block;
     animation: fade-in 1s ease-in-out;
