@@ -67,15 +67,12 @@ const Intro = () => {
   }
 
   useEffect(() => {
-    const interval_a = setInterval(() => {
-      setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons
-    }, 1000); // 1 minute interval
-
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
 
       setTimeout(() => {
+        setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons
         setAnimeText(animeData[newIndex].text); // Update the text after 1 second
         setNewDate(formatTime())
       }, 1000);
@@ -83,8 +80,8 @@ const Intro = () => {
       setIndex(newIndex); // Update the index to keep track of the current item
     }, 3000); // Move to the next item every 3 seconds
 
-    return () => clearInterval(interval, interval_a);
-  }, [icons.length,index, animeData]);
+    return () => clearInterval(interval);
+  }, [icons.length, index, animeData]);
 
   var scroll = (direction, part) => {
     const scrollAmount = 300;
@@ -120,66 +117,68 @@ const Intro = () => {
   return (
     <>
       <div className='intro'>
-        <title>Welcome to University IO - Empower Your Future</title>
-        <section className="modern-intro">
-          <div className="container">
-            <div className='continer_titile'>
-              <h1>Welcome to University IO</h1>
-              <div>
-                {icons[currentIconIndex]} {/* Dynamically render the current icon */}
+        <div className='web_intro'>
+          <title>Welcome to University IO - Empower Your Future</title>
+          <section className="modern-intro">
+            <div className="container">
+              <div className='continer_titile'>
+                <h1>Welcome to University IO</h1>
+                <div>
+                  {icons[currentIconIndex]} {/* Dynamically render the current icon */}
+                </div>
+              </div>
+              <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>
+            </div>
+          </section>
+          <section className='anime'>
+            <div className='anime_title'>Support</div>
+            <div className='anime_tap'>
+              <div className='anime_header'>
+                {animeTitle}
+                <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+
+              </div>
+              <div className='anime_continer'>
+                {animeText}
+                <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
               </div>
             </div>
-            <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>
-          </div>
-        </section>
-        <section className='anime'>
-          <div className='anime_title'>Support</div>
-          <div className='anime_tap'>
-            <div className='anime_header'>
-              {animeTitle}
-              <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
-
-            </div>
-            <div className='anime_continer'>
-              {animeText}
-              <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
-            </div>
-          </div>
-        </section>
+          </section>
+        </div>
       </div>
 
       <div className='liberay'>
-        <div className='liberay_title'>
-          Do more in one <mark>Place.</mark>
-        </div>
-        <div className='liberay_container'>
-          <div className='liberay_card'>
-            <div className='liberay_card_title'>
-              Publish your courses
-            </div>
-            <div className='liberay_card_img'>
-              <img src={liberay_one} width={liberay_img}></img>
-            </div>
+          <div className='liberay_title'>
+            Do more in one <mark>Place.</mark>..
           </div>
+          <div className='liberay_container'>
+            <div className='liberay_card'>
+              <div className='liberay_card_title'>
+                Publish your courses
+              </div>
+              <div className='liberay_card_img'>
+                <img src={liberay_one} width={liberay_img}></img>
+              </div>
+            </div>
 
-          <div className='liberay_card'>
-            <div className='liberay_card_title'>
-              buy courses
+            <div className='liberay_card'>
+              <div className='liberay_card_title'>
+                buy courses
+              </div>
+              <div className='liberay_card_img'>
+                <img src={liberay_two} width={liberay_img}></img>
+              </div>
             </div>
-            <div className='liberay_card_img'>
-              <img src={liberay_two} width={liberay_img}></img>
-            </div>
-          </div>
 
-          <div className='liberay_card'>
-            <div className='liberay_card_title'>
-              Search for courses
-            </div>
-            <div className='liberay_card_img'>
-              <img src={liberay_three} width={liberay_img}></img>
+            <div className='liberay_card'>
+              <div className='liberay_card_title'>
+                Search for courses
+              </div>
+              <div className='liberay_card_img'>
+                <img src={liberay_three} width={liberay_img}></img>
+              </div>
             </div>
           </div>
-        </div>
       </div>
 
       <section id="courses" className="courses modern-courses">

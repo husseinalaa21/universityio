@@ -7,6 +7,12 @@
     align-items: center;
 }
 
+.web_intro {
+    position: relative;
+    max-width: 1200px;
+    margin: auto;
+}
+
 .modern-intro {
     position: relative;
     /* For proper positioning */
@@ -89,6 +95,7 @@
     position: absolute;
     top: 60px;
     right: 60px;
+    margin-bottom: 100px;
 }
 
 .anime_tap {
@@ -160,42 +167,6 @@
     top: 40px;
 }
 
-@media only screen and (max-width: 700px) {
-    .anime {
-        position: relative;
-        right: auto;
-    }
-
-    .modern-intro {
-        max-width: 100%;
-    }
-
-    .anime_tap {
-        width: 240px;
-        right: auto !important;
-        left: auto !important;
-        margin: auto !important;
-    }
-
-    .anime_header {
-        padding: 14px;
-        width: 240px;
-        right: -40px;
-    }
-
-    .anime_continer {
-        padding: 14px;
-        width: 240px;
-    }
-
-    .intro {
-        min-height: 600px
-    }
-
-    .modern-intro {
-        top: 0px;
-    }
-}
 
 .liberay {
     padding: 20px;
@@ -240,24 +211,25 @@
     height: fit-content;
     border-radius: 4px;
     cursor: pointer;
+    backdrop-filter: blur(10px);
     /* The left values below should be adjusted based on the actual width of the cards */
 }
 
 .liberay_card:nth-child(1) {
     margin-top: 0px;
-    right: 40px; /* Adjust as necessary */
-    background-color: #e7f1fcf6;
+    right: 60px; /* Adjust as necessary */
+    background-color: #b6dff6;
 }
 
 .liberay_card:nth-child(2) {
     margin-top: 40px;
-    background-color: #b6eff7f6;
-    right: 100px; /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
+    background-color: #7cbaf85e;
+    right: 110px; /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
 }
 
 .liberay_card:nth-child(3) {
     margin-top: 80px;
-    background-color: #a3cdfbf6;
+    background-color: #369bff47;
     right: 160px; /* Adjust as necessary */
 }
 
@@ -281,23 +253,74 @@
     color: #fefefe;
     font-size: 20px;
 }
+
+@media only screen and (max-width: 700px) {
+    .liberay {
+        display: block;
+        position: relative;
+        overflow: hidden;
+    }
+
+    .liberay_container {
+        min-height: 400px;
+    }
+
+    .anime {
+        position: relative;
+        right: auto;
+    }
+
+    .modern-intro {
+        max-width: 100%;
+    }
+
+    .anime_tap {
+        width: 240px;
+        right: auto !important;
+        left: auto !important;
+        margin: auto !important;
+    }
+
+    .anime_header {
+        padding: 14px;
+        width: 240px;
+        right: -40px;
+    }
+
+    .anime_continer {
+        padding: 14px;
+        width: 240px;
+    }
+
+    .intro {
+        min-height: 600px
+    }
+
+    .modern-intro {
+        top: 0px;
+    }
+}
+
 .courses {
     padding: 20px;
+    background-color: rgb(234, 242, 248);;
 }
 
 .course-list {
     display: flex;
     overflow: auto;
     scroll-behavior: smooth;
-    gap: 20px;
+    gap: 10px;
 }
 
 .course-item {
     min-width: 300px;
-    margin-right: 20px;
+    margin-right: 10px;
+    font-size: 16px;
 }
 
 .item-shape {
+    font-size: 16px;
     padding: 17px;
     border-radius: 8px;
     background-color: #0a5db03d;
@@ -420,6 +443,8 @@
 }
 
 .courses_head {
+    width: 90%;
+    margin: auto;
     padding: 10px;
     display: flex;
     align-items: center;
