@@ -320,6 +320,11 @@
     margin-bottom: 20px;
 }
 
+.item-shape p{
+    font-size: 16px;
+}
+
+
 .item-python {
     background-color: #ace4f16f;
 }
