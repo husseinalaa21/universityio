@@ -70,6 +70,7 @@ const Intro = () => {
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
+      setAnimeText('..'); // Update the text after 1 second
 
       setTimeout(() => {
         setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons
@@ -255,10 +256,6 @@ const Intro = () => {
       <section className="Qa_uio">
         <div className='Qa_head_group'>
           <h2>Benefits </h2>
-          <div className="Qa_controls">
-            {showLeftButton_b && <button onClick={() => scroll('left', scrollContainerRef_b)}><img src={arrow_left} width='15px' /></button>}
-            <button onClick={() => scroll('right', scrollContainerRef_b)}><img src={arrow_right} width='15px' /></button>
-          </div>
         </div>
         <div className="Qa_group" ref={scrollContainerRef_b} onScroll={handleScroll_b}>
           {qa('Expert Instructors', 'Learn from the best in the industry.')}

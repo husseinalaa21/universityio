@@ -393,39 +393,27 @@
 }
 
 .Qa_uio {
-    margin: 40px 20px 30px 20px;
-}
-
-.Qa_group {
-    display: flex;
-    overflow: auto;
-    padding-bottom: 20px;
+    background-color: #d6ecf9;
 }
 
 .Qa_in {
-    min-width: 300px;
-    height: 200px;
-    margin-right: 10px;
+    width: 90%;
+    margin: auto;
     border-radius: 3px;
-    background-color: #deeef4;
+    background-color: #f0f7fa;
     padding: 20px;
     cursor: pointer;
-    border-bottom: 20px solid #2e70b2;
+    margin-bottom: 10px;
 }
 
-
-.Qa_group {
-    display: flex;
-    overflow-x: auto;
-    scroll-behavior: smooth;
-    gap: 20px;
-}
 
 .Qa_head_group {
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
+}
+
+.Qa_head_group h2 {
+    padding: 20px;
+    text-align: center !important;
 }
 
 .Qa_controls button {
