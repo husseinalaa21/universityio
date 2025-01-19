@@ -5,6 +5,11 @@ import '../style/about.css';
 
 const About = (props) => {
 
+  var title = "University IO - About US"
+  useEffect(() => {
+    document.title = title;
+  }, [title]); // This effect will rerun whenever the title changes
+
     return (
         <>
             <Header login={false} ask={!false} />
