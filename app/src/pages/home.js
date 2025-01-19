@@ -21,6 +21,7 @@ function Home() {
         : 'https://server.universityio.com';
 
     useEffect(() => {
+        document.title = "University IO - Home";
         const cookie = Cookies.get('cookie');
         const email = Cookies.get('email');
 

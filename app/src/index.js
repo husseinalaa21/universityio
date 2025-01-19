@@ -6,6 +6,7 @@ import './style/index.css';
 import App from './pages/app';
 import LoginSignup from './pages/LoginSignup';
 import Restart from './pages/restart';
+import About from './pages/about';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -21,6 +22,9 @@ root.render(
 
         {/* Inside route (after login) */}
         <Route path="/reset-password" element={<Restart />} />
+
+        {/* Inside route (after login) */}
+        <Route path="/about" element={<About />} />
       </Routes>
     </Router>
   </React.StrictMode>

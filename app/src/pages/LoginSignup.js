@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import Cookies from 'js-cookie'; // Import js-cookie
@@ -28,6 +28,11 @@ function LoginSignup() {
   const [message, setMessage] = useState('');
   const [loading, setLoading] = useState(false);
   const [showPassword, setShowPassword] = useState(false);
+
+  var title = "University IO - login or sign up"
+  useEffect(() => {
+    document.title = title;
+  }, [title]); // This effect will rerun whenever the title changes
 
   const toggleForm = () => {
     setIsLogin(!isLogin);
@@ -129,20 +134,20 @@ function LoginSignup() {
       const payload = isLogin
         ? { email: formData.email, pass: formData.password }
         : {
-            firstName: formData.firstName,
-            lastName: formData.lastName,
-            dateOfBirth: formData.dateOfBirth,
-            email: formData.email,
-            pass: formData.password,
-            sex: formData.sex,
-          };
+          firstName: formData.firstName,
+          lastName: formData.lastName,
+          dateOfBirth: formData.dateOfBirth,
+          email: formData.email,
+          pass: formData.password,
+          sex: formData.sex,
+        };
 
       const response = await retryAxiosRequest(`${API_BASE_URL}${endpoint}`, payload);
       setLoading(false);
 
       if (response.data.valid) {
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
-        
+
         Cookies.set('cookie', response.data.cookie, { expires: 7 }); // Set cookie to expire in 7 days
         Cookies.set('email', formData.email, { expires: 7 });
         setTimeout(() => navigate('/'), 3000);
@@ -188,7 +193,7 @@ function LoginSignup() {
 
   return (
     <div className='login_signup'>
-      <Header login={false} ask={false}/>
+      <Header login={false} ask={false} />
       <div className='page_login_signup'>
         {loading && <p className="loading-message">Please wait...</p>}
         {!isRest && (

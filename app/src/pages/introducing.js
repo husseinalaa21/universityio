@@ -50,7 +50,7 @@ const Intro = () => {
     <img src={Leanpub} alt="Leanpub" className="filtered-icon" key="4" />,
   ];
 
-  // State for the current icon index
+  // State for the current icon index CLOSE
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
 
 
@@ -67,13 +67,14 @@ const Intro = () => {
   }
 
   useEffect(() => {
+    document.title = "University IO - buy or sell online courses";
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
       setAnimeText('..'); // Update the text after 1 second
 
       setTimeout(() => {
-        setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons
+        setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons CLOSE
         setAnimeText(animeData[newIndex].text); // Update the text after 1 second
         setNewDate(formatTime())
       }, 1000);
