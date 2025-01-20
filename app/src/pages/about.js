@@ -5,19 +5,19 @@ import '../style/about.css';
 
 const About = (props) => {
 
-  var title = "University IO - About US"
-  useEffect(() => {
-    document.title = title;
-  }, [title]); // This effect will rerun whenever the title changes
+    var title = "University IO - About US"
+    useEffect(() => {
+        document.title = title;
+    }, [title]); // This effect will rerun whenever the title changes
 
     return (
         <>
-            <Header login={false} ask={!false} />
+            <Header login={false} ask={true} />
             <div className='about_page'>
                 <div className='title'>
-                    About US
-                </div>
-                <div className='continer'>
+                    <h1>About US</h1>
+                    <p>Welcome to Universityio.com! Learn more about who we are, our mission, and how we work to provide the best educational experience possible.</p>                </div>
+                <div className='container'>
                     <h2>Our Mission</h2>
                     <p>
                         At University IO, our mission is to democratize the educational landscape by providing a robust platform where expert educators can share their knowledge and learners can acquire new skills. We are committed to making high-quality education accessible and affordable to everyone, helping individuals achieve recognized certifications and advance their careers.
@@ -33,12 +33,12 @@ const About = (props) => {
                     </p>
                     <h2>                    Explore and Connect
                     </h2>
-                    <p>                    Ready to start your educational journey or share your knowledge with the world? Visit our [Course Listings] to browse available courses or [Sign Up] to begin teaching today. For assistance or more information, please contact us at [Contact Information].
+                    <p>                    Ready to start your educational journey or share your knowledge with the world? <a href='https://www.universityio.com/auth'>Sign UP</a> to begin teaching today. For assistance or more information, please contact us at support@universityio.com.
                     </p>
 
                 </div>
             </div>
-            <End login={false} ask={!false} />
+            <End login={false} ask={true} />
         </>
     );
 };

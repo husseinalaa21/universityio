@@ -1,4 +1,109 @@
 .about_page {
-    padding: 24px;
     background-color: rgb(234, 242, 248);
+    color: rgb(65, 68, 71);
+}
+
+.title {
+    padding: 60px 20px 20px 20px;
+    text-align: center;
+    background-color: #c1e8ff;
+}
+
+.title h1 {
+    font-size: 24px;
+}
+
+.title p {
+    font-size: 17px;
+}
+
+.container {
+    padding: 30px;
+}
+
+.container h2 {
+    padding: 10px 20px 10px 20px;
+    background-color: #deedf5;
+    border-radius: 4px;
+    font-size: 22px;
+}
+
+.container p {
+    padding: 0px 20px 0 20px;
+    font-size: 17px;
+}
+
+/* support.css */
+
+.support-page {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: rgb(234, 242, 248);
+    color: #333;
+}
+.support-title {
+    width: 90%;
+    margin: auto;
+}
+.support-title h1 {
+    font-size: 24px;
+    font-family: "Pacifico", serif;
+    font-weight: 600;
+    font-style: normal;
+    background: none;
+    color: #369aff;
+    text-align: center;
+}
+
+.support-container {
+    background-color: #c1e8ff;
+    padding: 20px;
+    border: 0;
+    border-radius: 3px;
+    border: 0;
+    border-right: 10px solid #d6ecf9;
+}
+
+.support-section h2 {
+    margin-bottom: 20px;
+    color: #1476de;
+}
+
+.support-fields label {
+    display: block;
+    margin-bottom: 10px;
+}
+
+.support-fields input,
+.support-fields select,
+.support-fields textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    border: 0;
+}
+
+.support-fields button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 20px;
+    display: block;
+    width: 100%;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.response-message {
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    border-radius: 4px;
 }

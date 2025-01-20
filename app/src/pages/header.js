@@ -66,10 +66,8 @@ function Header(props) {
                                 <div> <mark>Join</mark> today for free </div>
                                 <div className='panel_icon'> <img src={fire_solid} width="13px"></img> Top courses </div>
                             </div>
-                            <div
-                                onClick={() => navigate('/about')}
-                            > About US </div>
-                            <div> Support </div>
+                            <div onClick={() => navigate('/about')} > About US </div>
+                            <div onClick={() => navigate('/support')}> Support </div>
                             <div className='panel_more'> More <img src={caret_down} width='10px'></img>  </div>
                         </div>
                     </div> : null}

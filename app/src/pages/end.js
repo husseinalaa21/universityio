@@ -123,35 +123,35 @@ const Footer = (props) => {
                   </div>
                   <button type="submit" className="submit-button">Send Message</button>
                 </form>}
-              <div className="social-links">
-                <SocialLink
-                  platform="Gmail"
-                  url="mailto:universityio.office@gmail.com"
-                  bgColor="#D44638" // Gmail Red
-                  logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
-                />
-                <SocialLink
-                  platform=" Hussein A. ( X ) "
-                  url="https://x.com/husseinalaa21/"
-                  bgColor="#333"
-                  logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
-                />
-                <SocialLink
-                  platform="LinkedIn"
-                  url="https://www.linkedin.com/company/university-io/"
-                  bgColor="#0077B5" // LinkedIn Blue
-                  logo="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
-                />
-                <SocialLink
-                  platform="GitHub"
-                  url="https://github.com/husseinalaa21/"
-                  bgColor="#333" // GitHub Black
-                  logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
-                />
-              </div>
             </div>
           </div>
           : <></>}
+          <div className="social-links">
+            <SocialLink
+              platform="Gmail"
+              url="mailto:universityio.office@gmail.com"
+              bgColor="#D44638" // Gmail Red
+              logo="https://upload.wikimedia.org/wikipedia/commons/4/4e/Gmail_Icon.png"
+            />
+            <SocialLink
+              platform=" Hussein A. ( X ) "
+              url="https://x.com/husseinalaa21/"
+              bgColor="#333"
+              logo="https://upload.wikimedia.org/wikipedia/commons/c/ce/X_logo_2023.svg"
+            />
+            <SocialLink
+              platform="LinkedIn"
+              url="https://www.linkedin.com/company/university-io/"
+              bgColor="#0077B5" // LinkedIn Blue
+              logo="https://upload.wikimedia.org/wikipedia/commons/c/ca/LinkedIn_logo_initials.png"
+            />
+            <SocialLink
+              platform="GitHub"
+              url="https://github.com/husseinalaa21/"
+              bgColor="#333" // GitHub Black
+              logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
+            />
+          </div>
         <div className="footer-bottom-section">
           <p className="footer-text">&copy; 2025 University IO. All Rights Reserved.</p>
         </div>
