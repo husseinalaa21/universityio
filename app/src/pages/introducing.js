@@ -128,8 +128,11 @@ const Intro = () => {
                 <div>
                   Learn New Skills.
                 </div>
+                <div>
+                  Or sell your courses.
+                </div>
               </div>
-              <p>Redefine your learning experience. Master programming, IT skills, and entrepreneurship with the most modern tools and strategies. Your future begins here.</p>
+              <p>Explore new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
             </div>
           </section>
           <section className='anime'>
