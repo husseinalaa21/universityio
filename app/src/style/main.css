@@ -319,3 +319,8 @@
     display: none;
   }
 }
+
+.header_selected {
+  color: #038eff !important;
+  font-weight: bold;
+}

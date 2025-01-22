@@ -18,7 +18,7 @@ const Policy = () => {
                     <h1>{title}</h1>
                     <p>By accessing or using Universityio.com, you agree to be bound by these terms and conditions ("Terms"). Please read them carefully before using our services.</p>
                 </div>
-                <div className='container'>
+                <div className='container_about'>
                     <h2>Services</h2>
                     <p>Universityio.com provides an online platform where users can create, upload, manage, and enroll in educational courses ("Courses"). Our platform is designed to facilitate an interactive learning environment accessible globally.</p>
 

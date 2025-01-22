@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import logo from '../logos/logo.png';
@@ -12,6 +13,27 @@ function Header(props) {
     const navigate = useNavigate();
     const [showOptions, setShowOptions] = useState(false);
     const [isNight, setIsNight] = useState(true)
+    // State to track page type
+    const location = useLocation();
+    const [pageLocated, setPageLocated] = useState({
+        isAbout: false,
+        isSupport: false,
+        isPolicy: false,
+        isHome: false  // Added isHome state
+    });
+
+    // Effect to update state based on current pathname
+    useEffect(() => {
+        const path = location.pathname;
+
+        // Update state based on the current path
+        setPageLocated({
+            isAbout: path.includes('/about'),
+            isSupport: path.includes('/support'),
+            isPolicy: path.includes('/policy'),
+            isHome: path === '/'  // Check if the pathname exactly matches '/'
+        });
+    }, [location]); // Dependency on location to run effect when it changes
 
     const toggleOptions = () => {
         setShowOptions(prev => !prev);
@@ -63,11 +85,12 @@ function Header(props) {
                         </div>
                         <div className='panel'>
                             <div className='panel_web'>
-                                <div> <mark>Join</mark> today for free </div>
-                                <div className='panel_icon'> <img src={fire_solid} width="13px"></img> Top courses </div>
+                                {/* add here if it was scroll down make the logo visable */}
+                                {/* Make this if the page was diffrent than the home make home button visable */}
+                                {pageLocated.isHome? <div onClick={() => navigate('/auth')}> <mark>Join</mark> today for free </div> : <div onClick={ () => navigate('/')}> Main Page </div>}
                             </div>
-                            <div onClick={() => navigate('/about')} > About US </div>
-                            <div onClick={() => navigate('/support')}> Support </div>
+                            <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>
+                            <div className={pageLocated.isSupport ? 'header_selected' : ''} onClick={() => navigate('/support')}> Support </div>
                             <div className='panel_more'> More <img src={caret_down} width='10px'></img>  </div>
                         </div>
                     </div> : null}

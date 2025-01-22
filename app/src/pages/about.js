@@ -17,7 +17,7 @@ const About = (props) => {
                 <div className='title'>
                     <h1>About US</h1>
                     <p>Welcome to Universityio.com! Learn more about who we are, our mission, and how we work to provide the best educational experience possible.</p>                </div>
-                <div className='container'>
+                <div className='container_about'>
                     <h2>Our Mission</h2>
                     <p>
                         At University IO, our mission is to democratize the educational landscape by providing a robust platform where expert educators can share their knowledge and learners can acquire new skills. We are committed to making high-quality education accessible and affordable to everyone, helping individuals achieve recognized certifications and advance their careers.
