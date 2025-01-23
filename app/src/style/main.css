@@ -348,14 +348,18 @@
 }
 
 .dropdown_section:nth-child(2) {
-  background-color: #e5eff6;
+  background-color: #edf4f9;
   border-bottom: 2px solid #f4f6f7;
 }
 
 .dropdown_section:nth-child(3) {
-  background-color: #ddeaf3;
-  color: #038eff;
-  margin-bottom: 50px !important;
+  color: #228ab3;
+  margin-bottom: 30px !important;
+  padding-top: 30px !important;
+  border-top: 2px solid #edf4f9;
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
 }
 
 .dropdown_section div {
