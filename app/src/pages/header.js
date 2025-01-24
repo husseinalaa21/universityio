@@ -10,6 +10,7 @@ import moon_regular from '../svg/moon-regular.svg'
 import moon_solid from '../svg/moon-solid.svg'
 import Cookies from 'js-cookie';
 
+
 function Header(props) {
     const navigate = useNavigate();
     const [showOptions, setShowOptions] = useState(false);
