@@ -1,17 +1,16 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from './header';
 import End from './end';
 import '../style/about.css';
 
 const About = (props) => {
-
-    var title = "University IO - About US"
-    useEffect(() => {
-        document.title = title;
-    }, [title]); // This effect will rerun whenever the title changes
-
     return (
         <>
+            <Helmet>
+                <title>University IO - About US</title>
+                <meta name="description" content="Discover the story behind University IO on our About Us page. Learn about our mission to empower learners and educators, our values, and how we’re transforming education for a brighter future." />
+            </Helmet>
             <Header login={false} ask={true} />
             <div className='about_page'>
                 <div className='title'>

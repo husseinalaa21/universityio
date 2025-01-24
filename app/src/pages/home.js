@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import '../style/home.css';
@@ -66,6 +67,11 @@ function Home() {
     };
 
     return (
+        <>
+        <Helmet>
+          <title>University IO - Home</title>
+          <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
+        </Helmet>
         <div className='home_page'>
             <div className='home_header'>
                 <div onClick={() => containerChange('course')} className={`container_change ${io.course ? 'active' : ''}`}>
@@ -84,6 +90,7 @@ function Home() {
                 {io.profile && <div className='profile_container'>Profile info: {JSON.stringify(db)}</div>}
             </div>
         </div>
+        </>
     );
 }
 

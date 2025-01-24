@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from './header';
 import End from './end';
 
@@ -16,6 +17,10 @@ const Support = () => {
 
   return (
     <>
+      <Helmet>
+        <title>University IO - Support</title>
+        <meta name="description" content="Need assistance? Visit the University IO Support page for help with account issues, course inquiries, technical support, and more. Our team is here to ensure your experience is smooth and successful." />
+      </Helmet>
       <Header login={false} ask={true} />
       <div className='support-page'>
         <div className='support-title'>

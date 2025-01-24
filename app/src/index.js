@@ -10,6 +10,7 @@ import About from './pages/about';
 import Policy from './pages/policy';
 import Support from './pages/support';
 import ContactUs from './pages/contact';
+import Faq from './pages/faq';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -37,6 +38,9 @@ root.render(
 
         {/* Inside route */}
         <Route path="/contactus" element={<ContactUs />} />
+
+        {/* Inside route */}
+        <Route path="/faq" element={<Faq />} />
       </Routes>
     </Router>
   </React.StrictMode>

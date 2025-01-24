@@ -1,21 +1,20 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from './header';
 import End from './end';
 import '../style/about.css';
 
 const Policy = () => {
-    const title = "University IO - Terms of Use and Policy";
-
-    useEffect(() => {
-        document.title = title;
-    }, [title]);
-
     return (
         <>
+            <Helmet>
+                <title>University IO - Terms of Use and Policy</title>
+                <meta name="description" content="Review the University IO Terms of Use and Privacy Policy to understand our guidelines, user responsibilities, and how we protect your information. Transparency and trust are at the core of our platform." />
+            </Helmet>
             <Header login={false} ask={true} />
             <div className='about_page'>
                 <div className='title'>
-                    <h1>{title}</h1>
+                    <h1>Terms of Use and Policy</h1>
                     <p>By accessing or using Universityio.com, you agree to be bound by these terms and conditions ("Terms"). Please read them carefully before using our services.</p>
                 </div>
                 <div className='container_about'>

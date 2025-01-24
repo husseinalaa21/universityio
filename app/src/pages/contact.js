@@ -1,17 +1,16 @@
 import React, { useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import Header from './header';
 import End from './end';
 import '../style/about.css';
 
 const ContactUs = () => {
-    const title = "University IO - Contact Us";
-
-    useEffect(() => {
-        document.title = title;
-    }, [title]);
-
     return (
         <>
+            <Helmet>
+                <title>University IO - Contact Us</title>
+                <meta name="description" content="Get in touch with University IO! Whether you have questions, need support, or want to collaborate, our Contact Us page provides all the ways to connect with us. We're here to help you succeed." />
+            </Helmet>
             <Header login={false} ask={true} />
             <div className='about_page'>
                 <div className='title'>
@@ -34,17 +33,17 @@ const ContactUs = () => {
                     <h2>Support Hours</h2>
                     <p>
                         Our team is available to help you during the following hours:
-                        <br/>
+                        <br />
                         Monday - Friday: 9 AM to 5 PM
-                        <br/>
+                        <br />
                         Saturday: 10 AM to 3 PM
                     </p>
                     <h2>Stay Connected</h2>
                     <p>
                         Follow us on our social media channels to stay updated on new courses, events, and more:
-                        <br/>
+                        <br />
                         LinkedIn: <a href='https://twitter.com/universityio'>@universityio</a>
-                        <br/>
+                        <br />
                         X: <a href='https://facebook.com/universityio'>University IO</a>
                     </p>
                 </div>

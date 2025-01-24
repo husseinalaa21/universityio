@@ -119,6 +119,7 @@ function Header(props) {
                 <div className="dropdown_content">
                     <div className="dropdown_section">
                         <div onClick={() => navigate('/policy')}>Terms and conditions</div>
+                        <div onClick={() => navigate('/policy')}>FAQ</div>
                         <div onClick={() => navigate('/contactus')}>Contact Us</div>
                         <div onClick={() => navigate('/support')}>Get Support</div>
                     </div>

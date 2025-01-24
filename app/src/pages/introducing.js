@@ -1,4 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import '../style/introducing.css'
@@ -67,7 +68,6 @@ const Intro = () => {
   }
 
   useEffect(() => {
-    document.title = "University IO - buy or sell online courses";
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
@@ -118,6 +118,10 @@ const Intro = () => {
 
   return (
     <>
+    <Helmet>
+      <title>University IO - buy or sell online courses</title>
+      <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
+    </Helmet>
       <div className='intro'>
         <div className='web_intro'>
           <title>Welcome to University IO - Empower Your Future</title>
