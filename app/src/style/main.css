@@ -372,3 +372,10 @@
   background-color: #F2F9FF;
   text-decoration: none;
 }
+
+.loading-message {
+  padding: 10px;
+  background-color: #04b3f2;
+  border-radius: 2px;
+  margin: 10px;
+}

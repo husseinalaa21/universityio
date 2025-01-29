@@ -146,6 +146,7 @@ function LoginSignup() {
       setLoading(false);
 
       if (response.data.valid) {
+      setLoading(true);
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
 
         Cookies.set('cookie', response.data.cookie, { expires: 7 }); // Set cookie to expire in 7 days

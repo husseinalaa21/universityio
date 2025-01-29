@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import Cookies from 'js-cookie';
 import Header from './header';
 import End from './end';
@@ -43,7 +44,11 @@ function App() {
 
     return (
         <>
-            <Header login={isLogin} ask={!isLogin} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"/>
+            <Helmet>
+                <title>University IO - buy or sell online courses</title>
+                <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
+            </Helmet>
+            <Header login={isLogin} ask={!isLogin} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
             {isLogin ? <Home userData={userData} /> : <Intro />}
             <End login={isLogin} ask={!isLogin} />
         </>
