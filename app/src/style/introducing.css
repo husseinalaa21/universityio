@@ -399,23 +399,50 @@
 
 .Qa_uio {
     background-color: #d6ecf9;
+    padding-bottom: 20px;
+    padding-top: 30px;
 }
-
+.qa_p {
+    padding: 0px 30px 30px 30px;
+    text-align: center;
+    align-items: center;
+    margin: 0;
+}
 .Qa_in {
-    width: 90%;
-    margin: auto;
-    border-radius: 3px;
-    background-color: #f0f7fa;
-    padding: 20px;
-    cursor: pointer;
-    margin-bottom: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 6px;
+    padding: 0;
+    background-color: #98d6fa;
 }
-
-
-.Qa_head_group {
+.qn_driver {
+    width: 40%;
+    background-color: #b6dff6;
     padding: 10px;
+    height: 100px;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+    text-align: center; /* Ensures text is centered within the flex container */
+    margin: 0;
+    font-size: 18px;
+    border-right: 10px solid #a5dbfa;
 }
 
+.qn_patch {
+    width: 60%;
+    background-color: #98d6fa;
+    padding: 10px;
+    padding-left: 20px;
+    height: 100px;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    text-align: left !important; /* Ensures text is centered within the flex container */
+    margin: 0;
+    font-size: 17px;
+    border-left: 10px solid #89d0f9;
+}
 .Qa_head_group h2 {
     padding: 20px;
     text-align: center !important;

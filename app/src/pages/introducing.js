@@ -111,8 +111,8 @@ const Intro = () => {
 
   var qa = (q, n) => {
     return <div className="Qa_in">
-      <h3>{q}</h3>
-      <p>{n}</p>
+      <h3 className='qn_driver'>{q}</h3>
+      <p className='qn_patch'>{n}</p>
     </div>
   }
 
@@ -263,9 +263,10 @@ const Intro = () => {
 
       <section className="Qa_uio">
         <div className='Qa_head_group'>
-          <h2>Benefits </h2>
+          <h2> Sell Or Buy Courses </h2>
         </div>
         <div className="Qa_group" ref={scrollContainerRef_b} onScroll={handleScroll_b}>
+          <p className='qa_p'> Whether you're selling your courses or looking to purchase courses, University IO offers this feature to you completely free of charge. </p>
           {qa('Expert Instructors', 'Learn from the best in the industry.')}
           {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
           {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}
