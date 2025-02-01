@@ -111,6 +111,7 @@ code {
 }
 
 .picure_header {
+    margin-right: 10px;
     align-items: center;
     border-radius: 600px;
     overflow: hidden;
