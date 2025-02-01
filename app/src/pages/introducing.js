@@ -193,7 +193,7 @@ const Intro = () => {
       <section id="courses" className="courses modern-courses">
         <div className="container">
           <div className=' courses_head'>
-            <h2>Available Courses</h2>
+            <h2>Courses You Can Enroll In</h2>
             <div className="Qa_controls">
               {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
               <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>

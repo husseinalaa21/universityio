@@ -1,30 +1,100 @@
+.home_header_pck {
+    background-color: #eff6fc6b;
+    padding: 20px;
+}
 .home_header {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
-.home_header div{
-    padding: 8px;
-    width: 100%;
+.home_header_pack_one {
+    display: flex;
+    justify-content: center;
+    border-radius: 20px;
+    overflow: hidden;
+    width: 80%;
+}
+.home_header_pack_two {
+    width: 20%;
+    max-width: 40px;
+    align-items: center;
     text-align: center;
+    background-color: #f0f6fa;
+    padding: 15px;
+    border-radius: 20px;
+    margin-left: 20px;
     cursor: pointer;
-    background-color: #e9f1f8;
-    border-top: 2px solid #dfe9f2;
-    border-bottom: 2px solid #dfe9f2;
 }
-.home_header div img{
+.home_header_pack_two div img{
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center;
+    text-align: center;
+    margin: auto;
     width: 17px;
-    padding: 12px;
     filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(90%) contrast(85%);
 
 }
+.home_header_pack_one div{
+    padding: 15px;
+    width: 100%;
+    text-align: center;
+    cursor: pointer;
+    background-color: #f0f6fa;
+    border-right: 1px solid #e8eff5;
+}
+.home_header_pack_one div img{
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center;
+    text-align: center;
+    margin: auto;
+    width: 17px;
+    filter: brightness(0.9) contrast(1.1) grayscale(100%);}
 
 .active {
-    background-color: #dfe9f2 !important;
+    background-color: #d4ebff !important;
+    border-right: 0 !important;
 }
 .active img{
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
 
 .course_container {
-    
+    background-color: #eff6fce4;
+    height: 400px;
+}
+
+.container_home {
+    padding-top: 10px;
+}
+
+.ch_a {
+    margin: 20px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ch_a_note {
+    width: 20%;
+    max-width: 40px;
+    background-color: #aae0ce;
+    padding: 20px;
+    display: flex; /* Enables flexbox */
+    align-items: center; /* Centers vertically */
+    justify-content: center; /* Centers horizontally */
+}
+.ch_a_comment {
+    width: 100%;
+    background-color: #d8eee7;
+    padding: 20px;
+    display: flex; /* Enables flexbox */
+    align-items: left; /* Centers vertically */
+    justify-content: left; /* Centers horizontally */
+}
+.ch_b_top_head {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
 }
