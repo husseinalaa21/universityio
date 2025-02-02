@@ -201,9 +201,16 @@
 }
 .info_chicago {
     display: flex;
-    justify-content: space-around;
+    justify-content: space-between;
     position: relative;
     top: -20px;
+    width: 80%;
+    margin: auto;
+}
+.info_chicago_ {
+    width: 80%;
+    margin: auto;
+    margin-bottom: 40px;
 }
 .info_chicago div{
     display: flex;
@@ -213,4 +220,144 @@
 }
 .info_chicago div img{
     margin-right: 8px;
+}
+.edit_profile {
+    background-color: #F2F9FF;
+}
+.edit_profile_header {
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+}
+.edit_profile_header {
+    display: flex;
+    justify-content: space-between;
+}
+.exit_editor {
+    padding: 8px;
+    width: 60px;
+    text-align: center;
+    background-color: #f65c54;
+    color: #eff5ff;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 30px;
+    border: 1px solid #ec453d;
+    cursor: pointer;
+}
+.save_editor {
+    padding: 8px;
+    width: 60px;
+    text-align: center;
+    background-color: #5467f6;
+    color: #eff5ff;
+    font-size: 16px;
+    font-weight: 800;
+    border-radius: 30px;
+    border: 1px solid #4155eb;
+    cursor: pointer;
+}
+.cover_edit {
+    width: 100%;
+    height: 200px;
+    background-color: #5e6f7d;
+    overflow: hidden;
+    position: relative;
+}
+.cover_edit ._cover_edit img{
+    width: 100%;
+    height: 100%;
+}
+._cover_edit_ {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+._cover_edit_ img {
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    width: 30px;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-color: #c2daeebe;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.profile_pic_edit {
+    padding: 20px;
+    position: relative;
+    top: -50px;
+    background-color: #c2daee;
+    width: 75px;
+    height: 75px;
+    margin-left: 20px;
+    border-radius: 100px;
+}
+._pic_edit_ {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+._pic_edit_ img{
+    position: absolute;
+    text-align: center;
+    margin: auto;
+    padding: 10px;
+    width: 30px;
+    background-color: #c2daeebe;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.input_edit_group {
+    width: 88%;
+    margin: auto;
+    display: flex;
+    justify-content: space-between;
+}
+.input_edit_group div {
+    margin-right: 10px;
+    width: 45%;
+}
+.input_edit_ {
+    width: 100%;
+    position: relative;
+    padding-bottom: 40px;
+}
+.input_edit_ label {
+    position: absolute;
+    top: -15px;
+    font-size: 17px;
+    z-index: 10;
+    left: 10px;
+    background-color: #F2F9FF;
+}
+.input_edit_ input{
+    width: 95%;
+    padding: 10px;
+    margin: auto;
+    border: 1px solid #c2daee;
+    border-radius: 4px;
+    font-size: 16px;
+}
+.input_edit_ind {
+    width: 90%;
+    margin: auto;
+    margin-bottom: 20px;
+}
+.edit_faild {
+    padding: 10px;
+    font-size: 17px;
+    text-align: center;
+    width: 79%;
+    margin: auto;
+    background-color: #f9c4c2;
+    margin-bottom: 20px;
+    margin-top: 20px;
+    border-radius: 4px;
 }

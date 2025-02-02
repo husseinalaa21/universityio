@@ -15,6 +15,8 @@ import cover_pic from '../svg/file-image-solid.svg'
 import join_pic from '../svg/calendar-days-solid.svg'
 import link_pic from '../svg/link-solid.svg'
 import location_pic from '../svg/location-dot-solid.svg'
+import upload_solid from '../svg/upload-solid.svg'
+import x_solid from '../svg/x-solid.svg'
 
 function Home() {
     const [io, setIo] = useState({
@@ -27,6 +29,11 @@ function Home() {
     const [isLogin, setIsLogin] = useState(false);
     const [chicago, setChicago] = useState('course');
     const [edit, setEdit] = useState(false)
+    const [cookie_log, setCookie_log] = useState({
+        cookie: "",
+        email: ""
+    })
+    const [edit_info_message, setEdit_info_message] = useState(false)
 
     const API_BASE_URL = window.location.hostname === 'localhost'
         ? 'http://localhost:5000'
@@ -38,6 +45,10 @@ function Home() {
         const email = Cookies.get('email');
 
         if (cookie && email && !isLogin) {
+            setCookie_log({
+                cookie: cookie,
+                email: email
+            })
             fetchDataForKey('course'); // Default view when logged in
         }
     }, [isLogin]);
@@ -55,9 +66,19 @@ function Home() {
         fetchDataForKey(key);
     };
 
+    const removeLogin = () => {
+        Cookies.remove('cookie');
+        Cookies.remove('email');
+        setCookie_log({
+            cookie: "",
+            email: ""
+        })
+        setIsLogin(false);
+    }
+
     const fetchDataForKey = (key) => {
-        const cookie = Cookies.get('cookie');
-        const email = Cookies.get('email');
+        const cookie = cookie_log.cookie;
+        const email = cookie_log.email;
 
         if (cookie && email) {
             axios.post(`${API_BASE_URL}/home/${key}`, { email, cookie })
@@ -65,16 +86,12 @@ function Home() {
                     if (response.status === 200) {
                         setDb(response.data);
                     } else {
-                        Cookies.remove('cookie');
-                        Cookies.remove('email');
-                        setIsLogin(false);
+                        removeLogin()
                     }
                 })
                 .catch(error => {
                     console.error(`Error fetching ${key} data:`, error);
-                    Cookies.remove('cookie');
-                    Cookies.remove('email');
-                    setIsLogin(false);
+                    removeLogin()
                 });
         }
     };
@@ -154,8 +171,48 @@ function Home() {
         picture: "",
         cover: ""
     })
-    const submitChanges = () => {
+
+    const submitChanges = (d) => {
         // check info
+        const checkText = (t, l) => {
+            if (t.length <= l) {
+                return true
+            }
+            return false
+        }
+        if (checkText(edit_info.firstName, 0) || checkText(edit_info.lastName, 0) || checkText(edit_info.username, 0)) {
+            setEdit_info_message(<div className='edit_faild'> Please enter vaild information </div>)
+            return false
+        }
+        // SEND REQUEST
+        const cookie = cookie_log.cookie;
+        const email = cookie_log.email;
+
+        if (cookie && email) {
+            axios.post(`${API_BASE_URL}/home/edit_profile`, { email, cookie, edit_info: edit_info })
+                .then(response => {
+                    if (response.status === 200) {
+                        setDb(response.data);
+                        setEdit_info_message(<div className='edit_succ'> Successful saved the changes. </div>)
+                    } else {
+                        setEdit_info_message(<div className='edit_faild'> Failed to save the data, Please try again later. </div>)
+                    }
+                })
+                .catch(error => {
+                    setEdit_info_message(<div className='edit_faild'> Failed to save the data, Please try again later. </div>)
+                });
+        }
+    }
+    const handleChange = (e) => {
+        setEdit_info({ ...edit_info, [e.target.id]: e.target.value });
+    };
+    const setEdit_fun = (s, v) => {
+        if (s == true) {
+            setEdit(true)
+            setEdit_info(v)
+        } else {
+            setEdit(false)
+        }
     }
     const container_profile = () => {
         try {
@@ -169,49 +226,112 @@ function Home() {
                 location = db.location
 
             // Picures SRCs
-            if (picure.length <= 0) {
+            if (picure == undefined || picure.length <= 0) {
                 picure = profileIcon
             }
-            if (cover.length <= 0) {
+            if (cover == undefined || cover.length <= 0) {
                 cover = cover_pic
+            }
+            if (bio == undefined || bio.length <= 0) {
+                bio = "No bio"
+            }
+            if (location == undefined || location.length <= 0) {
+                location = " No available"
+            }
+            if (link == undefined || link.length <= 0) {
+                link = "No Link Attached"
             }
             if (edit) {
                 return <div>
                     <div className='edit_profile'>
                         <div className='edit_profile_header'>
-                            <div className='exit_editor' onClick={() => setEdit(false)}> Exit </div>
-                            <div className='save_editor'> Save </div>
+                            <div className='exit_editor' onClick={() => setEdit_fun(false)}> Exit </div>
+                            <div className='save_editor' onClick={() => submitChanges()}> Save </div>
                         </div>
+                        {edit_info_message}
                         <div className='edit_profile_container'>
                             <div className='cover_edit'>
-                                <div className='_cover_edit'>
-                                    <img src=''></img>
-                                </div>
                                 <div className='_cover_edit_'>
-                                    <div><img src='' /></div>
-                                    <div><img src='' /></div>
+                                    <img src={upload_solid} width="18px" />
+                                </div>
+                                <div className='_cover_edit'>
+                                    <img src={cover} width="40px"></img>
                                 </div>
                             </div>
                             <div className='profile_pic_edit'>
-                                <div className='_pic_edit'>
-
-                                </div>
                                 <div className='_pic_edit_'>
-                                    <div><img src='' /></div>
-                                    <div><img src='' /></div>
+                                    <img src={upload_solid} width="18px" />
+                                </div>
+                                <div className='_pic_edit'>
+                                    <img src={picure} width="40px"></img>
                                 </div>
                             </div>
                             <div className='input_edit_group'>
                                 <div className='input_edit_'>
-                                    <label>firstName</label>
+                                    <label>First Name</label>
                                     <input
                                         type={'text'}
-                                        value={firstName}
-                                        //onChange={handleChange}
+                                        id="firstName"
+                                        value={edit_info.firstName}
+                                        onChange={handleChange}
+                                        required
+                                    />
+                                </div>
+                                <div className='input_edit_'>
+                                    <label>Last Name</label>
+                                    <input
+                                        type={'text'}
+                                        id="lastName"
+                                        value={edit_info.lastName}
+                                        onChange={handleChange}
                                         //placeholder={placeholder}
                                         required
                                     />
                                 </div>
+                            </div>
+                            <div className='input_edit_ input_edit_ind'>
+                                <label>username</label>
+                                <input
+                                    type={'text'}
+                                    value={edit_info.username}
+                                    id="username"
+                                    onChange={handleChange}
+                                    //placeholder={placeholder}
+                                    required
+                                />
+                            </div>
+                            <div className='input_edit_ input_edit_ind'>
+                                <label>Bio</label>
+                                <input
+                                    type={'text'}
+                                    value={edit_info.bio}
+                                    id="bio"
+                                    onChange={handleChange}
+                                    //placeholder={placeholder}
+                                    required
+                                />
+                            </div>
+                            <div className='input_edit_ input_edit_ind'>
+                                <label>Location</label>
+                                <input
+                                    type={'text'}
+                                    value={edit_info.location}
+                                    id="location"
+                                    onChange={handleChange}
+                                    //placeholder={placeholder}
+                                    required
+                                />
+                            </div>
+                            <div className='input_edit_ input_edit_ind'>
+                                <label>Link</label>
+                                <input
+                                    type={'text'}
+                                    value={edit_info.link}
+                                    id="link"
+                                    onChange={handleChange}
+                                    //placeholder={placeholder}
+                                    required
+                                />
                             </div>
                         </div>
                     </div>
@@ -228,25 +348,34 @@ function Home() {
                                 <div className='pic_pic'>
                                     <img src={picure} width='18px' />
                                 </div>
-                                <div className='pic_edit' onClick={() => setEdit(true)}>
+                                <div className='pic_edit' onClick={() => setEdit_fun(true, {
+                                    firstName: db.firstName,
+                                    lastName: db.lastName,
+                                    username: db.username,
+                                    bio: db.bio,
+                                    picure: db.profile_image,
+                                    cover: db.cover,
+                                    link: db.link,
+                                    location: db.location
+                                })}>
                                     <img src={pic_edit} width='18px' /> Edit profile
                                 </div>
                             </div>
                             <div className='username_and_discription'>
-                                <div className='name_co_'>{db.firstName}{db.lastName}</div>
-                                <div className='username_con_'>@{db.username}</div>
-                                <div className='description_con_'>{db.bio ? db.bio.length > 0 ? db.bio : "No Bio" : "No Bio"}</div>
+                                <div className='name_co_'>{firstName}{lastName}</div>
+                                <div className='username_con_'>@{username}</div>
+                                <div className='description_con_'>{bio}</div>
                             </div>
                             <div className='info_chicago'>
                                 <div>
-                                    <img src={location_pic} width='14px' /> {db.location ? db.location : "Not available"}
+                                    <img src={location_pic} width='14px' /> {location}
                                 </div>
                                 <div>
                                     <img src={join_pic} width='14px' /> Joined {chicago_date(db.join)}
                                 </div>
-                                <div>
-                                    <img src={link_pic} width='14px' /> {db.link ? db.link : "No Link Found"}
-                                </div>
+                            </div>
+                            <div className='info_chicago_'>
+                                <img src={link_pic} width='14px' /> {link}
                             </div>
                         </div>
                         <div className='chicago_bar'>
