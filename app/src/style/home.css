@@ -1,3 +1,6 @@
+.container {
+    overflow: hidden;
+}
 .home_header_pck {
     background-color: #eff6fc6b;
     padding: 20px;
@@ -381,4 +384,11 @@
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
+}
+.edit_succ {
+    padding: 20px;
+    margin: 10px;
+    border-radius: 4px;
+    background-color: #85d0ba;
+    font-size: 17px;
 }

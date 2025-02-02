@@ -171,12 +171,12 @@ function Home() {
         username: "",
         location: "",
         link: "",
-        bio: "",
         picture: "",
-        cover: ""
+        cover: "",
+        profile_image: ""
     })
 
-    const submitChanges = (d) => {
+    const submitChanges = () => {
         // check info
         const checkText = (t, l) => {
             if (t.length <= l) {
@@ -199,12 +199,15 @@ function Home() {
                         setDb(response.data);
                         setEdit_info_message(<div className='edit_succ'> Successful saved the changes. </div>)
                     } else {
-                        setEdit_info_message(<div className='edit_faild'> Failed to save the data, Please try again later. </div>)
+                        setEdit_info_message(<div className='edit_faild'> {response.message} </div>)
                     }
                 })
                 .catch(error => {
-                    setEdit_info_message(<div className='edit_faild'> Failed to save the data, Please try again later. </div>)
+                    setEdit_info_message(<div className='edit_faild'> {error.response.data.message || 'An error occurred.'}</div>);
                 });
+            setTimeout(() => {
+                setEdit_info_message("")
+            }, 2000);
         }
     }
     const handleChange = (e) => {
@@ -212,9 +215,10 @@ function Home() {
     };
     const setEdit_fun = (s, v) => {
         if (s == true) {
-            setEdit(true)
             setEdit_info(v)
+            setEdit(true)
         } else {
+            fetchDataForKey('profile', cookie_log.cookie, cookie_log.email)
             setEdit(false)
         }
     }
@@ -227,7 +231,8 @@ function Home() {
                 picure = db.profile_image,
                 cover = db.cover,
                 link = db.link,
-                location = db.location
+                location = db.location;
+
 
             // Picures SRCs
             if (picure == undefined || picure.length <= 0) {
@@ -356,17 +361,17 @@ function Home() {
                                     firstName: db.firstName,
                                     lastName: db.lastName,
                                     username: db.username,
-                                    bio: db.bio,
-                                    picure: db.profile_image,
-                                    cover: db.cover,
-                                    link: db.link,
-                                    location: db.location
+                                    bio: db.bio || "",
+                                    profile_image: db.profile_image || "",
+                                    cover: db.cover || "",
+                                    link: db.link || "",
+                                    location: db.location || ""
                                 })}>
                                     <img src={pic_edit} width='18px' /> Edit profile
                                 </div>
                             </div>
                             <div className='username_and_discription'>
-                                <div className='name_co_'>{firstName}{lastName}</div>
+                                <div className='name_co_'>{firstName} {lastName}</div>
                                 <div className='username_con_'>@{username}</div>
                                 <div className='description_con_'>{bio}</div>
                             </div>
@@ -379,7 +384,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className='info_chicago_'>
-                                <img src={link_pic} width='14px' /> {link}
+                                {db.link? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></>: <><img src={link} width='14px' /> {link}</>}
                             </div>
                         </div>
                         <div className='chicago_bar'>
