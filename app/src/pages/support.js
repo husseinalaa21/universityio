@@ -62,7 +62,7 @@ const Support = () => {
           {responseMessage && <div className='response-message'>{responseMessage}</div>}
         </div>
       </div>
-      <End login={true} ask={false} />
+      <End login={false} ask={true} />
     </>
   );
 };

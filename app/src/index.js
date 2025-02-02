@@ -3,7 +3,8 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import './style/index.css';
-import App from './pages/app';
+import Introducing from './pages/introducing';
+import Home from './pages/home'
 import LoginSignup from './pages/LoginSignup';
 import Restart from './pages/restart';
 import About from './pages/about';
@@ -19,7 +20,10 @@ root.render(
     <Router>
       <Routes>
         {/* Home route */}
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<Introducing />} />
+
+        {/* HOME PAGE */}
+        <Route path='/home' element={<Home />} />
 
         {/* Login and Sign Up route */}
         <Route path="/auth" element={<LoginSignup />} />

@@ -3,6 +3,10 @@ import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import '../style/introducing.css'
+import Header from './header';
+import End from './end';
+import cc from '../pages/cc'
+import Loading from '../pages/loading.js'
 
 import meteor from '../svg/meteor-solid.svg'
 import earth from '../svg/earth-americas-solid.svg'
@@ -26,12 +30,12 @@ import Leanpub from '../svg/leanpub-brands-solid.svg';
 import check_double from '../svg/check-double-solid.svg';
 
 const Intro = () => {
-  var logo_size = '20px'
-  const scrollContainerRef_a = useRef(null),
-    scrollContainerRef_b = useRef(null);
+  const [isLoading, setIsLoading] = useState(false);
+  const navigate = useNavigate();
+
+  const scrollContainerRef_a = useRef(null)
 
   const [showLeftButton_a, setShowLeftButton_a] = useState(false);
-  const [showLeftButton_b, setShowLeftButton_b] = useState(false);
   const animeData = [
     { title: 'How do I purchase courses?', text: 'Buy with a single payment and access forever.' },
     { title: 'Can I sell my own courses?', text: 'Yes, reach a global audience on our platform.' },
@@ -43,6 +47,7 @@ const Intro = () => {
   const [newDate, setNewDate] = useState(formatTime());
   const [index, setIndex] = useState(0);
   const liberay_img = '200px'
+  var logo_size = '20px'
 
   const icons = [
     <img src={LinesLeaning} alt="Lines Leaning" className="filtered-icon" key="1" />,
@@ -68,6 +73,19 @@ const Intro = () => {
   }
 
   useEffect(() => {
+    // COOKIE CHECK
+    if (!isLoading) {
+      cc().then(e => {
+        if (e.s == true) {
+          navigate('/home', { replace: true });
+        } else {
+          setIsLoading(true)
+        }
+      }).catch(error => {
+        setIsLoading(true)
+      })
+    }
+
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
@@ -82,8 +100,10 @@ const Intro = () => {
       setIndex(newIndex); // Update the index to keep track of the current item
     }, 3000); // Move to the next item every 3 seconds
 
+
+
     return () => clearInterval(interval);
-  }, [icons.length, index, animeData]);
+  }, [icons.length, index, animeData, isLoading]);
 
   var scroll = (direction, part) => {
     const scrollAmount = 300;
@@ -102,12 +122,6 @@ const Intro = () => {
       setShowLeftButton_a(scrollLeft > 0);
     }
   };
-  const handleScroll_b = () => {
-    if (scrollContainerRef_b.current) {
-      const { scrollLeft } = scrollContainerRef_b.current;
-      setShowLeftButton_b(scrollLeft > 0);
-    }
-  };
 
   var qa = (q, n) => {
     return <div className="Qa_in">
@@ -118,45 +132,49 @@ const Intro = () => {
 
   return (
     <>
-    <Helmet>
-      <title>University IO - buy or sell online courses</title>
-      <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
-    </Helmet>
-      <div className='intro'>
-        <div className='web_intro'>
-          <title>Welcome to University IO - Empower Your Future</title>
-          <section className="modern-intro">
-            <div className="container">
-              <div className='continer_titile'>
-                <h1>Welcome to University IO</h1>
-                <div>
-                  Learn New Skills.
-                </div>
-                <div>
-                  Or sell your courses.
-                </div>
-              </div>
-              <p>Explore new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
-            </div>
-          </section>
-          <section className='anime'>
-            <div className='anime_title'>Support</div>
-            <div className='anime_tap'>
-              <div className='anime_header'>
-                {animeTitle}
-                <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+      <Helmet>
+        <title>University IO - buy or sell online courses</title>
+        <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
+      </Helmet>
 
+      {isLoading ? <>
+        <Header login={false} ask={true} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+
+        <div className='intro'>
+          <div className='web_intro'>
+            <title>Welcome to University IO - Empower Your Future</title>
+            <section className="modern-intro">
+              <div className="container">
+                <div className='continer_titile'>
+                  <h1>Welcome to University IO</h1>
+                  <div>
+                    Learn New Skills.
+                  </div>
+                  <div>
+                    Or sell your courses.
+                  </div>
+                </div>
+                <p>Explore new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
               </div>
-              <div className='anime_continer'>
-                {animeText}
-                <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+            </section>
+            <section className='anime'>
+              <div className='anime_title'>Support</div>
+              <div className='anime_tap'>
+                <div className='anime_header'>
+                  {animeTitle}
+                  <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+
+                </div>
+                <div className='anime_continer'>
+                  {animeText}
+                  <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
+                </div>
               </div>
-            </div>
-          </section>
+            </section>
+          </div>
         </div>
-      </div>
 
-      <div className='liberay'>
+        <div className='liberay'>
           <div className='liberay_title'>
             Do more in one <mark>Place.</mark>..
           </div>
@@ -188,63 +206,63 @@ const Intro = () => {
               </div>
             </div>
           </div>
-      </div>
-
-      <section id="courses" className="courses modern-courses">
-        <div className="container">
-          <div className=' courses_head'>
-            <h2>Courses You Can Enroll In</h2>
-            <div className="Qa_controls">
-              {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
-              <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
-            </div>
-          </div>
-          <div className="course-list" ref={scrollContainerRef_a}
-            onScroll={handleScroll_a}>
-            <div className="course-item">
-              <div className='item-python item-shape'>
-                <div className='item-logo'>
-                  <img src={python_logo} width={logo_size} />
-                  <h3>Python Programming</h3>
-                </div>
-                <p>Learn Python-3 the main language for programming AI</p>
-              </div>
-              <div className='item-learning-part-a item-shape'>
-                <div className='item-logo'>
-                  <img src={code_logo} width={logo_size} />
-                  <h3>Programming Essentials</h3>
-                </div>
-                <p>Master the building blocks of programming with hands-on projects in Python, JavaScript, and more.</p>
-              </div>
-            </div>
-            <div className="course-item item-shape">
-              <div className='item-logo'>
-                <img src={computer_logo} width={logo_size} />
-                <h3>IT Skills Training</h3>
-              </div>
-              <p>Gain in-demand skills to excel in today's tech-driven world.</p>
-            </div>
-            <div className="course-item">
-              <div className='item-business item-shape'>
-                <div className='item-logo'>
-                  <img src={business_logo} width={logo_size} />
-                  <h3>Business Development</h3>
-                </div>
-                <p>Learn to innovate, plan, and execute your entrepreneurial vision with expert guidance.</p>
-              </div>
-              <div className='item-selling item-shape'>
-                <div className='item-logo'>
-                  <img src={money_logo} width={logo_size} />
-                  <h3> Selling </h3>
-                </div>
-                <p> Learn how to sell online </p>
-              </div>
-            </div>
-          </div>
         </div>
-      </section>
 
-      {/**<section className='join'>
+        <section id="courses" className="courses modern-courses">
+          <div className="container">
+            <div className=' courses_head'>
+              <h2>Courses You Can Enroll In</h2>
+              <div className="Qa_controls">
+                {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
+                <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
+              </div>
+            </div>
+            <div className="course-list" ref={scrollContainerRef_a}
+              onScroll={handleScroll_a}>
+              <div className="course-item">
+                <div className='item-python item-shape'>
+                  <div className='item-logo'>
+                    <img src={python_logo} width={logo_size} />
+                    <h3>Python Programming</h3>
+                  </div>
+                  <p>Learn Python-3 the main language for programming AI</p>
+                </div>
+                <div className='item-learning-part-a item-shape'>
+                  <div className='item-logo'>
+                    <img src={code_logo} width={logo_size} />
+                    <h3>Programming Essentials</h3>
+                  </div>
+                  <p>Master the building blocks of programming with hands-on projects in Python, JavaScript, and more.</p>
+                </div>
+              </div>
+              <div className="course-item item-shape">
+                <div className='item-logo'>
+                  <img src={computer_logo} width={logo_size} />
+                  <h3>IT Skills Training</h3>
+                </div>
+                <p>Gain in-demand skills to excel in today's tech-driven world.</p>
+              </div>
+              <div className="course-item">
+                <div className='item-business item-shape'>
+                  <div className='item-logo'>
+                    <img src={business_logo} width={logo_size} />
+                    <h3>Business Development</h3>
+                  </div>
+                  <p>Learn to innovate, plan, and execute your entrepreneurial vision with expert guidance.</p>
+                </div>
+                <div className='item-selling item-shape'>
+                  <div className='item-logo'>
+                    <img src={money_logo} width={logo_size} />
+                    <h3> Selling </h3>
+                  </div>
+                  <p> Learn how to sell online </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/**<section className='join'>
         <div className='join_back_a'>
           <img src={earth} width='200px' className='earth'></img>
         </div>
@@ -261,18 +279,20 @@ const Intro = () => {
       </section>**/}
 
 
-      <section className="Qa_uio">
-        <div className='Qa_head_group'>
-          <h2> Sell Or Buy Courses </h2>
-        </div>
-        <div className="Qa_group" ref={scrollContainerRef_b} onScroll={handleScroll_b}>
-          <p className='qa_p'> Whether you're selling your courses or looking to purchase courses, University IO offers this feature to you completely free of charge. </p>
-          {qa('Expert Instructors', 'Learn from the best in the industry.')}
-          {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
-          {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}
-          {qa('Community Support', 'Join a thriving community of learners and mentors.')}
-        </div>
-      </section>
+        <section className="Qa_uio">
+          <div className='Qa_head_group'>
+            <h2> Sell Or Buy Courses </h2>
+          </div>
+          <div className="Qa_group">
+            <p className='qa_p'> Whether you're selling your courses or looking to purchase courses, University IO offers this feature to you completely free of charge. </p>
+            {qa('Expert Instructors', 'Learn from the best in the industry.')}
+            {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
+            {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}
+            {qa('Community Support', 'Join a thriving community of learners and mentors.')}
+          </div>
+        </section>
+        <End login={false} ask={true} />
+      </> : <Loading />}
     </>
   );
 };

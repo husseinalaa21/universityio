@@ -143,16 +143,15 @@ function LoginSignup() {
         };
 
       const response = await retryAxiosRequest(`${API_BASE_URL}${endpoint}`, payload);
-      setLoading(false);
-
       if (response.data.valid) {
-      setLoading(true);
+        setLoading(true);
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
-
+        // *** SET COOKIES PROCESS ***
         Cookies.set('cookie', response.data.cookie, { expires: 7 }); // Set cookie to expire in 7 days
         Cookies.set('email', formData.email, { expires: 7 });
-        setTimeout(() => navigate('/'), 3000);
+        setTimeout(() => navigate('/home'), 1000);
       } else {
+        setLoading(false);
         setMessage(response.data.message || 'An unexpected error occurred.');
       }
     } catch (error) {
@@ -263,7 +262,7 @@ function LoginSignup() {
           </div>
         )}
       </div>
-      <End />
+      <End login={false} ask={true} />
     </div>
   );
 }

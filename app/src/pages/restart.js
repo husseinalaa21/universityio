@@ -114,7 +114,7 @@ function ResetPasswordPage() {
           )}
         </div>
       </div>
-      <End />
+      <End login={false} ask={true} />
     </>
   );
 }

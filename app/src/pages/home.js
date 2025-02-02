@@ -3,6 +3,11 @@ import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import '../style/home.css';
+import cc from '../pages/cc.js'
+import { useNavigate } from 'react-router-dom';
+import Header from './header';
+import End from './end';
+import Loading from '../pages/loading.js'
 // Import necessary images
 import courseIcon from '../svg/book-solid.svg';
 import searchIcon from '../svg/seach-icon.svg';
@@ -19,6 +24,15 @@ import upload_solid from '../svg/upload-solid.svg'
 import x_solid from '../svg/x-solid.svg'
 
 function Home() {
+    const navigate = useNavigate();
+    const [isLoading, setIsLoading] = useState(false);
+    const [cookie_log, setCookie_log] = useState({
+        cookie: "",
+        email: ""
+    })
+    const [newError, setNewError] = useState('')
+
+    const [cr, setCr] = useState(true)
     const [io, setIo] = useState({
         course: true,
         search: false,
@@ -26,75 +40,65 @@ function Home() {
         messages: false
     });
     const [db, setDb] = useState({});
-    const [isLogin, setIsLogin] = useState(false);
     const [chicago, setChicago] = useState('course');
     const [edit, setEdit] = useState(false)
-    const [cookie_log, setCookie_log] = useState({
-        cookie: "",
-        email: ""
-    })
     const [edit_info_message, setEdit_info_message] = useState(false)
 
     const API_BASE_URL = window.location.hostname === 'localhost'
         ? 'http://localhost:5000'
         : 'https://server.universityio.com';
 
-    useEffect(() => {
-        document.title = "University IO - Home";
-        const cookie = Cookies.get('cookie');
-        const email = Cookies.get('email');
+    const fetchDataForKey = (key, cookie, email) => {
+        if (cr) {
+            const newStates = {
+                course: false,
+                search: false,
+                profile: false,
+                messages: false,
+                settings: false
+            };
+            newStates[key] = true;
+            setIo(newStates);
+            setCr(false)
 
-        if (cookie && email && !isLogin) {
-            setCookie_log({
-                cookie: cookie,
-                email: email
-            })
-            fetchDataForKey('course'); // Default view when logged in
-        }
-    }, [isLogin]);
-
-    const containerChange = (key) => {
-        const newStates = {
-            course: false,
-            search: false,
-            profile: false,
-            messages: false,
-            settings: false
-        };
-        newStates[key] = true;
-        setIo(newStates);
-        fetchDataForKey(key);
-    };
-
-    const removeLogin = () => {
-        Cookies.remove('cookie');
-        Cookies.remove('email');
-        setCookie_log({
-            cookie: "",
-            email: ""
-        })
-        setIsLogin(false);
-    }
-
-    const fetchDataForKey = (key) => {
-        const cookie = cookie_log.cookie;
-        const email = cookie_log.email;
-
-        if (cookie && email) {
             axios.post(`${API_BASE_URL}/home/${key}`, { email, cookie })
                 .then(response => {
                     if (response.status === 200) {
                         setDb(response.data);
+                        setCr(true)
                     } else {
                         removeLogin()
                     }
                 })
                 .catch(error => {
-                    console.error(`Error fetching ${key} data:`, error);
                     removeLogin()
                 });
         }
     };
+
+    const removeLogin = () => {
+        setNewError(<div className='error_data'> Error accourched, please login in back <a href='/auth'>click here</a> </div>)
+    }
+
+    useEffect(() => {
+        if (!isLoading) {
+            cc().then(e => {
+                if (e.s == true) {
+                    setIsLoading(true)
+                    setCookie_log({
+                        cookie: e.c,
+                        email: e.m
+                    })
+                    fetchDataForKey('course', e.c, e.m); // Default view when logged in
+                } else {
+                    navigate('/', { replace: true });
+                }
+            }).catch(error => {
+                navigate('/', { replace: true });
+            })
+        }
+    }, [isLoading]);
+
 
     // CONTAINER FUNCTIONS ..
 
@@ -185,8 +189,8 @@ function Home() {
             return false
         }
         // SEND REQUEST
-        const cookie = cookie_log.cookie;
-        const email = cookie_log.email;
+        var cookie = cookie_log.cookie;
+        var email = cookie_log.email;
 
         if (cookie && email) {
             axios.post(`${API_BASE_URL}/home/edit_profile`, { email, cookie, edit_info: edit_info })
@@ -414,34 +418,42 @@ function Home() {
                 <title>University IO - Home</title>
                 <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
             </Helmet>
-            <div className='home_page'>
-                <div className='home_header_pck'>
-                    <div className='home_header'>
-                        <div className='home_header_pack_one'>
-                            <div onClick={() => containerChange('course')} className={`container_change ${io.course ? 'active' : ''}`}>
-                                <img src={courseIcon} alt="Course" width='18px' />
+
+            {isLoading ? <>
+                <Header login={true} ask={false} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+
+                <div className='home_page'>
+                    <div className='home_header_pck'>
+                        <div className='home_header'>
+                            <div className='home_header_pack_one'>
+                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.course ? 'active' : ''}`}>
+                                    <img src={courseIcon} alt="Course" width='18px' />
+                                </div>
+                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.profile ? 'active' : ''}`}>
+                                    <img src={profileIcon} alt="Profile" width='18px' />
+                                </div>
+                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.search ? 'active' : ''}`}>
+                                    <img src={searchIcon} alt="Search" width='18px' />
+                                </div>
                             </div>
-                            <div onClick={() => containerChange('profile')} className={`container_change ${io.profile ? 'active' : ''}`}>
-                                <img src={profileIcon} alt="Profile" width='18px' />
-                            </div>
-                            <div onClick={() => containerChange('search')} className={`container_change ${io.search ? 'active' : ''}`}>
-                                <img src={searchIcon} alt="Search" width='18px' />
-                            </div>
-                        </div>
-                        <div className='home_header_pack_two'>
-                            <div onClick={() => containerChange('messages')} className={`container_change ${io.messages ? 'active' : ''}`}>
-                                <img src={comments_regular} alt="messages" width='18px' />
+                            <div className='home_header_pack_two'>
+                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.messages ? 'active' : ''}`}>
+                                    <img src={comments_regular} alt="messages" width='18px' />
+                                </div>
                             </div>
                         </div>
                     </div>
+                    {newError}
+                    {cr ?
+                        <div className='container'>
+                            {io.course && <div className='course_container'>{container_course()}</div>}
+                            {io.search && <div className='search_container'>{container_search()}</div>}
+                            {io.profile && <div className='profile_container'>{container_profile()}</div>}
+                            {io.messages && <div className='messages_container'>{container_messages()}</div>}
+                        </div> : <div className='cr'></div>}
                 </div>
-                <div className='container'>
-                    {io.course && <div className='course_container'>{container_course()}</div>}
-                    {io.search && <div className='search_container'>{container_search()}</div>}
-                    {io.profile && <div className='profile_container'>{container_profile()}</div>}
-                    {io.messages && <div className='messages_container'>{container_messages()}</div>}
-                </div>
-            </div>
+                <End login={true} ask={false} />
+            </> : <Loading />}
         </>
     );
 }

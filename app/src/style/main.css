@@ -7,6 +7,31 @@
   color: hsl(210, 6%, 35%);
 }
 
+
+/* Full-page container */
+.loading_main {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f8f9fa; /* Optional background */
+}
+
+/* Logo container */
+.loading_logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Logo image */
+._logo {
+  width: 60px;
+  object-fit: contain;
+}
+
+
 .logo {
   height: 70px;
   pointer-events: none;

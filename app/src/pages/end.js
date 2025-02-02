@@ -126,6 +126,7 @@ const Footer = (props) => {
             </div>
           </div>
           : <></>}
+          {props.ask?<>
           <div className="social-links">
             <SocialLink
               platform="Gmail"
@@ -151,7 +152,7 @@ const Footer = (props) => {
               bgColor="#333" // GitHub Black
               logo="https://upload.wikimedia.org/wikipedia/commons/9/91/Octicons-mark-github.svg"
             />
-          </div>
+          </div></>:<></>}
         <div className="footer-bottom-section">
           <p className="footer-text">&copy; 2025 University IO. All Rights Reserved.</p>
         </div>
