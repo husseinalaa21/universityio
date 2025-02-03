@@ -121,7 +121,7 @@ code {
     background-color: #8cc0ee; /* Initial background color */
     border: 3px solid #8cc0ee; /* Initial border color */
     cursor: pointer;
-    animation: colorChange 5s infinite; /* Apply the animation */
+    animation: colorChange 3s infinite; /* Apply the animation */
 }
 
 @keyframes colorChange {
@@ -129,7 +129,7 @@ code {
         border-color: #8cc0ee;
     }
     50% {
-        border-color: #2f97f9;
+        border-color: #b22ff9;
     }
     100% {
         border-color: #8cc0ee;

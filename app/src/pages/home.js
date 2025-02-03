@@ -51,7 +51,7 @@ function Home() {
         cookie: "",
         email: ""
     })
-    const [newError, setNewError] = useState('')
+    const [isResult, setIsResult] = useState([])
 
     const [cr, setCr] = useState(true)
     const [io, setIo] = useState({
@@ -491,7 +491,17 @@ function Home() {
     }
 
     const container_search = () => {
-        return ""
+        return <div>
+            <div className='search_container'>
+                
+            </div>
+            {isResult.length >0? <div className='search_container_result'>
+
+            </div>:
+            <div className='search_container_suggested'>
+
+            </div>}
+        </div>
     }
 
     const container_messages = () => {
