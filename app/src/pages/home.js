@@ -49,9 +49,9 @@ function Home() {
 
     const [cr, setCr] = useState(true)
     const [io, setIo] = useState({
-        course: true,
+        course: false,
         search: false,
-        profile: false,
+        profile: true,
         messages: false
     });
     const [db, setDb] = useState({});
@@ -104,7 +104,7 @@ function Home() {
                         cookie: e.c,
                         email: e.m
                     })
-                    fetchDataForKey('course', e.c, e.m); // Default view when logged in
+                    fetchDataForKey('profile', e.c, e.m); // Default view when logged in
                 } else {
                     navigate('/', { replace: true });
                 }
