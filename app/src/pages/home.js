@@ -239,6 +239,7 @@ function Home() {
                 formData.append("image", file); // Append the file
                 formData.append("email", cookie_log.email); // Append email
                 formData.append("cookie", cookie_log.cookie); // Append cookie
+                formData.append("type", [e.target.id]); // Append Which One cover/profile_image
 
                 try {
                     const response = await axios.post(`${API_BASE_URL}/home/upload`, formData, {
@@ -248,7 +249,7 @@ function Home() {
                     if (response.status === 200) {
                         frozen_ = false
                         const imageUrl = response.data.imageUrl;
-                        setEdit_info_message(<div className='edit_succ'> Successfully upload the picture, please save data when you finish!</div>);
+                        setEdit_info_message(<div className='edit_succ'> Successfully update the picture.</div>);
                         setEdit_info({ ...edit_info, [e.target.id]: imageUrl });
                     } else {
                         frozen_ = false
@@ -437,7 +438,8 @@ function Home() {
                                     profile_image: db.profile_image || "",
                                     cover: db.cover || "",
                                     link: db.link || "",
-                                    location: db.location || ""
+                                    location: db.location || "",
+                                    files_pictures: edit_info.files_pictures
                                 })}>
                                     <img src={pic_edit} width='18px' /> Edit profile
                                 </div>
@@ -447,16 +449,18 @@ function Home() {
                                 <div className='username_con_'>@{username}</div>
                                 <div className='description_con_'>{bio}</div>
                             </div>
-                            <div className='info_chicago'>
-                                <div>
-                                    <img src={location_pic} width='14px' /> {location}
+                            <div className='chicago_mine'>
+                                <div className='info_chicago'>
+                                    <div>
+                                        <img src={location_pic} width='14px' /> {location}
+                                    </div>
+                                    <div>
+                                        <img src={join_pic} width='14px' /> Joined {chicago_date(db.join)}
+                                    </div>
                                 </div>
-                                <div>
-                                    <img src={join_pic} width='14px' /> Joined {chicago_date(db.join)}
+                                <div className='info_chicago_'>
+                                    {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link_pic} width='14px' /> {link}</>}
                                 </div>
-                            </div>
-                            <div className='info_chicago_'>
-                                {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link_pic} width='14px' /> {link}</>}
                             </div>
                         </div>
                         <div className='chicago_bar'>

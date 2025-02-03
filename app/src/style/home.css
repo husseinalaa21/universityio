@@ -190,8 +190,7 @@
     margin-left: 4px;
 }
 .username_and_discription {
-    padding: 0px 30px 0px 30px;
-    margin: auto;
+    margin: 0px 30px 0px 30px;
     position: relative;
     top: -80px;
 }
@@ -206,18 +205,19 @@
     margin-top: 20px;
     font-size: 17px;
 }
+.chicago_mine {
+    top: -20px;
+    position: relative;
+    margin: 0px 30px 0px 30px;
+}
 .info_chicago {
     display: flex;
     justify-content: space-between;
-    position: relative;
-    top: -20px;
-    width: 80%;
-    margin: auto;
 }
 .info_chicago_ {
-    width: 80%;
     margin: auto;
     margin-bottom: 40px;
+    margin-top: 20px;
 }
 .info_chicago div{
     display: flex;
