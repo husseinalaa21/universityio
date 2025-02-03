@@ -25,6 +25,14 @@ import x_solid from '../svg/x-solid.svg'
 
 // Backgrounds For Profile
 import bp_1 from '../backgrounds_profile/1.jpg'
+import bp_2 from '../backgrounds_profile/1.jpg'
+import bp_3 from '../backgrounds_profile/1.jpg'
+import bp_4 from '../backgrounds_profile/1.jpg'
+import bp_5 from '../backgrounds_profile/1.jpg'
+import bp_6 from '../backgrounds_profile/1.jpg'
+import bp_7 from '../backgrounds_profile/1.jpg'
+import bp_8 from '../backgrounds_profile/1.jpg'
+import bp_9 from '../backgrounds_profile/1.jpg'
 
 function Home() {
     const navigate = useNavigate();
