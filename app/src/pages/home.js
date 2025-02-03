@@ -34,6 +34,12 @@ import bp_7 from '../backgrounds_profile/7.jpg'
 import bp_8 from '../backgrounds_profile/8.jpg'
 import bp_9 from '../backgrounds_profile/9.jpg'
 
+// Array of cover images
+const bps = [bp_0, bp_1, bp_2, bp_3, bp_4, bp_5, bp_6, bp_7, bp_8, bp_9];
+// Randomly select a cover image from the bps array
+const randomIndex = Math.floor(Math.random() * bps.length); // Generate a random index
+const randombps = bps[randomIndex]
+
 function Home() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -226,12 +232,14 @@ function Home() {
         }
     }
     var frozen_ = false
+
+
     const handleChange = async (e) => {
+        if (frozen_) {
+            setEdit_info_message(<div className='edit_faild'> Image upload failed 303</div>);
+            return
+        }
         if (e.target.type === 'file') {
-            if (frozen_) {
-                setEdit_info_message(<div className='edit_faild'> Image upload failed 303</div>);
-                return false
-            }
             const file = e.target.files[0];
             frozen_ = true
             if (file) {
@@ -290,11 +298,7 @@ function Home() {
                 profile_image = profileIcon
             }
             if (cover == undefined || cover.length <= 0) {
-                // Array of cover images
-                var bps = [bp_0, bp_1, bp_2, bp_3, bp_4, bp_5, bp_6, bp_7, bp_8, bp_9];
-                // Randomly select a cover image from the bps array
-                var randomIndex = Math.floor(Math.random() * bps.length); // Generate a random index
-                cover = bps[randomIndex]; // Assign the randomly selected cover to `cover`
+                cover = randombps // Assign the randomly selected cover to `cover`
             }
             if (bio == undefined || bio.length <= 0) {
                 bio = "No bio"
