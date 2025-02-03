@@ -23,6 +23,9 @@ import location_pic from '../svg/location-dot-solid.svg'
 import upload_solid from '../svg/upload-solid.svg'
 import x_solid from '../svg/x-solid.svg'
 
+// Backgrounds For Profile
+import bp_1 from '../backgrounds_profile/1.jpg'
+
 function Home() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
@@ -67,18 +70,14 @@ function Home() {
                         setDb(response.data);
                         setCr(true)
                     } else {
-                        removeLogin()
+                        window.location.reload();
                     }
                 })
                 .catch(error => {
-                    removeLogin()
+                    window.location.reload();
                 });
         }
     };
-
-    const removeLogin = () => {
-        setNewError(<div className='error_data'> Error accourched, please login in back <a href='/auth'>click here</a> </div>)
-    }
 
     useEffect(() => {
         if (!isLoading) {
@@ -210,9 +209,45 @@ function Home() {
             }, 2000);
         }
     }
-    const handleChange = (e) => {
-        setEdit_info({ ...edit_info, [e.target.id]: e.target.value });
+    var frozen_ = false
+    const handleChange = async (e) => {
+        if (e.target.type === 'file' ) {
+            if(frozen_){
+                setEdit_info_message(<div className='edit_faild'> Image upload failed 303</div>);
+                return false
+            }
+            const file = e.target.files[0];
+            frozen_ = true
+            if (file) {
+                const formData = new FormData();
+                formData.append("image", file); // Append the file
+                formData.append("email", cookie_log.email); // Append email
+                formData.append("cookie", cookie_log.cookie); // Append cookie
+    
+                try {
+                    const response = await axios.post(`${API_BASE_URL}/home/upload`, formData, {
+                        headers: { "Content-Type": "multipart/form-data" }
+                    });
+    
+                    if (response.status === 200) {
+                        frozen_ = false
+                        const imageUrl = response.data.imageUrl;
+                        setEdit_info_message(<div className='edit_succ'> Successfully upload the picture, please save data when you finish!</div>);
+                        setEdit_info({ ...edit_info, [e.target.id]: imageUrl });
+                    } else {
+                        frozen_ = false
+                        setEdit_info_message(<div className='edit_faild'> Image upload failed 101</div>);
+                    }
+                } catch (error) {
+                    frozen_ = false
+                    setEdit_info_message(<div className='edit_faild'> Image upload failed 202</div>);
+                }
+            }
+        } else {
+            setEdit_info({ ...edit_info, [e.target.id]: e.target.value });
+        }
     };
+    
     const setEdit_fun = (s, v) => {
         if (s == true) {
             setEdit_info(v)
@@ -228,15 +263,15 @@ function Home() {
                 lastName = db.lastName,
                 username = db.username,
                 bio = db.bio,
-                picure = db.profile_image,
+                profile_image = db.profile_image,
                 cover = db.cover,
                 link = db.link,
                 location = db.location;
 
 
             // Picures SRCs
-            if (picure == undefined || picure.length <= 0) {
-                picure = profileIcon
+            if (profile_image == undefined || profile_image.length <= 0) {
+                profile_image = profileIcon
             }
             if (cover == undefined || cover.length <= 0) {
                 cover = cover_pic
@@ -261,18 +296,36 @@ function Home() {
                         <div className='edit_profile_container'>
                             <div className='cover_edit'>
                                 <div className='_cover_edit_'>
-                                    <img src={upload_solid} width="18px" />
+                                    <label htmlFor="cover">
+                                        <img src={upload_solid} width="18px" />
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="cover"
+                                        accept="image/*"
+                                        onChange={handleChange}
+                                        style={{ display: 'none' }}
+                                    />
                                 </div>
                                 <div className='_cover_edit'>
-                                    <img src={cover} width="40px"></img>
+                                    <img src={edit_info.cover || cover} width="40px"></img>
                                 </div>
                             </div>
                             <div className='profile_pic_edit'>
                                 <div className='_pic_edit_'>
-                                    <img src={upload_solid} width="18px" />
+                                    <label htmlFor="profile_image">
+                                        <img src={upload_solid} width="18px" />
+                                    </label>
+                                    <input
+                                        type="file"
+                                        id="profile_image"
+                                        accept="image/*"
+                                        onChange={handleChange}
+                                        style={{ display: 'none' }}
+                                    />
                                 </div>
                                 <div className='_pic_edit'>
-                                    <img src={picure} width="40px"></img>
+                                    <img src={edit_info.profile_image || profile_image} width="40px"></img>
                                 </div>
                             </div>
                             <div className='input_edit_group'>
@@ -351,11 +404,11 @@ function Home() {
                     <div className='profile_main_info'>
                         <div className='pic_and_title'>
                             <div className='conver_pic'>
-                                <img src={cover} width='18px' />
+                                <img src={cover}/>
                             </div>
                             <div className='profile_pic'>
                                 <div className='pic_pic'>
-                                    <img src={picure} width='18px' />
+                                    <img src={profile_image} />
                                 </div>
                                 <div className='pic_edit' onClick={() => setEdit_fun(true, {
                                     firstName: db.firstName,
@@ -384,7 +437,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className='info_chicago_'>
-                                {db.link? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></>: <><img src={link} width='14px' /> {link}</>}
+                                {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link} width='14px' /> {link}</>}
                             </div>
                         </div>
                         <div className='chicago_bar'>
@@ -448,7 +501,6 @@ function Home() {
                             </div>
                         </div>
                     </div>
-                    {newError}
                     {cr ?
                         <div className='container'>
                             {io.course && <div className='course_container'>{container_course()}</div>}
