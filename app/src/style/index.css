@@ -111,21 +111,33 @@ code {
 }
 
 .picure_header {
+    position: relative;
     margin-right: 10px;
     align-items: center;
     border-radius: 600px;
     overflow: hidden;
-    width: 33px;
-    height: 33px;
-    background-color: #8cc0ee;
-    border: 3.2px solid #8cc0ee;
+    width: 35px;
+    height: 35px;
+    background-color: #8cc0ee; /* Initial background color */
+    border: 3px solid #8cc0ee; /* Initial border color */
     cursor: pointer;
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers vertically */
+    animation: colorChange 5s infinite; /* Apply the animation */
 }
 
+@keyframes colorChange {
+    0% {
+        border-color: #8cc0ee;
+    }
+    50% {
+        border-color: #2f97f9;
+    }
+    100% {
+        border-color: #8cc0ee;
+    }
+}
 .picure_header img {
-    border-radius: 6px;
+    width: 100%;
+    height: auto;
 }
 
 .dropdown_menu {

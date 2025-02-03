@@ -73,7 +73,7 @@ function Header(props) {
                     <>
                         {!props.ask && (
                             <div className='picure_header' onClick={toggleOptions}>
-                                <img src={props.pic} alt="Profile" style={{ width: '100%', height: '100%' }} />
+                                <img src={props.pic} alt="Profile" />
                             </div>
                         )}
                     </>

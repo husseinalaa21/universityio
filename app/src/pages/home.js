@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
-import Cookies from 'js-cookie';
 import '../style/home.css';
 import cc from '../pages/cc.js'
 import { useNavigate } from 'react-router-dom';
@@ -24,19 +23,24 @@ import upload_solid from '../svg/upload-solid.svg'
 import x_solid from '../svg/x-solid.svg'
 
 // Backgrounds For Profile
+import bp_0 from '../backgrounds_profile/0.jpg'
 import bp_1 from '../backgrounds_profile/1.jpg'
-import bp_2 from '../backgrounds_profile/1.jpg'
-import bp_3 from '../backgrounds_profile/1.jpg'
-import bp_4 from '../backgrounds_profile/1.jpg'
-import bp_5 from '../backgrounds_profile/1.jpg'
-import bp_6 from '../backgrounds_profile/1.jpg'
-import bp_7 from '../backgrounds_profile/1.jpg'
-import bp_8 from '../backgrounds_profile/1.jpg'
-import bp_9 from '../backgrounds_profile/1.jpg'
+import bp_2 from '../backgrounds_profile/2.jpg'
+import bp_3 from '../backgrounds_profile/3.jpg'
+import bp_4 from '../backgrounds_profile/4.jpg'
+import bp_5 from '../backgrounds_profile/5.jpg'
+import bp_6 from '../backgrounds_profile/6.jpg'
+import bp_7 from '../backgrounds_profile/7.jpg'
+import bp_8 from '../backgrounds_profile/8.jpg'
+import bp_9 from '../backgrounds_profile/9.jpg'
 
 function Home() {
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
+    const [user, setUser] = useState({
+        picture: "",
+        name: ""
+    })
     const [cookie_log, setCookie_log] = useState({
         cookie: "",
         email: ""
@@ -76,6 +80,10 @@ function Home() {
                 .then(response => {
                     if (response.status === 200) {
                         setDb(response.data);
+                        setUser({
+                            picture: response.data.profile_image || profileIcon,
+                            name: response.data.firstName
+                        })
                         setCr(true)
                     } else {
                         window.location.reload();
@@ -219,8 +227,8 @@ function Home() {
     }
     var frozen_ = false
     const handleChange = async (e) => {
-        if (e.target.type === 'file' ) {
-            if(frozen_){
+        if (e.target.type === 'file') {
+            if (frozen_) {
                 setEdit_info_message(<div className='edit_faild'> Image upload failed 303</div>);
                 return false
             }
@@ -231,12 +239,12 @@ function Home() {
                 formData.append("image", file); // Append the file
                 formData.append("email", cookie_log.email); // Append email
                 formData.append("cookie", cookie_log.cookie); // Append cookie
-    
+
                 try {
                     const response = await axios.post(`${API_BASE_URL}/home/upload`, formData, {
                         headers: { "Content-Type": "multipart/form-data" }
                     });
-    
+
                     if (response.status === 200) {
                         frozen_ = false
                         const imageUrl = response.data.imageUrl;
@@ -255,7 +263,7 @@ function Home() {
             setEdit_info({ ...edit_info, [e.target.id]: e.target.value });
         }
     };
-    
+
     const setEdit_fun = (s, v) => {
         if (s == true) {
             setEdit_info(v)
@@ -276,13 +284,16 @@ function Home() {
                 link = db.link,
                 location = db.location;
 
-
-            // Picures SRCs
+            // INFO REPLACE-CHECK
             if (profile_image == undefined || profile_image.length <= 0) {
                 profile_image = profileIcon
             }
             if (cover == undefined || cover.length <= 0) {
-                cover = cover_pic
+                // Array of cover images
+                var bps = [bp_0, bp_1, bp_2, bp_3, bp_4, bp_5, bp_6, bp_7, bp_8, bp_9];
+                // Randomly select a cover image from the bps array
+                var randomIndex = Math.floor(Math.random() * bps.length); // Generate a random index
+                cover = bps[randomIndex]; // Assign the randomly selected cover to `cover`
             }
             if (bio == undefined || bio.length <= 0) {
                 bio = "No bio"
@@ -412,7 +423,7 @@ function Home() {
                     <div className='profile_main_info'>
                         <div className='pic_and_title'>
                             <div className='conver_pic'>
-                                <img src={cover}/>
+                                <img src={cover} />
                             </div>
                             <div className='profile_pic'>
                                 <div className='pic_pic'>
@@ -445,7 +456,7 @@ function Home() {
                                 </div>
                             </div>
                             <div className='info_chicago_'>
-                                {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link} width='14px' /> {link}</>}
+                                {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link_pic} width='14px' /> {link}</>}
                             </div>
                         </div>
                         <div className='chicago_bar'>
@@ -486,7 +497,7 @@ function Home() {
             </Helmet>
 
             {isLoading ? <>
-                <Header login={true} ask={false} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+                <Header login={true} ask={false} pic={user.picture} />
 
                 <div className='home_page'>
                     <div className='home_header_pck'>
