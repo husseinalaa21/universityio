@@ -46,6 +46,19 @@ const Intro = () => {
   const [animeText, setAnimeText] = useState(animeData[0].text);
   const [newDate, setNewDate] = useState(formatTime());
   const [index, setIndex] = useState(0);
+
+  const [showCookiesBanner, setShowCookiesBanner] = useState(true);
+  const handleAcceptCookies = () => {
+    setShowCookiesBanner(false);
+    localStorage.setItem('cookiesAccepted', 'true');
+  };
+
+  useEffect(() => {
+    if (localStorage.getItem('cookiesAccepted')) {
+      setShowCookiesBanner(false);
+    }
+  }, []);
+
   const liberay_img = '200px'
   var logo_size = '20px'
 
@@ -58,7 +71,6 @@ const Intro = () => {
 
   // State for the current icon index CLOSE
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
-
 
   function formatTime() {
     let now = new Date();
@@ -140,6 +152,12 @@ const Intro = () => {
       {isLoading ? <>
         <Header login={false} ask={true} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
 
+        {showCookiesBanner && (
+          <div className="cookies-banner">
+            <p>This website uses cookies to enhance user experience. By continuing to browse, you agree to our use of cookies.</p>
+            <button onClick={handleAcceptCookies} className='accept_cookie'>Accept</button>
+          </div>
+        )}
         <div className='intro'>
           <div className='web_intro'>
             <title>Welcome to University IO - Empower Your Future</title>
