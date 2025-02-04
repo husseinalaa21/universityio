@@ -92,11 +92,11 @@ function Home() {
                         })
                         setCr(true)
                     } else {
-                        window.location.reload();
+                        //window.location.reload();
                     }
                 })
                 .catch(error => {
-                    window.location.reload();
+                    //window.location.reload();
                 });
         }
     };

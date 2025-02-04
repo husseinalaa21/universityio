@@ -3,6 +3,7 @@ import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import '../style/main.css';
 import logo from '../logos/logo.png';
+import axios from 'axios';
 import caret_down from '../svg/caret-down-solid.svg'
 import caret_up from '../svg/caret-up-solid.svg'; // Make sure you have this image
 import fire_solid from '../svg/fire-solid.svg'
@@ -12,6 +13,10 @@ import Cookies from 'js-cookie';
 
 
 function Header(props) {
+    const API_BASE_URL = window.location.hostname === 'localhost'
+        ? 'http://localhost:5000'
+        : 'https://server.universityio.com';
+
     const navigate = useNavigate();
     const [showOptions, setShowOptions] = useState(false);
     const [isNight, setIsNight] = useState(true)
@@ -56,10 +61,19 @@ function Header(props) {
 
 
     const logout = () => {
-        Cookies.remove('cookie');
-        Cookies.remove('email');
-        // Refresh the page to clear any user state
-        window.location.reload();
+
+        axios.post(`${API_BASE_URL}/home/logout`, {}, { withCredentials: true }) // Ensure proper credentials
+            .then(response => {
+
+                if (response.status === 200) {
+                    window.location.reload();
+                } else {
+                    alert("sd")
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching cookie:', error);
+            });
     }
 
     return (
