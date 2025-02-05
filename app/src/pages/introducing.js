@@ -20,6 +20,9 @@ import arrow_left from '../svg/angle-left-solid.svg'
 import liberay_one from '../svg/liberay_one.jpg'
 import liberay_two from '../svg/liberay_two.jpg'
 import liberay_three from '../svg/liberay_three.jpg'
+import cookies from '../svg/cookie-bite-solid.svg'
+import x from '../svg/x-solid.svg'
+
 
 // Import SVG files
 import ChalkboardUser from '../svg/chalkboard-user-solid.svg';
@@ -154,8 +157,10 @@ const Intro = () => {
 
         {showCookiesBanner && (
           <div className="cookies-banner">
+            <div className='cct' onClick={handleAcceptCookies}><img src={x} width='16px'/></div>
+            <h2> <img src={cookies} width='23px'/> Cookies Used </h2>
             <p>This website uses cookies to enhance user experience. By continuing to browse, you agree to our use of cookies.</p>
-            <button onClick={handleAcceptCookies} className='accept_cookie'>Accept</button>
+            <button onClick={handleAcceptCookies} className='accept_cookie'>Accept and close</button>
           </div>
         )}
         <div className='intro'>

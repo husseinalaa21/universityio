@@ -15,7 +15,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #f8f9fa; /* Optional background */
+  background-color: #f8f9fa;
+  /* Optional background */
 }
 
 /* Logo container */
@@ -357,7 +358,7 @@
   top: 155px;
   background-color: #F2F9FF;
 
-  
+
   display: flex;
   flex-direction: column;
 }
@@ -408,37 +409,70 @@
 
 .cookies-banner {
   position: fixed;
-  bottom: 20px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90%;
-  max-width: 900px;
-  background: rgba(0, 0, 0, 0.8);
+  text-align: center;
+  bottom: 0px;
+  width: 100%;
+  background: rgba(5, 72, 130, 0.8);
   color: white;
-  padding: 15px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-radius: 4px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
   z-index: 1000;
 }
 
-.cookies-banner p{
+.cookies-banner h2{
+  font-size: 18px;
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+
+.cookies-banner h2 img {
+  margin-right: 10px;
+  filter: brightness(0) invert(1);
+}
+
+.cookies-banner p {
+  width: 90%;
+  margin: auto;
+  text-align: left;
   font-size: 16px;
+  padding: 16px;
 }
 
 .accept_cookie {
-  width: 200px;
-  height: 50px;
+  width: 90%;
+  padding: 16px;
   font-size: 14px;
+  font-weight: bold;
   border-radius: 2px;
-  background-color: #e6e6e6;
-  border: 2px solid #eeeeee;
+  background-color: #d9dee4;
+  border: 2px solid #b1b6bd;
   cursor: pointer;
+  margin-bottom: 20px;
+  color: #313236;
 }
-.accept_cookie:hover{
-  background-color: #f0f0f0;
+
+.cct {
+  filter: brightness(0) invert(1);
+  width: 30px;
+  padding: 6px;
+  top: 20px;
+  right: 20px;
+  position: absolute;
+  cursor: pointer;
+  background-color: #d9dee428;
+  border: 2px solid #b1b6bd9c;
+  border-style: dashed;
+  border-radius: 2px;
+}
+
+.cct img{
+  width: 10px;
+}
+
+.accept_cookie:hover {
+  background-color: #cbccce;
 }
 
 .user_not_found {
@@ -453,6 +487,6 @@
   font-size: 17px;
   align-items: center;
   display: flex;
-  justify-content: center; 
-  border-radius: 10px; 
+  justify-content: center;
+  border-radius: 10px;
 }
