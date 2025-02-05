@@ -54,7 +54,6 @@ function Home() {
         email: "",
         username: ""
     })
-    const [isResult, setIsResult] = useState([])
 
     const [cr, setCr] = useState(true)
     const [io, setIo] = useState({
@@ -558,16 +557,16 @@ function Home() {
         }
         // SEND USER PAGE
         // CHECK IF SAME SAME
-        if(db.email == cookie_log.email){
-            return container_profile()
+        var samesame = false
+        if (db.email == cookie_log.email) {
+            alert("AS")
+            samesame = true
         }
         return <div>
             <div className='search_container'>
 
             </div>
-            {isResult.length > 0 ? <div className='search_container_result'>
-
-            </div> :
+            {samesame? container_profile() :
                 <div className='search_container_suggested'>
 
                 </div>}
