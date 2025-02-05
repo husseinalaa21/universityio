@@ -15,9 +15,6 @@
 
 .modern-intro {
     position: relative;
-    /* For proper positioning */
-    backdrop-filter: blur(10px);
-    /* Blur effect */
 }
 
 .continer_titile {

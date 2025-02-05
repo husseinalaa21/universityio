@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { useParams, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import '../style/home.css';
 import cc from '../pages/cc.js'
-import { useNavigate } from 'react-router-dom';
 import Header from './header';
 import End from './end';
 import Loading from '../pages/loading.js'
@@ -41,6 +42,7 @@ const randomIndex = Math.floor(Math.random() * bps.length); // Generate a random
 const randombps = bps[randomIndex]
 
 function Home() {
+    const [searchParams] = useSearchParams();
     const navigate = useNavigate();
     const [isLoading, setIsLoading] = useState(false);
     const [user, setUser] = useState({
@@ -49,7 +51,8 @@ function Home() {
     })
     const [cookie_log, setCookie_log] = useState({
         cookie: "",
-        email: ""
+        email: "",
+        username: ""
     })
     const [isResult, setIsResult] = useState([])
 
@@ -69,7 +72,39 @@ function Home() {
         ? 'http://localhost:5000'
         : 'https://server.universityio.com';
 
-    const fetchDataForKey = (key, cookie, email) => {
+    // set current URL
+    var cu = ``
+    // TYPE OF DATA FOR THIS SECTION
+    // DATA FOR INSIDE THE SECTION - ALLOW
+    // FRONT - BACK (SAME / SAME) BUT DIFFRENT BUT STILL SAME!
+    var di = [
+        "user",
+        "add",
+        "delete",
+        "buy"
+    ]
+
+    const fetchDataForKey = (key, cookie, email, inside, vi) => {
+        // Important to set defult view so can't get error ?nr=0 = null and not able to try
+        cu = `?type=${key}`
+
+        function reload_() {
+            var num_reload = searchParams.get('nr');
+            num_reload = Number(num_reload)
+            if (num_reload < 3) {
+                setTimeout(() => {
+                    navigate(`${cu}&nr=${num_reload + 1}`);
+                    window.location.reload();
+                }, 1000);
+            } else if (num_reload >= 3) {
+                navigate('/', { replace: true });
+            } else {
+                setTimeout(() => {
+                    navigate(`${cu}&nr=0`);
+                    window.location.reload();
+                }, 1000);
+            }
+        }
         if (cr) {
             const newStates = {
                 course: false,
@@ -82,43 +117,70 @@ function Home() {
             setIo(newStates);
             setCr(false)
 
-            axios.post(`${API_BASE_URL}/home/${key}`, { email, cookie })
+            axios.post(`${API_BASE_URL}/home/${key}`, { email, cookie, inside: inside, vi })
                 .then(response => {
                     if (response.status === 200) {
-                        setDb(response.data);
+                        var dd = response.data
+                        setDb(dd);
                         setUser({
-                            picture: response.data.profile_image || profileIcon,
-                            name: response.data.firstName
+                            picture: dd.profile_image || profileIcon,
+                            name: dd.firstName
                         })
+                        if (dd.api_inside !== false) {
+                            cu = `?type=${key}&${dd.api_inside}=${dd.api_v}`
+                        } else {
+                            cu = `?type=${key}`
+                        }
+                        navigate(`${cu}`);
                         setCr(true)
                     } else {
-                        //window.location.reload();
+                        cu = `?type=${key}`
+                        navigate(`${cu}`);
+                        setCr(true)
+                        //reload_()
                     }
                 })
                 .catch(error => {
-                    //window.location.reload();
+                    reload_()
                 });
         }
     };
 
     useEffect(() => {
         if (!isLoading) {
-            cc().then(e => {
-                if (e.s == true) {
-                    setIsLoading(true)
-                    setCookie_log({
-                        cookie: e.c,
-                        email: e.m
-                    })
-                    fetchDataForKey('profile', e.c, e.m); // Default view when logged in
-                } else {
+            cc()
+                .then(e => {
+                    if (e.s === true) {
+                        setIsLoading(true);
+                        setCookie_log({
+                            cookie: e.c,
+                            email: e.m
+                        });
+
+                        const urlType = searchParams.get('type');
+                        if (urlType && io.hasOwnProperty(urlType)) {
+                            for (let i = 0; i < di.length; i++) {
+                                const ii = di[i];
+                                const iii = searchParams.get(ii);
+                                if (iii) {
+                                    fetchDataForKey(urlType, e.c, e.m, ii, iii);
+                                    return;
+                                }
+                            }
+                            fetchDataForKey(urlType, e.c, e.m, false, "Ds");
+                        } else {
+                            fetchDataForKey('profile', e.c, e.m, false, "Ds");
+                        }
+                    } else {
+                        navigate('/', { replace: true });
+                    }
+                })
+                .catch(error => {
+                    console.error('Error in cc() fetch:', error);
                     navigate('/', { replace: true });
-                }
-            }).catch(error => {
-                navigate('/', { replace: true });
-            })
+                });
         }
-    }, [isLoading]);
+    }, [isLoading, searchParams, navigate]);
 
 
     // CONTAINER FUNCTIONS ..
@@ -491,16 +553,24 @@ function Home() {
     }
 
     const container_search = () => {
+        if (db !== false) {
+            // SEND NORMAL PAGE - GLOBAL SHIT
+        }
+        // SEND USER PAGE
+        // CHECK IF SAME SAME
+        if(db.email == cookie_log.email){
+            return container_profile()
+        }
         return <div>
             <div className='search_container'>
-                
+
             </div>
-            {isResult.length >0? <div className='search_container_result'>
+            {isResult.length > 0 ? <div className='search_container_result'>
 
-            </div>:
-            <div className='search_container_suggested'>
+            </div> :
+                <div className='search_container_suggested'>
 
-            </div>}
+                </div>}
         </div>
     }
 
@@ -521,18 +591,18 @@ function Home() {
                     <div className='home_header_pck'>
                         <div className='home_header'>
                             <div className='home_header_pack_one'>
-                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.course ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.course ? 'active' : ''}`}>
                                     <img src={courseIcon} alt="Course" width='18px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.profile ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.profile ? 'active' : ''}`}>
                                     <img src={profileIcon} alt="Profile" width='18px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.search ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, false, "coos")} className={`container_change ${io.search ? 'active' : ''}`}>
                                     <img src={searchIcon} alt="Search" width='18px' />
                                 </div>
                             </div>
                             <div className='home_header_pack_two'>
-                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email)} className={`container_change ${io.messages ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.messages ? 'active' : ''}`}>
                                     <img src={comments_regular} alt="messages" width='18px' />
                                 </div>
                             </div>

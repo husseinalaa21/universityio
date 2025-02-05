@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Cookies from 'js-cookie'; // Import js-cookie
 import '../style/main.css';
 import End from './end'
 import Header from './header'
@@ -147,8 +146,6 @@ function LoginSignup() {
         setLoading(true);
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
         // *** SET COOKIES PROCESS ***
-        Cookies.set('cookie', response.data.cookie, { expires: 7 }); // Set cookie to expire in 7 days
-        Cookies.set('email', formData.email, { expires: 7 });
         setTimeout(() => navigate('/home'), 1000);
       } else {
         setLoading(false);

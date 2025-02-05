@@ -440,3 +440,19 @@
 .accept_cookie:hover{
   background-color: #f0f0f0;
 }
+
+.user_not_found {
+  width: 80%;
+  max-width: 600px;
+  margin: auto;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #e8f1f74d;
+  text-align: center;
+  height: 100px;
+  font-size: 17px;
+  align-items: center;
+  display: flex;
+  justify-content: center; 
+  border-radius: 10px; 
+}
