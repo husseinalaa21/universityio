@@ -418,7 +418,7 @@
   z-index: 1000;
 }
 
-.cookies-banner h2{
+.cookies-banner h2 {
   font-size: 18px;
   align-items: center;
   display: flex;
@@ -467,7 +467,7 @@
   border-radius: 2px;
 }
 
-.cct img{
+.cct img {
   width: 10px;
 }
 
@@ -489,4 +489,82 @@
   display: flex;
   justify-content: center;
   border-radius: 10px;
+}
+
+.search_container {
+  background-color: #eff6fce4;
+  position: relative;
+  padding: 20px;
+}
+
+.search_box {
+  display: flex;
+  width: 100%; /* Takes 90% of the page width */
+  align-items: center;
+  padding: 8px;
+  margin: auto;
+  width: 90%;
+  margin: auto;
+}
+
+.search_box input {
+  flex: 1; /* Takes the remaining space (80%) */
+  padding: 15px;
+  border: none;
+  outline: none;
+  width: 80%;
+  font-size: 14px;
+  border-radius: 20px 0 0 20px;
+  background-color:#f0f6fa;
+  padding-left: 23px; /* Ensures text inside input is also aligned */
+  border: 1px solid #d4ebff ;
+}
+
+.search_box input::placeholder {
+  font-size: 14px;
+  color: #999; /* Optional: Makes placeholder text lighter */
+}
+
+.search_box label {
+  position: absolute;
+  top: 10px;
+  margin-left: 14px;
+  z-index: 10;
+  background-color: #53799b;
+  font-size: 16px;
+}
+
+.search_button {
+  flex-shrink: 0; /* Prevents shrinking */
+  width: 20%; /* Takes 20% of the width */
+  max-width: 150px; /* Max width to prevent it from being too large */
+  padding: 15px;
+  background-color: #d4ebff ;
+  color: white;
+  border: none;
+  border-radius: 0 20px 20px 0;
+  border: 1px solid #d4ebff ;
+  cursor: pointer;
+  text-align: center;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: bold;
+}
+.search_button img {
+  width: 14px;
+  filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
+
+.search_button:hover {
+  background-color: #c6e1f9;
+}
+
+.search_suggestions {
+  margin: auto;
+}
+.sort {
+  background-color: #d4ebff;
+  display: flex;
+  justify-content: space-between;
+  padding: 20px;
 }

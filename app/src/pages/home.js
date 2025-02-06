@@ -60,10 +60,13 @@ function Home() {
         course: false,
         search: false,
         profile: true,
-        messages: false
+        messages: false,
+        lookup: false,
+        settings: false
     });
     const [db, setDb] = useState({});
     const [chicago, setChicago] = useState('course');
+    const [search_container, setSearch_container] = useState("")
     const [edit, setEdit] = useState(false)
     const [edit_info_message, setEdit_info_message] = useState(false)
 
@@ -82,6 +85,11 @@ function Home() {
         "delete",
         "buy"
     ]
+
+    const [api_url, setApi_url] = useState({
+        api_inside: "",
+        api_v: ""
+    })
 
     const fetchDataForKey = (key, cookie, email, inside, vi) => {
         // Important to set defult view so can't get error ?nr=0 = null and not able to try
@@ -110,7 +118,8 @@ function Home() {
                 search: false,
                 profile: false,
                 messages: false,
-                settings: false
+                settings: false,
+                lookup: false
             };
             newStates[key] = true;
             setIo(newStates);
@@ -120,10 +129,14 @@ function Home() {
                 .then(response => {
                     if (response.status === 200) {
                         var dd = response.data
-                        setDb(dd);
+                        setDb(dd.data);
                         setUser({
                             picture: dd.profile_image || profileIcon,
                             name: dd.firstName
+                        })
+                        setApi_url({
+                            api_inside: dd.api_inside,
+                            api_v: dd.api_v
                         })
                         if (dd.api_inside !== false) {
                             cu = `?type=${key}&${dd.api_inside}=${dd.api_v}`
@@ -551,31 +564,132 @@ function Home() {
         }
     }
 
-    const container_search = () => {
-        if (db !== false) {
+    const hcs = (e) => {
+        setSearch_container(e.target.value)
+        setApi_url({ ...api_url, "api_v": e.target.value })
+    }
+
+    const lookup = () => {
+        var isNoResul = false
+        if (!db || db.email == undefined || db.profile_image == undefined) {
             // SEND NORMAL PAGE - GLOBAL SHIT
+            isNoResul = true
         }
         // SEND USER PAGE
         // CHECK IF SAME SAME
-        var samesame = false
         if (db.email == cookie_log.email) {
-            alert("AS")
-            samesame = true
+            // PREPARED FOR RETURNED TO THE PROFILE SECTION
+            fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, "", "")
+            return true
         }
-        return <div>
-            <div className='search_container'>
+        var firstName = db.firstName,
+            lastName = db.lastName,
+            username = db.username,
+            bio = db.bio,
+            profile_image = db.profile_image,
+            cover = db.cover,
+            link = db.link,
+            location = db.location;
+        return <>
+            {isNoResul ? <> No User Found! </> :
+                <div className="search_suggestions">
+                    <div className='profile_main'>
+                        <div className='profile_main_info'>
+                            <div className='pic_and_title'>
+                                <div className='conver_pic'>
+                                    <img src={cover} />
+                                </div>
+                                <div className='profile_pic'>
+                                    <div className='pic_pic'>
+                                        <img src={profile_image} />
+                                    </div>
+                                </div>
+                                <div className='username_and_discription'>
+                                    <div className='name_co_'>{firstName} {lastName}</div>
+                                    <div className='username_con_'>@{username}</div>
+                                    <div className='description_con_'>{bio}</div>
+                                </div>
+                                <div className='chicago_mine'>
+                                    <div className='info_chicago'>
+                                        <div>
+                                            <img src={location_pic} width='14px' /> {location}
+                                        </div>
+                                        <div>
+                                            <img src={join_pic} width='14px' /> Joined {chicago_date(db.join)}
+                                        </div>
+                                    </div>
+                                    <div className='info_chicago_'>
+                                        {db.link ? <><img src={link_pic} width='14px' /> <a href={link} target="_blank"> {link.slice(0, 200) + '...'} </a></> : <><img src={link_pic} width='14px' /> {link}</>}
+                                    </div>
+                                </div>
+                            </div>
+                            <div className='chicago_bar'>
+                                <div onClick={() => change_chicago("course")} className={chicago == "course" && "chicago_bar_selected"}>
+                                    Courses
+                                </div>
+                                <div onClick={() => change_chicago("degree")} className={chicago == "degree" && "chicago_bar_selected"}>
+                                    Degrees
+                                </div>
+                                <div onClick={() => change_chicago("activates")} className={chicago == "activates" && "chicago_bar_selected"}>
+                                    Activates
+                                </div>
+                            </div>
+                        </div>
 
-            </div>
-            {samesame? container_profile() :
-                <div className='search_container_suggested'>
-
+                        <div className='profile_main_con'>
+                            {chicago_con()}
+                        </div>
+                    </div>
                 </div>}
-        </div>
+        </>
+    }
+
+    const container_search = () => {
+        var isResult = true
+        var users = ""
+        var courses = ""
+
+        if (!db) {
+            // PRINT RESULT
+            isResult = false
+        }
+        
+        return <>
+            <div className="search_container">
+                {/* Input + Button Together */}
+                <div className="search_box">
+                    <input
+                        type="text"
+                        id="search_c"
+                        value={search_container}
+                        onChange={hcs}
+                        placeholder='Seach for a course or for someone ..'
+                        required
+                    />
+                    <button className="search_button" onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, api_url.api_inside, api_url.api_v)}>
+                        <img src={searchIcon} />
+                    </button>
+                </div>
+            </div>
+
+            {isResult ? <div className='results'>
+                <div className='sort'>
+                    <div> Results Found </div>
+                    <div> {db.length} </div>
+                </div>
+                {users}
+                {courses}
+                {JSON.stringify(db)}
+            </div> : <div className='suggestions'>
+            </div>}
+        </>
     }
 
     const container_messages = () => {
         return ""
     }
+
+    // RENDER MAIN HOME
     return (
         <>
             <Helmet>
@@ -610,7 +724,8 @@ function Home() {
                     {cr ?
                         <div className='container'>
                             {io.course && <div className='course_container'>{container_course()}</div>}
-                            {io.search && <div className='search_container'>{container_search()}</div>}
+                            {io.search && container_search()}
+                            {io.lookup && lookup()}
                             {io.profile && <div className='profile_container'>{container_profile()}</div>}
                             {io.messages && <div className='messages_container'>{container_messages()}</div>}
                         </div> : <div className='cr'></div>}
