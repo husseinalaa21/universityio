@@ -2,7 +2,7 @@
     padding: 24px;
     background-color: rgb(234, 242, 248);
     position: relative;
-    min-height: 400px;
+    min-height: 600px;
     align-items: center;
 }
 
@@ -38,10 +38,21 @@
     /* Add space between h1 and the icon */
 }
 
+.container h1 mark {
+    background: none;
+    color: #369aff;
+}
+
 .container p {
-    font-size: 20px;
+    font-size: 17px;
     color: rgb(88, 93, 98);
     text-align: center;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 23px;
+    line-height: 1.4;
+    /* Improves readability */
+    font-weight: 420;
 }
 
 .continer_titile div {
@@ -49,10 +60,7 @@
     font-weight: 700;
     color: slategray;
 }
-.container p {
-    font-size: 18px;
-    text-align: left;
-}
+
 .icon-container {
     display: inline-block;
     animation: fade-in 1s ease-in-out;
@@ -97,6 +105,44 @@
     font-weight: bold;
     border: 0;
     border-right: 10px solid #d6ecf9;
+    height: 230px;
+}
+
+.anime_butt {
+    width: 300px;
+    margin: auto;
+    padding: 16px;
+    background-color: #38b6ff;
+    border-right: 10px solid #acdefb;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+    border-radius: 2px;
+    cursor: pointer;
+}
+.anime_butt:hover {
+    background-color: #5fc4ff;
+    border-right: 10px solid #bbe1f7;
+}
+
+
+.anime_butt_signup {
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    text-align: center;
+    color: #fbfcfe;
+    justify-content: space-between;
+}
+.anime_butt_svg {
+    background-color: #d6ebf8;
+    width: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    height: 40px;
+    border-radius: 100px;
 }
 
 .anime_header {
@@ -185,7 +231,7 @@
 }
 
 .liberay_container {
-    display:flex;
+    display: flex;
     align-items: center;
     position: relative;
     margin-top: -40px;
@@ -206,20 +252,23 @@
 
 .liberay_card:nth-child(1) {
     margin-top: 0px;
-    right: 60px; /* Adjust as necessary */
+    right: 60px;
+    /* Adjust as necessary */
     background-color: #b6dff6;
 }
 
 .liberay_card:nth-child(2) {
     margin-top: 40px;
     background-color: #7cbaf85e;
-    right: 110px; /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
+    right: 110px;
+    /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
 }
 
 .liberay_card:nth-child(3) {
     margin-top: 80px;
     background-color: #369bff47;
-    right: 160px; /* Adjust as necessary */
+    right: 160px;
+    /* Adjust as necessary */
 }
 
 .liberay_card_img {
@@ -230,7 +279,7 @@
     border-radius: 4px;
 }
 
-.liberay_card_img img{
+.liberay_card_img img {
     border-radius: 4px;
 }
 
@@ -245,7 +294,8 @@
 
 .courses {
     padding: 20px;
-    background-color: rgb(234, 242, 248);;
+    background-color: rgb(234, 242, 248);
+    ;
 }
 
 .course-list {
@@ -269,7 +319,7 @@
     margin-bottom: 20px;
 }
 
-.item-shape p{
+.item-shape p {
     font-size: 16px;
 }
 
@@ -351,12 +401,14 @@
     padding-bottom: 20px;
     padding-top: 30px;
 }
+
 .qa_p {
     padding: 0px 30px 30px 30px;
     text-align: center;
     align-items: center;
     margin: 0;
 }
+
 .Qa_in {
     display: flex;
     justify-content: center;
@@ -365,15 +417,20 @@
     padding: 0;
     background-color: #98d6fa;
 }
+
 .qn_driver {
     width: 40%;
     background-color: #b6dff6;
     padding: 10px;
     height: 100px;
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers vertically */
-    justify-content: center; /* Centers horizontally */
-    text-align: center; /* Ensures text is centered within the flex container */
+    display: flex;
+    /* Enables flexbox */
+    align-items: center;
+    /* Centers vertically */
+    justify-content: center;
+    /* Centers horizontally */
+    text-align: center;
+    /* Ensures text is centered within the flex container */
     margin: 0;
     font-size: 18px;
     border-right: 10px solid #a5dbfa;
@@ -385,13 +442,17 @@
     padding: 10px;
     padding-left: 20px;
     height: 100px;
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers vertically */
-    text-align: left !important; /* Ensures text is centered within the flex container */
+    display: flex;
+    /* Enables flexbox */
+    align-items: center;
+    /* Centers vertically */
+    text-align: left !important;
+    /* Ensures text is centered within the flex container */
     margin: 0;
     font-size: 17px;
     border-left: 10px solid #89d0f9;
 }
+
 .Qa_head_group h2 {
     padding: 20px;
     text-align: center !important;

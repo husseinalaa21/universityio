@@ -22,6 +22,7 @@ import liberay_two from '../svg/liberay_two.jpg'
 import liberay_three from '../svg/liberay_three.jpg'
 import cookies from '../svg/cookie-bite-solid.svg'
 import x from '../svg/x-solid.svg'
+import arrow_up from '../svg/arrow-up-right-from-square-solid.svg'
 
 
 // Import SVG files
@@ -157,27 +158,25 @@ const Intro = () => {
 
         {showCookiesBanner && (
           <div className="cookies-banner">
-            <div className='cct' onClick={handleAcceptCookies}><img src={x} width='16px'/></div>
-            <h2> <img src={cookies} width='23px'/> Cookies Used </h2>
+            <div className='cct' onClick={handleAcceptCookies}><img src={x} width='16px' /></div>
+            <h2> <img src={cookies} width='23px' /> Cookies Used </h2>
             <p>This website uses cookies to enhance user experience. By continuing to browse, you agree to our use of cookies.</p>
             <button onClick={handleAcceptCookies} className='accept_cookie'>Accept and close</button>
           </div>
         )}
         <div className='intro'>
           <div className='web_intro'>
-            <title>Welcome to University IO - Empower Your Future</title>
+            <title> University IO: Learn, Teach, Succeed - Your Gateway to Skills and Opportunities </title>
             <section className="modern-intro">
               <div className="container">
                 <div className='continer_titile'>
-                  <h1>Welcome to University IO</h1>
-                  <div>
-                    Learn New Skills.
-                  </div>
-                  <div>
-                    Or sell your courses.
+                  <h1> Buy or Sell <mark>Online</mark> Courses </h1>
+                  <div className='bio_main'>
+                    <div> Learn New Skills. </div>
+                    <div> Or sell your courses. </div>
                   </div>
                 </div>
-                <p>Explore new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
+                <p>Learn new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
               </div>
             </section>
             <section className='anime'>
@@ -192,6 +191,10 @@ const Intro = () => {
                   {animeText}
                   <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
                 </div>
+              </div>
+              <div className='anime_butt'>
+                <div className='anime_butt_signup'> Join our community  </div>
+                <div className='anime_butt_svg'><img src={arrow_up} width="16px" /></div>
               </div>
             </section>
           </div>
