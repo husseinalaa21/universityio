@@ -7,6 +7,10 @@
   color: hsl(210, 6%, 35%);
 }
 
+/* Logo image */
+.logo-main {
+  cursor: pointer;
+}
 
 /* Full-page container */
 .loading_main {
@@ -26,7 +30,6 @@
   align-items: center;
 }
 
-/* Logo image */
 ._logo {
   width: 60px;
   object-fit: contain;
@@ -217,17 +220,6 @@
   cursor: pointer;
 }
 
-@media only screen and (min-width: 600px) {
-  .inputs_group {
-    display: flex;
-    justify-content: space-between;
-  }
-
-  .inputs_group .form-group {
-    width: 46% !important;
-  }
-}
-
 .toggleAny {
   padding: 10px;
   font-size: 17px;
@@ -277,73 +269,63 @@
 }
 
 .panel {
-  position: absolute;
   background-color: #F2F9FF;
   border-top: 1px solid #edf4f9;
-  left: 0;
-  right: 0;
-  top: 100px;
   padding: 20px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-between;
   font-size: 15px;
-  font-weight: 600;
 }
 
-.panel div {
+.basic_panel {
+  display: flex;
+}
+
+.right_panel {
+  display: flex;
+  justify-content: space-between;
+}
+
+.explore_courses {
+  margin-right: 20px;
+  width: 130px;
+  border-radius: 200px;
+  background-color: #e6f1fb;
+  border: 1px solid #a6ccf0;
+  padding: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.basic_panel div {
   text-align: center;
   align-items: center;
   margin: auto;
   cursor: pointer;
+  border: 0;
   border-right: 1px solid #d0d4d9;
   padding-right: 20px;
+  padding-left: 20px;
 }
 
-.panel_web {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 15px;
-  font-weight: 700;
-  border: none !important;
-  padding: 0 !important;
-}
-
-.panel_web mark {
-  background: none;
-  color: #038eff;
-}
-
-.panel_web div {
-  text-align: center;
-  border: none !important;
-}
-
-.panel_web .panel_icon {
-  padding: 0 0 0 30px;
-}
-
-.panel_web img {
-  position: relative;
-  top: 3px;
-  margin-right: 4px;
+.basic_panel div:last-child {
+  border: 0;
 }
 
 .panel_more {
   align-items: center;
   display: flex;
   justify-content: center;
-  border: none !important;
+  cursor: pointer;
+  width: 100px;
+  padding: 10px;
+  border-radius: 200px;
+  border: 1px solid #e6edf4;
+  text-align: center;
 }
 
 .panel_more img {
   margin-left: 10px;
-}
-
-@media only screen and (max-width: 700px) {
-  .panel_web {
-    display: none;
-  }
 }
 
 .header_selected {
@@ -351,8 +333,19 @@
   font-weight: bold;
 }
 
+.main_header_selected {
+  border: 0 !important;
+  text-align: center;
+  border-radius: 40px;
+  padding: 10px;
+  background-color: #edf4f9;
+}
+
+.main_header_selected img {
+  filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
+
 .dropdown_content {
-  position: absolute;
   z-index: 1000;
   width: 100%;
   top: 155px;
@@ -499,7 +492,8 @@
 
 .search_box {
   display: flex;
-  width: 100%; /* Takes 90% of the page width */
+  width: 100%;
+  /* Takes 90% of the page width */
   align-items: center;
   padding: 8px;
   margin: auto;
@@ -508,21 +502,24 @@
 }
 
 .search_box input {
-  flex: 1; /* Takes the remaining space (80%) */
+  flex: 1;
+  /* Takes the remaining space (80%) */
   padding: 15px;
   border: none;
   outline: none;
   width: 80%;
   font-size: 14px;
   border-radius: 20px 0 0 20px;
-  background-color:#f0f6fa;
-  padding-left: 23px; /* Ensures text inside input is also aligned */
-  border: 1px solid #d4ebff ;
+  background-color: #f0f6fa;
+  padding-left: 23px;
+  /* Ensures text inside input is also aligned */
+  border: 1px solid #d4ebff;
 }
 
 .search_box input::placeholder {
   font-size: 14px;
-  color: #999; /* Optional: Makes placeholder text lighter */
+  color: #999;
+  /* Optional: Makes placeholder text lighter */
 }
 
 .search_box label {
@@ -535,21 +532,25 @@
 }
 
 .search_button {
-  flex-shrink: 0; /* Prevents shrinking */
-  width: 20%; /* Takes 20% of the width */
-  max-width: 150px; /* Max width to prevent it from being too large */
+  flex-shrink: 0;
+  /* Prevents shrinking */
+  width: 20%;
+  /* Takes 20% of the width */
+  max-width: 150px;
+  /* Max width to prevent it from being too large */
   padding: 15px;
-  background-color: #d4ebff ;
+  background-color: #d4ebff;
   color: white;
   border: none;
   border-radius: 0 20px 20px 0;
-  border: 1px solid #d4ebff ;
+  border: 1px solid #d4ebff;
   cursor: pointer;
   text-align: center;
   cursor: pointer;
   font-size: 14px;
   font-weight: bold;
 }
+
 .search_button img {
   width: 14px;
   filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
@@ -562,9 +563,82 @@
 .search_suggestions {
   margin: auto;
 }
+
 .sort {
   background-color: #d4ebff;
   display: flex;
   justify-content: space-between;
   padding: 20px;
+}
+
+
+/*  Mobile ADJUSTER FOR ALL CSS's files */
+
+@media only screen and (min-width: 600px) {
+  .inputs_group {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .inputs_group .form-group {
+    width: 46% !important;
+  }
+}
+
+
+@media only screen and (max-width: 750px) {
+  .explore_web {
+    display: none;
+  }
+
+  .main_header_selected {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 700px) {
+  .liberay {
+    display: block;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .liberay_container {
+    min-height: 400px;
+  }
+
+  .anime {
+    position: relative;
+    right: auto;
+  }
+
+  .modern-intro {
+    max-width: 100%;
+  }
+
+  .anime_tap {
+    width: 240px;
+    right: auto !important;
+    left: auto !important;
+    margin: auto !important;
+  }
+
+  .anime_header {
+    padding: 14px;
+    width: 240px;
+    right: -40px;
+  }
+
+  .anime_continer {
+    padding: 14px;
+    width: 240px;
+  }
+
+  .intro {
+    min-height: 600px
+  }
+
+  .modern-intro {
+    top: 0px;
+  }
 }

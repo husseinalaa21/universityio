@@ -1,6 +1,5 @@
 .intro {
     padding: 24px;
-    margin-top: 40px;
     background-color: rgb(234, 242, 248);
     position: relative;
     min-height: 400px;
@@ -242,53 +241,6 @@
     font-style: normal;
     color: #fefefe;
     font-size: 20px;
-}
-
-@media only screen and (max-width: 700px) {
-    .liberay {
-        display: block;
-        position: relative;
-        overflow: hidden;
-    }
-
-    .liberay_container {
-        min-height: 400px;
-    }
-
-    .anime {
-        position: relative;
-        right: auto;
-    }
-
-    .modern-intro {
-        max-width: 100%;
-    }
-
-    .anime_tap {
-        width: 240px;
-        right: auto !important;
-        left: auto !important;
-        margin: auto !important;
-    }
-
-    .anime_header {
-        padding: 14px;
-        width: 240px;
-        right: -40px;
-    }
-
-    .anime_continer {
-        padding: 14px;
-        width: 240px;
-    }
-
-    .intro {
-        min-height: 600px
-    }
-
-    .modern-intro {
-        top: 0px;
-    }
 }
 
 .courses {

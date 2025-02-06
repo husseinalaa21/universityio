@@ -11,9 +11,9 @@ const API_BASE_URL =
     ? 'http://localhost:5000'
     : 'https://server.universityio.com';
 
-function LoginSignup() {
+function LoginSignup(props) {
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState(true);
+  const [isLogin, setIsLogin] = useState(props.type);
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',

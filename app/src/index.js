@@ -27,7 +27,13 @@ root.render(
         <Route path="/home" element={<Home />} />
 
         {/* Login and Sign Up route */}
-        <Route path="/auth" element={<LoginSignup />} />
+        <Route path="/auth" element={<LoginSignup type={true}/>} />
+
+        {/* Login and Sign Up route */}
+        <Route path="/login" element={<LoginSignup type={true}/>} />
+
+        {/* Login and Sign Up route */}
+        <Route path="/signup" element={<LoginSignup type={false}/>} />
 
         {/* Inside route (after login) */}
         <Route path="/reset-password" element={<Restart />} />
@@ -37,6 +43,7 @@ root.render(
         <Route path="/policy" element={<Policy />} />
         <Route path="/support" element={<Support />} />
         <Route path="/contactus" element={<ContactUs />} />
+        <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/user" element={<User />} />
 

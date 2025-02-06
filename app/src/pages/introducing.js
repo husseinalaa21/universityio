@@ -1,8 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { useNavigate } from 'react-router-dom';
-import '../style/main.css';
 import '../style/introducing.css'
+import '../style/main.css';
 import Header from './header';
 import End from './end';
 import cc from '../pages/cc'

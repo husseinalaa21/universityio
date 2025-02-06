@@ -6,10 +6,10 @@ import logo from '../logos/logo.png';
 import axios from 'axios';
 import caret_down from '../svg/caret-down-solid.svg'
 import caret_up from '../svg/caret-up-solid.svg'; // Make sure you have this image
+import homeIcon from '../svg/house-solid.svg'
 import fire_solid from '../svg/fire-solid.svg'
 import moon_regular from '../svg/moon-regular.svg'
 import moon_solid from '../svg/moon-solid.svg'
-import Cookies from 'js-cookie';
 
 
 function Header(props) {
@@ -33,7 +33,9 @@ function Header(props) {
         isAbout: false,
         isSupport: false,
         isPolicy: false,
-        isHome: false  // Added isHome state
+        isHome: false,
+        isFaq: false,
+        isContact: false
     });
 
     // Effect to update state based on current pathname
@@ -45,6 +47,8 @@ function Header(props) {
             isAbout: path.includes('/about'),
             isSupport: path.includes('/support'),
             isPolicy: path.includes('/policy'),
+            isFaq: path.includes('/faq'),
+            isContact: path.includes('/contactus'),
             isHome: path === '/'  // Check if the pathname exactly matches '/'
         });
     }, [location]); // Dependency on location to run effect when it changes
@@ -68,7 +72,7 @@ function Header(props) {
                 if (response.status === 200) {
                     window.location.reload();
                 } else {
-                    alert("sd")
+                    alert("Error ....")
                 }
             })
             .catch(error => {
@@ -79,7 +83,7 @@ function Header(props) {
     return (
         <>
             <header className="main_header" onClick={toggleOptions_advance}>
-                <div className='logo-main'>
+                <div className='logo-main' onClick={() => navigate('/')}>
                     <img className="logo" src={logo} alt="logo" />
                 </div>
 
@@ -94,32 +98,9 @@ function Header(props) {
                     : props.ask ?
                         <div className='header_intro'>
                             <div className='header-ask'>
-                                <div
-                                    className='header-login'
-                                    onClick={() => navigate('/auth')}
-                                >
-                                    Login
-                                </div>
-                                <div
-                                    className='header-signup'
-                                    onClick={() => navigate('/auth')}
-                                >
-                                    Sign Up
-                                </div>
+                                <div className='header-login' onClick={() => navigate('/login')} > Login </div>
+                                <div className='header-signup' onClick={() => navigate('/signup')}> Sign Up </div>
                             </div>
-                            <div className='panel'>
-                                <div className='panel_web'>
-                                    {/* add here if it was scroll down make the logo visable */}
-                                    {/* Make this if the page was diffrent than the home make home button visable */}
-                                    <div onClick={() => navigate('/auth')}> <mark>Join</mark> today for free </div>
-                                </div>
-                                {!pageLocated.isHome && <div onClick={() => navigate('/')}> Main Page </div>}
-                                <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>
-                                <div className={pageLocated.isSupport ? 'header_selected' : ''} onClick={() => navigate('/support')}> Support </div>
-
-                                <div className='panel_more' onClick={toggleList}>
-                                    More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" />
-                                </div>                        </div>
                         </div> : null}
                 {/**isNight ? <div className='night_on'> <img src={moon_solid} width='20px'></img></div> : <div className='night_off'></div>**/}
                 {showOptions && (
@@ -130,6 +111,18 @@ function Header(props) {
                     </div>
                 )}
             </header>
+            <div className='panel'>
+                <div className='basic_panel'>
+                    {!pageLocated.isHome && <div className='main_header_selected' onClick={() => navigate('/')}> <img src={homeIcon} width='20px'/> </div>}
+                    <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>
+                    <div className={pageLocated.isSupport ? 'header_selected' : ''} onClick={() => navigate('/support')}> Support </div>
+                    <div className={pageLocated.isFaq ? 'header_selected' : ''} onClick={() => navigate('/faq')}> FAQ </div>
+                </div>
+                <div className='right_panel'>
+                    <div className='explore_courses explore_web' onClick={() => navigate('/faq')}> Explore Courses </div>
+                    <div className='panel_more' onClick={toggleList}> More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" /> </div>
+                </div>
+            </div>
             {showList && (
                 <div className="dropdown_content">
                     <div className="dropdown_section">
@@ -139,8 +132,8 @@ function Header(props) {
                         <div onClick={() => navigate('/support')}>Get Support</div>
                     </div>
                     <div className="dropdown_section">
-                        <div onClick={() => navigate('/auth/login')}>Log in</div>
-                        <div onClick={() => navigate('/auth/register')}>Create Account</div>
+                        <div onClick={() => navigate('/login')}>Log in</div>
+                        <div onClick={() => navigate('/signup')}>Create Account</div>
                     </div>
                     <div className="dropdown_section">
                         <div onClick={() => window.location.href = "https://www.linkedin.com/company/university-io/"} target="_blank" rel="noopener noreferrer">LinkedIn</div>
