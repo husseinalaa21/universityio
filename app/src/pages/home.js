@@ -644,6 +644,7 @@ function Home() {
         </>
     }
 
+
     const container_search = () => {
         var isResult = true
         var users = ""
@@ -653,7 +654,12 @@ function Home() {
             // PRINT RESULT
             isResult = false
         }
-        
+        const dUsers = () => {
+            db.forEach(element => {
+                return <div> User </div>
+            });
+        }
+
         return <>
             <div className="search_container">
                 {/* Input + Button Together */}
@@ -677,11 +683,21 @@ function Home() {
                     <div> Results Found </div>
                     <div> {db.length} </div>
                 </div>
-                {users}
-                {courses}
-                {JSON.stringify(db)}
-            </div> : <div className='suggestions'>
-            </div>}
+                {db.map((user, index) => (
+                    <div key={index} className="user_item">
+                        <div className='user_image'><img src={user.profile_image || profileIcon} width="18px" /></div>
+                        <div className='user_info'><div className='user_info_name'>{user.firstName}{user.lastName}</div> <div className='user_info_username'>{user.username}</div><div className='user_info_bio'>{user.bio}</div></div>
+                         {/* Adjust according to your data */}
+                    </div>
+                ))}
+            </div> : <>
+                <div className='sort'>
+
+                </div>
+                <div className='suggestions'>
+
+                </div>
+            </>}
         </>
     }
 
