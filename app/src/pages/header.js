@@ -111,8 +111,8 @@ function Header(props) {
                     </div>
                 )}
             </header>
-            <div className='panel'>
-                <div className='basic_panel'>
+            {props.ask?
+            <div className='panel'> <div className='basic_panel'>
                     {!pageLocated.isHome && <div className='main_header_selected' onClick={() => navigate('/')}> <img src={homeIcon} width='20px'/> </div>}
                     <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>
                     <div className={pageLocated.isSupport ? 'header_selected' : ''} onClick={() => navigate('/support')}> Support </div>
@@ -122,7 +122,7 @@ function Header(props) {
                     <div className='explore_courses explore_web' onClick={() => navigate('/faq')}> Explore Courses </div>
                     <div className='panel_more' onClick={toggleList}> More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" /> </div>
                 </div>
-            </div>
+            </div>: null}
             {showList && (
                 <div className="dropdown_content">
                     <div className="dropdown_section">

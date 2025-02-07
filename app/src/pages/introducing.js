@@ -192,9 +192,28 @@ const Intro = () => {
                   <div className='info_message_anime'><img src={check_double} width="12px"></img><p className='time_nn'>{newDate}</p></div>
                 </div>
               </div>
-              <div className='anime_butt'>
-                <div className='anime_butt_signup'> Join our community  </div>
+              <div className='anime_butt' onClick={() => navigate('/signup')}>
+                <div className='anime_butt_signup' > Join our community  </div>
                 <div className='anime_butt_svg'><img src={arrow_up} width="16px" /></div>
+              </div>
+            </section>
+          </div>
+          <div className='wild_intro'>
+            <section className='chicago_intro'>
+              <div className='chicago_images'>
+                <img src={liberay_one} alt='First' className='fade-left' />
+                <img src={liberay_one} alt='Second' className='center-image' />
+                <img src={liberay_one} alt='Third' className='fade-right' />
+              </div>
+            </section>
+
+            <section className='california_intro'>
+              <div className='ca_title'>
+                <h2>Explore New <mark>Ways</mark> to <mark>Teach</mark></h2>
+                <p> #Teach #Learn #Earn </p>
+              </div>
+              <div className='ca_bio'>
+                <p>Discover innovative methods to share your knowledge and inspire learners worldwide. Whether you're an expert in programming, IT, business, or any field, this is your platform to create, publish, and sell courses. Empower others, grow your influence, and redefine teaching in the digital age. </p>
               </div>
             </section>
           </div>

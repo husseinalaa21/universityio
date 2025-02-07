@@ -4,12 +4,90 @@
     position: relative;
     min-height: 600px;
     align-items: center;
+    color: rgb(88, 93, 98);
 }
+
 
 .web_intro {
     position: relative;
     max-width: 1200px;
     margin: auto;
+    min-height: 600px;
+}
+
+.wild_intro {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    margin-bottom: 100px;
+}
+
+.california_intro {
+    max-width: 400px;
+    text-align: center;
+    z-index: 100;
+    margin: auto;
+    top: -100px;
+}
+
+.ca_title p {
+    font-size: 15px;
+    font-weight: 500;
+}
+
+.ca_title h2 {
+    font-size: 26px;
+    margin-bottom: 50px;
+}
+
+.ca_title h2 mark {
+    font-size: 24px;
+    font-family: "Pacifico", serif;
+    font-weight: 600;
+    font-style: normal;
+    background: none;
+    color: #369aff;
+}
+
+.ca_bio p {
+    font-size: 17px;
+    text-align: center;
+    max-width: 400px;
+    margin: auto;
+    margin-top: 23px;
+    line-height: 1.4;
+    /* Improves readability */
+    font-weight: 500;
+}
+
+.chicago_intro {
+    width: 40%;
+    max-width: 400px;
+    margin: auto;
+}
+
+.chicago_images {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.chicago_images img {
+    width: auto;
+    height: 200px;
+    transition: opacity 0.5s;
+}
+
+.fade-left {
+    mask-image: linear-gradient(to right, transparent, black);
+    -webkit-mask-image: linear-gradient(to right, transparent, black);
+}
+
+.fade-right {
+    mask-image: linear-gradient(to left, transparent, black);
+    -webkit-mask-image: linear-gradient(to left, transparent, black);
 }
 
 .modern-intro {
@@ -31,7 +109,6 @@
 
 .container h1 {
     font-size: 26px;
-    color: rgb(88, 93, 98);
     text-align: center;
     /* Redundant but ensures alignment */
     margin-bottom: 10px;
@@ -45,7 +122,6 @@
 
 .container p {
     font-size: 17px;
-    color: rgb(88, 93, 98);
     text-align: center;
     max-width: 400px;
     margin: auto;
@@ -58,7 +134,6 @@
 .continer_titile div {
     font-size: 16px;
     font-weight: 700;
-    color: slategray;
 }
 
 .icon-container {
@@ -121,6 +196,7 @@
     border-radius: 2px;
     cursor: pointer;
 }
+
 .anime_butt:hover {
     background-color: #5fc4ff;
     border-right: 10px solid #bbe1f7;
@@ -135,6 +211,7 @@
     color: #fbfcfe;
     justify-content: space-between;
 }
+
 .anime_butt_svg {
     background-color: #d6ebf8;
     width: 40px;
