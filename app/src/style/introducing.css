@@ -5,6 +5,7 @@
     min-height: 600px;
     align-items: center;
     color: rgb(88, 93, 98);
+    overflow: hidden;
 }
 
 
