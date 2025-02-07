@@ -17,6 +17,9 @@ import money_logo from '../svg/money-bill-transfer-solid.svg'
 import python_logo from '../svg/python-brands-solid.svg'
 import arrow_right from '../svg/angle-right-solid.svg'
 import arrow_left from '../svg/angle-left-solid.svg'
+import california_ from '../svg/california.jpg'
+import california_t from '../svg/california_2.jpg'
+import california_a from '../svg/california_3.jpg'
 import liberay_one from '../svg/liberay_one.jpg'
 import liberay_two from '../svg/liberay_two.jpg'
 import liberay_three from '../svg/liberay_three.jpg'
@@ -201,9 +204,9 @@ const Intro = () => {
           <div className='wild_intro'>
             <section className='chicago_intro'>
               <div className='chicago_images'>
-                <img src={liberay_one} alt='First' className='fade-left' />
-                <img src={liberay_one} alt='Second' className='center-image' />
-                <img src={liberay_one} alt='Third' className='fade-right' />
+                <img src={california_a} alt='First' className='fade-left' />
+                <img src={california_} alt='Second' className='center-image' />
+                <img src={california_t} alt='Third' className='fade-right' />
               </div>
             </section>
 

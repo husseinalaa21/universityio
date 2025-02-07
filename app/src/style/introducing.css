@@ -21,7 +21,6 @@
     align-items: center;
     position: relative;
     margin-bottom: 100px;
-    overflow: hidden;
 }
 
 .california_intro {
@@ -29,7 +28,6 @@
     text-align: center;
     z-index: 100;
     margin: auto;
-    top: -100px;
 }
 
 .ca_title p {
