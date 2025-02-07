@@ -21,6 +21,7 @@
     align-items: center;
     position: relative;
     margin-bottom: 100px;
+    overflow: hidden;
 }
 
 .california_intro {
