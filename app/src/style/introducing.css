@@ -393,9 +393,6 @@
 .courses_head {
     margin: 20px;
     padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     color: rgb(88, 93, 98);
 }
 
@@ -404,6 +401,7 @@
     font-weight: 700;
     padding: 10px;
     border-radius: 100px;
+    text-align: center;
 }
 
 .course-item img {
@@ -548,6 +546,23 @@
     width: fit-content;
     margin-top: 6px;
 }
+.courses_message {
+    display: flex;
+    width: 80%;
+    max-width: 800px;
+    margin: auto;
+    padding: 14px;
+    background-color: #cde9f9;
+    font-size: 17px;
+    border-radius: 10px;
+    border: 1px solid #c2e0f1;
+    margin-bottom: 30px;
+}
+.courses_message img{
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+
+    margin-right: 20px;
+}
 
 .tag_new {
     background-color: #369aff;
@@ -559,140 +574,4 @@
 
 .tag_long {
     background-color: #23d6d6;
-}
-
-.join {
-    margin: 20px;
-    padding: 20px;
-    background-color: #deeef4;
-    border-radius: 4px;
-    color: rgb(23, 23, 23);
-    position: relative;
-    overflow: hidden;
-    z-index: 100;
-}
-
-.earth {
-    z-index: -100;
-    position: absolute;
-    top: 0;
-    left: -100px;
-    filter: invert(36%) sepia(50%) saturate(1500%) hue-rotate(190deg) brightness(95%) contrast(105%) blur(5px);
-}
-
-.meteor {
-    z-index: -100;
-    position: absolute;
-    top: 10px;
-    left: 100px;
-    filter: invert(48%) sepia(79%) saturate(2476%) hue-rotate(30deg) brightness(118%) contrast(119%) blur(5px);
-}
-
-.btn-group {
-    display: flex;
-    justify-content: space-around;
-    margin-top: 30px;
-}
-
-.btn-primary {
-    background-color: #39cf75;
-    padding: 10px;
-    font-weight: 900;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-    border-bottom: 3px solid #2eb263;
-    border-right: 3.5px solid #2eb263;
-    width: 40%;
-    color: aliceblue;
-}
-
-.btn-primary- {
-    background-color: #90bbbd;
-    padding: 10px;
-    font-weight: 900;
-    border-radius: 3px;
-    text-align: center;
-    cursor: pointer;
-    border-bottom: 3px solid #8db1aa;
-    border-right: 3.5px solid #7da39e;
-    width: 40%;
-    color: aliceblue;
-}
-
-.Qa_uio {
-    background-color: #d6ecf9;
-    padding-bottom: 20px;
-    padding-top: 30px;
-}
-
-.qa_p {
-    padding: 0px 30px 30px 30px;
-    text-align: center;
-    align-items: center;
-    margin: 0;
-}
-
-.Qa_in {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 6px;
-    padding: 0;
-    background-color: #98d6fa;
-}
-
-.qn_driver {
-    width: 40%;
-    background-color: #b6dff6;
-    padding: 10px;
-    height: 100px;
-    display: flex;
-    /* Enables flexbox */
-    align-items: center;
-    /* Centers vertically */
-    justify-content: center;
-    /* Centers horizontally */
-    text-align: center;
-    /* Ensures text is centered within the flex container */
-    margin: 0;
-    font-size: 18px;
-    border-right: 10px solid #a5dbfa;
-}
-
-.qn_patch {
-    width: 60%;
-    background-color: #98d6fa;
-    padding: 10px;
-    padding-left: 20px;
-    height: 100px;
-    display: flex;
-    /* Enables flexbox */
-    align-items: center;
-    /* Centers vertically */
-    text-align: left !important;
-    /* Ensures text is centered within the flex container */
-    margin: 0;
-    font-size: 17px;
-    border-left: 10px solid #89d0f9;
-}
-
-.Qa_head_group h2 {
-    padding: 20px;
-    text-align: center !important;
-}
-
-.Qa_controls button {
-    border: 0;
-    background: none;
-    cursor: pointer;
-    width: 50px;
-}
-
-.vis_none {
-    display: none;
-}
-
-.vis_block {
-    display: block;
 }

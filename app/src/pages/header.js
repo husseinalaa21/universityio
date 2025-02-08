@@ -119,7 +119,7 @@ function Header(props) {
                     <div className={pageLocated.isFaq ? 'header_selected' : ''} onClick={() => navigate('/faq')}> FAQ </div>
                 </div>
                 <div className='right_panel'>
-                    <div className='explore_courses explore_web' onClick={() => navigate('/faq')}> Explore Courses </div>
+                    <a className='explore_courses explore_web' href="#explore"> Explore Courses </a>
                     <div className='panel_more' onClick={toggleList}> More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" /> </div>
                 </div>
             </div>: null}

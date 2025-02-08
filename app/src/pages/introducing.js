@@ -13,6 +13,7 @@ import code_logo from '../svg/code-solid.svg'
 import computer_logo from '../svg/computer-solid.svg'
 import money_logo from '../svg/money-bill-transfer-solid.svg'
 import python_logo from '../svg/python-brands-solid.svg'
+import quote from '../svg/quote-left-solid.svg'
 import arrow_right from '../svg/angle-right-solid.svg'
 import arrow_left from '../svg/angle-left-solid.svg'
 import california_ from '../svg/california.jpg'
@@ -179,14 +180,8 @@ const Intro = () => {
     }
   };
 
-  var qa = (q, n) => {
-    return <div className="Qa_in">
-      <h3 className='qn_driver'>{q}</h3>
-      <p className='qn_patch'>{n}</p>
-    </div>
-  }
 
-  const CourseNew = ({ title, instructor, price, description, backgroundImage, logo, tags, trade}) => {
+  const CourseNew = ({ title, instructor, price, description, backgroundImage, logo, tags, trade }) => {
     return (
       <div className='hussein'>
         <div className='item-shape' style={{ backgroundImage: `linear-gradient(to left, rgba(29, 88, 239, 0.28) 50%, rgba(4, 30, 65, 0.8) 100%), url(${backgroundImage})` }}>
@@ -234,8 +229,7 @@ const Intro = () => {
                 <div className='continer_titile'>
                   <h1> Buy or Sell <mark>Online</mark> Courses </h1>
                   <div className='bio_main'>
-                    <div> Learn New Skills. </div>
-                    <div> Or sell your courses. </div>
+                    University IO platform
                   </div>
                 </div>
                 <p>Learn new skills or teach your own in programming, IT, and entrepreneurship. Advance your career or empower others at University IO. Begin your journey today!</p>
@@ -355,17 +349,21 @@ const Intro = () => {
         </div>
 
 
-        <section id="courses" className="courses">
+        <section id="explore" className="courses">
           <div className='courses_head'>
             <h2>Explore <mark>Courses</mark></h2>
             <div className="Qa_controls">
-              {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
-              <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
+              {/*showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>*/}
+              {/*<button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>*/}
             </div>
           </div>
-          <div className="course-list" ref={scrollContainerRef_a}
-            onScroll={handleScroll_a}>
-
+          {/*<div className="course-list" ref={scrollContainerRef_a}
+            onScroll={handleScroll_a}>*/}
+          <div className="course-list">
+            <div className='courses_message'>
+              <img src={quote} width='18px' />
+              Note: This section showcases example courses, and the platform is currently under development.
+            </div>
             {/* Python Programming Course */}
             <CourseNew
               title="Python Programming"
@@ -381,7 +379,7 @@ const Intro = () => {
             {/* IT Skills Training Course */}
             <CourseNew
               title="IT Skills Training"
-              instructor="instructor_1"
+              instructor="dan_em"
               price={179}
               description="Gain in-demand skills to excel in today's tech-driven world."
               backgroundImage={it_}
@@ -393,7 +391,7 @@ const Intro = () => {
             {/* Selling Online Course */}
             <CourseNew
               title="Selling Online"
-              instructor="instructor_2"
+              instructor="tom_cruze"
               price={149}
               description="Learn how to sell online and grow your e-commerce business."
               backgroundImage={chicago_}
@@ -405,7 +403,7 @@ const Intro = () => {
             {/* Trading Skills Course */}
             <CourseNew
               title="Trading Skills"
-              instructor="instructor_3"
+              instructor="sam_leo"
               price={299}
               description="Master the art of trading and learn strategies to succeed in financial markets."
               backgroundImage={trading_}
@@ -417,7 +415,7 @@ const Intro = () => {
             {/* Workout Mastery Course */}
             <CourseNew
               title="Workout Mastery"
-              instructor="instructor_4"
+              instructor="jimmy_ba"
               price={99}
               description="Get fit and healthy with expert-guided workout plans and nutrition tips."
               backgroundImage={work_out_}
@@ -428,35 +426,6 @@ const Intro = () => {
           </div>
         </section>
 
-        {/**<section className='join'>
-        <div className='join_back_a'>
-          <img src={earth} width='200px' className='earth'></img>
-        </div>
-        <div className='join_back_b'>
-          <img src={meteor} width='30px' className='meteor'></img>
-        </div>
-        <h2>Step Into Your Future with University IO</h2>
-        <p>Take the leap today. Sign up and start your journey to success.</p>
-        <div className='btn-group'>
-          <div className="btn-primary"> Sign UP </div>
-          <div className="btn-primary-"> Login </div>
-        </div>
-
-      </section>**/}
-
-
-        <section className="Qa_uio">
-          <div className='Qa_head_group'>
-            <h2> Sell Or Buy Courses </h2>
-          </div>
-          <div className="Qa_group">
-            <p className='qa_p'> Whether you're selling your courses or looking to purchase courses, University IO offers this feature to you completely free of charge. </p>
-            {qa('Expert Instructors', 'Learn from the best in the industry.')}
-            {qa('Flexible Learning', 'Study at your own pace, anytime, anywhere.')}
-            {qa('Affordable Pricing', 'Top-quality education at a fraction of the cost.')}
-            {qa('Community Support', 'Join a thriving community of learners and mentors.')}
-          </div>
-        </section>
         <End login={false} ask={true} />
       </> : <Loading />}
     </>
