@@ -326,27 +326,25 @@
 
     opacity: 0.2;
     /* Makes it 10% visible */
-    transition: opacity 0.2s ease;
+    transition: opacity 0.6s ease;
     /* Smooth transition effect */
     border: 1px solid #bbe1f7;
 }
 
 
 .slc {
-    background-color: #bbe1f7;
+    background-color: #acdbf6;
     color: #2d2e2f;
     opacity: 1;
     /* Makes it 10% visible */
-    transition: opacity 0.7s ease;
     /* Smooth transition effect */
-    border: 1px solid #6cb2f8;
+    border: 1px solid #85c5e9;
 }
 .slc_ {
     background-color: #bbe1f7;
     color: #2d2e2f;
     opacity: 0.4;
     /* Makes it 10% visible */
-    transition: opacity 0.7s ease;
     /* Smooth transition effect */
     border-top: 1px solid #379bff;
 }
@@ -355,7 +353,6 @@
     color: #2d2e2f;
     opacity: 0.4;
     /* Makes it 10% visible */
-    transition: opacity 0.7s ease;
     /* Smooth transition effect */
     border-bottom: 1px solid #379bff;
 }

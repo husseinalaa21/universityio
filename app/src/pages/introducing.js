@@ -143,7 +143,7 @@ const Intro = () => {
         }
         return newLc;
       });
-    }, 1000);
+    }, 800);
     return () => {
       clearInterval(interval);
       clearInterval(in_lc);
