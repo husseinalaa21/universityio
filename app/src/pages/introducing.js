@@ -30,6 +30,17 @@ import plus from '../svg/x/plus-solid.svg'
 import user from '../svg/x/user-plus-solid.svg'
 import chart from '../svg/x/chart-line-solid.svg'
 
+import py_ from '../svg/courses/py.jpg'
+import py_guy from '../svg/courses/py_guy.jpg'
+import trading_ from '../svg/courses/trading.jpg'
+import trading_guy from '../svg/courses/trading_.jpg'
+import chicago_ from '../svg/courses/chicago.jpg'
+import chicago_guy from '../svg/courses/chicago_.jpg'
+import ai_ from '../svg/courses/ai.jpg'
+import work_out_ from '../svg/courses/work_out.jpg'
+import work_out_guy from '../svg/courses/work_out_.jpg'
+import it_ from '../svg/courses/it.jpg'
+import it_guy from '../svg/courses/it_guy.jpg'
 
 // Import SVG files
 import LinesLeaning from '../svg/lines-leaning-solid.svg';
@@ -174,6 +185,28 @@ const Intro = () => {
       <p className='qn_patch'>{n}</p>
     </div>
   }
+
+  const CourseNew = ({ title, instructor, price, description, backgroundImage, logo, tags, trade}) => {
+    return (
+      <div className='hussein'>
+        <div className='item-shape' style={{ backgroundImage: `linear-gradient(to left, rgba(29, 88, 239, 0.28) 50%, rgba(4, 30, 65, 0.8) 100%), url(${backgroundImage})` }}>
+          <div className='item-logo'>
+            <img src={logo} alt={`${title} logo`} />
+          </div>
+          <div className='item_logo_title'>
+            <h3><mark>#{trade}</mark> {title}</h3>
+            <h4>By <mark>@{instructor}</mark></h4>
+            <p><mark>${price}</mark> {description}</p>
+            <div className='tags'>
+              {tags.map((tag, index) => (
+                <div key={index} className={`tag_ tag_${tag.toLowerCase().replace(/\s+/g, '_')}`}>#{tag}</div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <>
@@ -322,57 +355,76 @@ const Intro = () => {
         </div>
 
 
-        <section id="courses" className="courses modern-courses">
-          <div className="container">
-            <div className=' courses_head'>
-              <h2>Courses You Can Enroll In</h2>
-              <div className="Qa_controls">
-                {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
-                <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
-              </div>
+        <section id="courses" className="courses">
+          <div className='courses_head'>
+            <h2>Explore <mark>Courses</mark></h2>
+            <div className="Qa_controls">
+              {showLeftButton_a && <button onClick={() => scroll('left', scrollContainerRef_a)}><img src={arrow_left} width='15px' /></button>}
+              <button onClick={() => scroll('right', scrollContainerRef_a)}><img src={arrow_right} width='15px' /></button>
             </div>
-            <div className="course-list" ref={scrollContainerRef_a}
-              onScroll={handleScroll_a}>
-              <div className="course-item">
-                <div className='item-python item-shape'>
-                  <div className='item-logo'>
-                    <img src={python_logo} width={logo_size} />
-                    <h3>Python Programming</h3>
-                  </div>
-                  <p>Learn Python-3 the main language for programming AI</p>
-                </div>
-                <div className='item-learning-part-a item-shape'>
-                  <div className='item-logo'>
-                    <img src={code_logo} width={logo_size} />
-                    <h3>Programming Essentials</h3>
-                  </div>
-                  <p>Master the building blocks of programming with hands-on projects in Python, JavaScript, and more.</p>
-                </div>
-              </div>
-              <div className="course-item item-shape">
-                <div className='item-logo'>
-                  <img src={computer_logo} width={logo_size} />
-                  <h3>IT Skills Training</h3>
-                </div>
-                <p>Gain in-demand skills to excel in today's tech-driven world.</p>
-              </div>
-              <div className="course-item">
-                <div className='item-business item-shape'>
-                  <div className='item-logo'>
-                    <img src={business_logo} width={logo_size} />
-                    <h3>Business Development</h3>
-                  </div>
-                  <p>Learn to innovate, plan, and execute your entrepreneurial vision with expert guidance.</p>
-                </div>
-                <div className='item-selling item-shape'>
-                  <div className='item-logo'>
-                    <img src={money_logo} width={logo_size} />
-                    <h3> Selling </h3>
-                  </div>
-                  <p> Learn how to sell online </p>
-                </div>
-              </div>
-            </div>
+          </div>
+          <div className="course-list" ref={scrollContainerRef_a}
+            onScroll={handleScroll_a}>
+
+            {/* Python Programming Course */}
+            <CourseNew
+              title="Python Programming"
+              instructor="harry_21"
+              price={249}
+              description="Python3 Full Course"
+              backgroundImage={py_}
+              logo={py_guy}
+              tags={["New", "Python", "Finish in 8 weeks"]}
+              trade={1}
+            />
+
+            {/* IT Skills Training Course */}
+            <CourseNew
+              title="IT Skills Training"
+              instructor="instructor_1"
+              price={179}
+              description="Gain in-demand skills to excel in today's tech-driven world."
+              backgroundImage={it_}
+              logo={it_guy}
+              tags={["New", "IT Skills", "Finish in 4 weeks"]}
+              trade={2}
+            />
+
+            {/* Selling Online Course */}
+            <CourseNew
+              title="Selling Online"
+              instructor="instructor_2"
+              price={149}
+              description="Learn how to sell online and grow your e-commerce business."
+              backgroundImage={chicago_}
+              logo={chicago_guy}
+              tags={["New", "Selling", "Finish in 5 weeks"]}
+              trade={3}
+            />
+
+            {/* Trading Skills Course */}
+            <CourseNew
+              title="Trading Skills"
+              instructor="instructor_3"
+              price={299}
+              description="Master the art of trading and learn strategies to succeed in financial markets."
+              backgroundImage={trading_}
+              logo={trading_guy}
+              tags={["New", "Trading", "Finish in 6 weeks"]}
+              trade={4}
+            />
+
+            {/* Workout Mastery Course */}
+            <CourseNew
+              title="Workout Mastery"
+              instructor="instructor_4"
+              price={99}
+              description="Get fit and healthy with expert-guided workout plans and nutrition tips."
+              backgroundImage={work_out_}
+              logo={work_out_guy}
+              tags={["New", "Workout", "Finish in 8 weeks"]}
+              trade={5}
+            />
           </div>
         </section>
 

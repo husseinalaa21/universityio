@@ -594,8 +594,21 @@
   .main_header_selected {
     display: none;
   }
+
   .library-container {
     display: block !important;
+  }
+
+  .item-logo {
+    min-width: 45px;
+    max-width: 45px;
+    min-height: 45px;
+    max-height: 45px;
+  }
+  .item-logo img {
+      height: 100%;
+      width: 45px;
+      margin-right: 13px;
   }
 }
 

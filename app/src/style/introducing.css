@@ -41,15 +41,6 @@
     margin-bottom: 50px;
 }
 
-.ca_title h2 mark {
-    font-size: 24px;
-    font-family: "Pacifico", serif;
-    font-weight: 600;
-    font-style: normal;
-    background: none;
-    color: #369aff;
-}
-
 .ca_bio p {
     font-size: 17px;
     text-align: center;
@@ -115,7 +106,14 @@
     /* Add space between h1 and the icon */
 }
 
-.container h1 mark {
+.container h1 mark,
+.courses_head h2 mark,
+.liberay_title mark,
+.ca_title h2 mark {
+    font-size: 24px;
+    font-family: "Pacifico", serif;
+    font-weight: 600;
+    font-style: normal;
     background: none;
     color: #369aff;
 }
@@ -291,17 +289,8 @@
     padding: 20px;
     font-size: 24px;
     font-weight: 700;
-    color: rgb(89, 94, 99);
+    color: rgb(88, 93, 98);
     text-align: center;
-}
-
-.liberay_title mark {
-    font-size: 24px;
-    font-family: "Pacifico", serif;
-    font-weight: 600;
-    font-style: normal;
-    background: none;
-    color: #369aff;
 }
 
 .library-container {
@@ -326,7 +315,7 @@
 
     opacity: 0.2;
     /* Makes it 10% visible */
-    transition: opacity 0.6s ease;
+    transition: opacity 0.6s;
     /* Smooth transition effect */
     border: 1px solid #bbe1f7;
 }
@@ -340,6 +329,7 @@
     /* Smooth transition effect */
     border: 1px solid #85c5e9;
 }
+
 .slc_ {
     background-color: #bbe1f7;
     color: #2d2e2f;
@@ -348,6 +338,7 @@
     /* Smooth transition effect */
     border-top: 1px solid #379bff;
 }
+
 ._slc {
     background-color: #bbe1f7;
     color: #2d2e2f;
@@ -396,15 +387,32 @@
 
 .courses {
     padding: 20px;
-    background-color: rgb(234, 242, 248);
-    ;
+    background-color: #d6ecf9;
+}
+
+.courses_head {
+    margin: 20px;
+    padding: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: rgb(88, 93, 98);
+}
+
+.courses_head h2 {
+    font-size: 24px;
+    font-weight: 700;
+    padding: 10px;
+    border-radius: 100px;
+}
+
+.course-item img {
+    position: relative;
 }
 
 .course-list {
-    display: flex;
     overflow: auto;
     scroll-behavior: smooth;
-    gap: 10px;
 }
 
 .course-item {
@@ -413,30 +421,143 @@
     font-size: 16px;
 }
 
+.hussein {
+    margin-bottom: 10px;
+    border-radius: 40px;
+    overflow: hidden;
+}
+
+.alaa {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 12px;
+    background-color: #5fc4ff;
+    background-image: linear-gradient(to right, #8fd0f7, #4bb9f9);
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.alaa img {
+    margin-right: 10px;
+}
+
 .item-shape {
+    display: flex;
+    justify-content: space-between;
+    overflow: hidden;
     font-size: 16px;
-    padding: 17px;
-    border-radius: 8px;
-    background-color: #b6dff6;
-    margin-bottom: 20px;
+    padding: 10px;
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    justify-content: center;
+    color: white;
+    position: relative;
+    cursor: pointer;
 }
-
-.item-shape p {
-    font-size: 16px;
-}
-
-
-.item-python {
-    background-color: #ace4f16f;
+.item-shape:hover {
+    filter: brightness(0.8); /* Darken the background */
 }
 
 .item-logo {
     display: flex;
+    position: relative;
+    margin: auto;
+    text-align: center;
     align-items: center;
+    background-color: #369aff;
+    border: 3px solid #369aff;
+    border-radius: 50px;
+    min-width: 80px;
+    max-width: 80px;
+    min-height: 80px;
+    max-height: 80px;
+    overflow: hidden;
+    margin-right: 20px;
+    margin-left: 10px;
+    margin-top: 6px;
 }
 
 .item-logo img {
+    height: 100%;
+    width: 80px;
     margin-right: 13px;
+}
+
+.item_logo_title {
+    position: relative;
+    margin: auto;
+    align-items: center;
+    width: 100%;
+
+}
+
+.item_logo_title h3 {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+}
+
+.item_logo_title h3 mark {
+    background: none;
+    color: #d8ecff;
+    font-weight: 600;
+}
+
+.item_logo_title h4 {
+    padding: 8px 0 0 0px;
+    margin: 0;
+    font-size: 14px;
+    font-weight: 400;
+}
+
+.item_logo_title h4 mark {
+    background: none;
+    font-weight: 600;
+    text-decoration: underline #6593ef;
+    cursor: pointer;
+}
+
+.item_logo_title p {
+    padding: 7px 0 0 0;
+    margin: 0;
+    font-size: 15px;
+}
+
+.item_logo_title mark {
+    font-weight: 500;
+    background: none;
+    color: #fbfcfe;
+}
+
+.tags {
+    display: flex;
+    margin-top: 10px;
+}
+
+.tag_ {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 4px 8px 4px 8px;
+    border-radius: 4px;
+    margin-right: 10px;
+    background-color: #23d6d6;
+}
+
+.tag_new {
+    background-color: #369aff;
+}
+
+.tag_python {
+    background-color: #b23d2e !important;
+}
+
+.tag_long {
+    background-color: #23d6d6;
 }
 
 .join {
@@ -565,15 +686,6 @@
     background: none;
     cursor: pointer;
     width: 50px;
-}
-
-.courses_head {
-    width: 90%;
-    margin: auto;
-    padding: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
 }
 
 .vis_none {
