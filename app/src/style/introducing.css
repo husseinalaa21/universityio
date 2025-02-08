@@ -534,18 +534,19 @@
 
 .tags {
     display: flex;
-    margin-top: 10px;
 }
 
 .tag_ {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     align-items: center;
     font-size: 14px;
     padding: 4px 8px 4px 8px;
     border-radius: 4px;
     margin-right: 10px;
     background-color: #23d6d6;
+    width: fit-content;
+    margin-top: 6px;
 }
 
 .tag_new {
