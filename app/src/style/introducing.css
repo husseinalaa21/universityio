@@ -280,22 +280,19 @@
 }
 
 
-.liberay {
-    padding: 20px;
+.library {
     background-color: #d6ecf9;
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    min-height: 300px;
-    margin: auto !important;
+    margin: auto;
+    padding-bottom: 20px;
+    padding-top: 20px;
 }
 
 .liberay_title {
-    font-size: 24px;
-    margin-left: 60px;
+    padding: 20px;
     font-size: 24px;
     font-weight: 700;
     color: rgb(89, 94, 99);
+    text-align: center;
 }
 
 .liberay_title mark {
@@ -307,66 +304,87 @@
     color: #369aff;
 }
 
-.liberay_container {
+.library-container {
+    margin: 12px;
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    /* Adds space between items */
+    justify-content: left;
+}
+
+.library-item {
+    background-color: #bbe1f7;
+    color: #616669;
+    padding: 10px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    position: relative;
-    margin-top: -40px;
-}
+    margin: 1px;
+    /* Centers the grid items */
 
-
-.liberay_card {
-    position: absolute;
-    padding: 20px;
-    margin: auto;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 4px;
+    opacity: 0.2;
+    /* Makes it 10% visible */
+    transition: opacity 0.3s ease;
+    /* Smooth transition effect */
     cursor: pointer;
-    backdrop-filter: blur(10px);
-    /* The left values below should be adjusted based on the actual width of the cards */
 }
 
-.liberay_card:nth-child(1) {
-    margin-top: 0px;
-    right: 60px;
-    /* Adjust as necessary */
-    background-color: #b6dff6;
+.library-item:hover {
+    background-color: #bbe1f7;
+    color: #2d2e2f;
+    opacity: 1;
+    border-radius: 18px;
+    /* Makes it 10% visible */
+    transition: opacity 0.3s ease;
+    /* Smooth transition effect */
 }
 
-.liberay_card:nth-child(2) {
-    margin-top: 40px;
-    background-color: #7cbaf85e;
-    right: 110px;
-    /* Adjust as necessary, assuming each card is roughly 200px wide plus 20px space */
+.slc {
+    background-color: #bbe1f7;
+    color: #2d2e2f;
+    opacity: 1;
+    border-radius: 18px;
+    /* Makes it 10% visible */
+    transition: opacity 0.3s ease;
+    /* Smooth transition effect */
 }
 
-.liberay_card:nth-child(3) {
-    margin-top: 80px;
-    background-color: #369bff47;
-    right: 160px;
-    /* Adjust as necessary */
+.library-content h3 {
+    font-size: 16px;
 }
 
-.liberay_card_img {
-    padding: 10px;
-    text-align: center;
-    width: fit-content;
-    height: fit-content;
-    border-radius: 4px;
+.library-content p {
+    font-size: 15px;
 }
 
-.liberay_card_img img {
-    border-radius: 4px;
+.library-icon {
+    position: relative;
+    min-height: 60px !important;
+    min-width: 60px !important;
+    border-radius: 50%;
+    /* Ensures a perfect circle */
+    background-color: #cde9f9;
+    display: flex;
+    /* Centers content inside the circle */
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    /* Ensures no content overflows the circle */
 }
 
+.library-item img {
+    opacity: 0.7;
+    /* Optional: Slightly reduces brightness for a subtle effect */
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
 
-.liberay_card_title {
-    padding: 10px;
-    font-weight: 700;
-    font-style: normal;
-    color: #fefefe;
-    font-size: 20px;
+.library-content {
+    width: 100%;
+    /* Ensures content fits properly */
+    text-align: left;
+    /* Centers text */
+    margin-left: 20px;
 }
 
 .courses {

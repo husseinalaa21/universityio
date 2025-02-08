@@ -27,7 +27,7 @@ const User = () => {
                 if (e.s == true) {
                     navigate('/home?type=lookup&user=' + extra, { replace: true });
                 } else {
-                    axios.post(`${API_BASE_URL}/home/search`, { username: extra }) // Ensure proper credentials
+                    axios.post(`${API_BASE_URL}/home/lookup`, { vi: extra }) // Ensure proper credentials
                         .then(response => {
 
                             if (response.status === 200) {

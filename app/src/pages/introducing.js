@@ -8,8 +8,6 @@ import End from './end';
 import cc from '../pages/cc'
 import Loading from '../pages/loading.js'
 
-import meteor from '../svg/meteor-solid.svg'
-import earth from '../svg/earth-americas-solid.svg'
 import business_logo from '../svg/business-time-solid.svg'
 import code_logo from '../svg/code-solid.svg'
 import computer_logo from '../svg/computer-solid.svg'
@@ -20,16 +18,20 @@ import arrow_left from '../svg/angle-left-solid.svg'
 import california_ from '../svg/california.jpg'
 import california_t from '../svg/california_2.jpg'
 import california_a from '../svg/california_3.jpg'
-import liberay_one from '../svg/liberay_one.jpg'
-import liberay_two from '../svg/liberay_two.jpg'
-import liberay_three from '../svg/liberay_three.jpg'
 import cookies from '../svg/cookie-bite-solid.svg'
 import x from '../svg/x-solid.svg'
 import arrow_up from '../svg/arrow-up-right-from-square-solid.svg'
 
+import briefcase from '../svg/x/briefcase-solid.svg'
+import certificate from '../svg/x/certificate-solid.svg'
+import money from '../svg/x/money-bill-solid.svg'
+import pen from '../svg/x/pen-to-square-solid.svg'
+import plus from '../svg/x/plus-solid.svg'
+import user from '../svg/x/user-plus-solid.svg'
+import chart from '../svg/x/chart-line-solid.svg'
+
 
 // Import SVG files
-import ChalkboardUser from '../svg/chalkboard-user-solid.svg';
 import LinesLeaning from '../svg/lines-leaning-solid.svg';
 import School from '../svg/school-solid.svg';
 import Chalkboard from '../svg/chalkboard-solid.svg';
@@ -39,6 +41,10 @@ import check_double from '../svg/check-double-solid.svg';
 const Intro = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
+
+  const [lc, setLc] = useState([
+    "", "", "", "", "", ""
+  ])
 
   const scrollContainerRef_a = useRef(null)
 
@@ -104,25 +110,33 @@ const Intro = () => {
         setIsLoading(true)
       })
     }
-
+  
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
       setAnimeText('..'); // Update the text after 1 second
-
+  
       setTimeout(() => {
         setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons CLOSE
         setAnimeText(animeData[newIndex].text); // Update the text after 1 second
         setNewDate(formatTime())
       }, 1000);
-
+  
       setIndex(newIndex); // Update the index to keep track of the current item
-    }, 3000); // Move to the next item every 3 seconds
-
-
-
+  
+      // Randomly update the lc array
+      setLc((prevLc) => {
+        const newLc = prevLc.map(() => ""); // Set all elements to empty string
+        const randomIndex = Math.floor(Math.random() * prevLc.length); // Get a random index
+        newLc[randomIndex] = "slc"; // Set the random index to "slc"
+        return newLc;
+      });
+  
+    }, 1000); // Move to the next item every 3 seconds
+  
     return () => clearInterval(interval);
   }, [icons.length, index, animeData, isLoading]);
+  
 
   var scroll = (direction, part) => {
     const scrollAmount = 300;
@@ -221,40 +235,80 @@ const Intro = () => {
             </section>
           </div>
         </div>
-
-        <div className='liberay'>
-          <div className='liberay_title'>
+        <div className="library">
+          <div className="liberay_title">
             Do more in one <mark>Place.</mark>..
           </div>
-          <div className='liberay_container'>
-            <div className='liberay_card'>
-              <div className='liberay_card_title'>
-                Publish your courses
+
+          <div className="library-container">
+            {/* Certificate Feature */}
+            <div className={`library-item ${lc[0]}`}>
+              <div className="library-icon">
+                <img src={certificate} alt="Certificate Icon" width="22px" />
               </div>
-              <div className='liberay_card_img'>
-                <img src={liberay_one} width={liberay_img}></img>
+              <div className="library-content">
+                <h3>Earn Certificates</h3>
+                <p>Get a certificate upon finishing the course.</p>
               </div>
             </div>
 
-            <div className='liberay_card'>
-              <div className='liberay_card_title'>
-                buy courses
+            {/* Activity Verification */}
+            <div className={`library-item ${lc[1]}`}>
+              <div className="library-icon">
+                <img src={chart} alt="Verification Icon" width="22px" />
               </div>
-              <div className='liberay_card_img'>
-                <img src={liberay_two} width={liberay_img}></img>
+              <div className="library-content">
+                <h3>Activity Verification</h3>
+                <p>People can watch your activities to verify course completion.</p>
               </div>
             </div>
 
-            <div className='liberay_card'>
-              <div className='liberay_card_title'>
-                Search for courses
+            {/* Teaching Feature */}
+            <div className={`library-item ${lc[2]}`}>
+              <div className="library-icon">
+                <img src={briefcase} alt="Teaching Icon" width="22px" />
               </div>
-              <div className='liberay_card_img'>
-                <img src={liberay_three} width={liberay_img}></img>
+              <div className="library-content">
+                <h3>Teach Your Courses</h3>
+                <p>If you are a teacher, you can share your knowledge with others.</p>
+              </div>
+            </div>
+
+            {/* Free Course Upload */}
+            <div className={`library-item ${lc[3]}`}>
+              <div className="library-icon">
+                <img src={plus} alt="Upload Icon" width="22px" />
+              </div>
+              <div className="library-content">
+                <h3>Upload Courses for Free</h3>
+                <p>Share your courses without any cost.</p>
+              </div>
+            </div>
+
+            {/* Selling Courses */}
+            <div className={`library-item ${lc[4]}`}>
+              <div className="library-icon">
+                <img src={money} alt="Selling Icon" width="22px" />
+              </div>
+              <div className="library-content">
+                <h3>Sell Your Courses</h3>
+                <p>Monetize your courses and reach a wider audience.</p>
+              </div>
+            </div>
+
+            {/* Community Learning */}
+            <div className={`library-item ${lc[5]}`}>
+              <div className="library-icon">
+                <img src={user} alt="Community Icon" width="22px" />
+              </div>
+              <div className="library-content">
+                <h3>Learn with a Community</h3>
+                <p>Engage with other learners and improve your skills together.</p>
               </div>
             </div>
           </div>
         </div>
+
 
         <section id="courses" className="courses modern-courses">
           <div className="container">
