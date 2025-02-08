@@ -318,15 +318,17 @@
     color: #788389;
     padding: 10px;
     display: flex;
+    border-radius: 18px;
     justify-content: center;
     align-items: center;
     margin: 1px;
     /* Centers the grid items */
 
-    opacity: 0.1;
+    opacity: 0.2;
     /* Makes it 10% visible */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.2s ease;
     /* Smooth transition effect */
+    border: 1px solid #bbe1f7;
 }
 
 
@@ -334,10 +336,28 @@
     background-color: #bbe1f7;
     color: #2d2e2f;
     opacity: 1;
-    border-radius: 18px;
     /* Makes it 10% visible */
-    transition: opacity 0.3s ease;
+    transition: opacity 0.7s ease;
     /* Smooth transition effect */
+    border: 1px solid #6cb2f8;
+}
+.slc_ {
+    background-color: #bbe1f7;
+    color: #2d2e2f;
+    opacity: 0.4;
+    /* Makes it 10% visible */
+    transition: opacity 0.7s ease;
+    /* Smooth transition effect */
+    border-top: 1px solid #379bff;
+}
+._slc {
+    background-color: #bbe1f7;
+    color: #2d2e2f;
+    opacity: 0.4;
+    /* Makes it 10% visible */
+    transition: opacity 0.7s ease;
+    /* Smooth transition effect */
+    border-bottom: 1px solid #379bff;
 }
 
 .library-content h3 {

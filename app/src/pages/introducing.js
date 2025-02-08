@@ -84,6 +84,7 @@ const Intro = () => {
 
   // State for the current icon index CLOSE
   const [currentIconIndex, setCurrentIconIndex] = useState(0);
+  const [cin_lc, setCin_lc] = useState(0);
 
   function formatTime() {
     let now = new Date();
@@ -96,47 +97,58 @@ const Intro = () => {
     let formattedTime = hours + ':' + minutes + ' ' + ampm;
     return formattedTime;
   }
-
   useEffect(() => {
     // COOKIE CHECK
     if (!isLoading) {
-      cc().then(e => {
-        if (e.s == true) {
-          navigate('/home', { replace: true });
-        } else {
-          setIsLoading(true)
-        }
-      }).catch(error => {
-        setIsLoading(true)
-      })
+      cc()
+        .then((e) => {
+          if (e.s === true) {
+            navigate("/home", { replace: true });
+          } else {
+            setIsLoading(true);
+          }
+        })
+        .catch(() => {
+          setIsLoading(true);
+        });
     }
-  
+
     const interval = setInterval(() => {
       const newIndex = (index + 1) % animeData.length;
       setAnimeTitle(animeData[newIndex].title); // Update the title first
       setAnimeText('..'); // Update the text after 1 second
-  
+
       setTimeout(() => {
         setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons CLOSE
         setAnimeText(animeData[newIndex].text); // Update the text after 1 second
         setNewDate(formatTime())
       }, 1000);
-  
+
       setIndex(newIndex); // Update the index to keep track of the current item
-  
+
+    }, 1000);
+
+
+    const in_lc = setInterval(() => {
       // Randomly update the lc array
       setLc((prevLc) => {
         const newLc = prevLc.map(() => ""); // Set all elements to empty string
-        const randomIndex = Math.floor(Math.random() * prevLc.length); // Get a random index
-        newLc[randomIndex] = "slc"; // Set the random index to "slc"
+        newLc[cin_lc] = "slc"; // Set the random index to "slc"
+        newLc[cin_lc - 1] = "_slc"; // Set the random index to "slc"
+        newLc[cin_lc + 1] = "slc_"; // Set the random index to "slc"
+        if (5 > cin_lc) {
+          setCin_lc(cin_lc + 1)
+        } else {
+          setCin_lc(0)
+        }
         return newLc;
       });
-  
-    }, 1000); // Move to the next item every 3 seconds
-  
-    return () => clearInterval(interval);
-  }, [icons.length, index, animeData, isLoading]);
-  
+    }, 1000);
+    return () => {
+      clearInterval(interval);
+      clearInterval(in_lc);
+    };
+  }, [animeData, icons, isLoading, cin_lc]); // Keep dependencies minimal
 
   var scroll = (direction, part) => {
     const scrollAmount = 300;
