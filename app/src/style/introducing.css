@@ -441,8 +441,6 @@
 }
 
 .item-shape {
-    display: flex;
-    justify-content: space-between;
     overflow: hidden;
     font-size: 16px;
     padding: 10px;
@@ -454,6 +452,11 @@
     color: white;
     position: relative;
     cursor: pointer;
+}
+.shape_flex {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
 }
 .item-shape:hover {
     filter: brightness(0.8); /* Darken the background */
@@ -532,13 +535,15 @@
 
 .tags {
     display: flex;
+    margin-left: 20px;
 }
 
 .tag_ {
     display: flex;
     justify-content: left;
     align-items: center;
-    font-size: 14px;
+    font-size: 12px;
+    font-weight: 600;
     padding: 4px 8px 4px 8px;
     border-radius: 4px;
     margin-right: 10px;

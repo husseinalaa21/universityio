@@ -109,6 +109,7 @@ const Intro = () => {
     let formattedTime = hours + ':' + minutes + ' ' + ampm;
     return formattedTime;
   }
+  
   useEffect(() => {
     // COOKIE CHECK
     if (!isLoading) {
@@ -125,43 +126,67 @@ const Intro = () => {
         });
     }
 
-    const interval = setInterval(() => {
-      const newIndex = (index + 1) % animeData.length;
-      setAnimeTitle(animeData[newIndex].title); // Update the title first
-      setAnimeText('..'); // Update the text after 1 second
+    // Anime Interval
+    const animeInterval = setInterval(() => {
+      setIndex((prevIndex) => {
+        const newIndex = (prevIndex + 1) % animeData.length;
+        setAnimeTitle(animeData[newIndex].title); // Update the title
+        setAnimeText('..'); // Show loading text
 
-      setTimeout(() => {
-        setCurrentIconIndex((prevIndex) => (prevIndex + 1) % icons.length); // Cycle through icons CLOSE
-        setAnimeText(animeData[newIndex].text); // Update the text after 1 second
-        setNewDate(formatTime())
-      }, 1000);
+        setTimeout(() => {
+          setCurrentIconIndex((prevIconIndex) => (prevIconIndex + 1) % icons.length); // Cycle through icons
+          setAnimeText(animeData[newIndex].text); // Update the text after 1 second
+          setNewDate(formatTime()); // Update the time
+        }, 1000);
 
-      setIndex(newIndex); // Update the index to keep track of the current item
-
-    }, 1000);
-
-
-    const in_lc = setInterval(() => {
-      // Randomly update the lc array
-      setLc((prevLc) => {
-        const newLc = prevLc.map(() => ""); // Set all elements to empty string
-        newLc[cin_lc] = "slc"; // Set the random index to "slc"
-        newLc[cin_lc - 1] = "_slc"; // Set the random index to "slc"
-        newLc[cin_lc + 1] = "slc_"; // Set the random index to "slc"
-        if (5 > cin_lc) {
-          setCin_lc(cin_lc + 1)
-        } else {
-          setCin_lc(0)
-        }
-        return newLc;
+        return newIndex; // Return the new index for the next iteration
+      });
+    }, 2000); // Adjust the interval time as needed
+    const lcInterval = setInterval(() => {
+      setCin_lc((prevCinLc) => {
+        const newCinLc = (prevCinLc + 1) % 6; // Cycle through indices (0 to 5)
+    
+        setLc((prevLc) => {
+          const newLc = [...prevLc]; // Create a copy of the previous state
+    
+          // Reset previous indices
+          newLc[prevCinLc] = ""; // Reset current index
+          newLc[prevCinLc - 1] = ""; // Reset previous index
+          newLc[prevCinLc + 1] = ""; // Reset next index
+    
+          // Handle out-of-bounds indices
+          if (prevCinLc === 0) {
+            newLc[5] = ""; // Reset the last index if prevCinLc is 0
+          }
+          if (prevCinLc === 5) {
+            newLc[0] = ""; // Reset the first index if prevCinLc is 5
+          }
+    
+          // Set new indices
+          newLc[newCinLc] = "slc"; // Set the current index
+          newLc[newCinLc - 1] = "_slc"; // Set the previous index
+          newLc[newCinLc + 1] = "slc_"; // Set the next index
+    
+          // Handle out-of-bounds indices for newCinLc
+          if (newCinLc === 0) {
+            newLc[5] = "_slc"; // Set the last index if newCinLc is 0
+          }
+          if (newCinLc === 5) {
+            newLc[0] = "slc_"; // Set the first index if newCinLc is 5
+          }
+    
+          return newLc;
+        });
+    
+        return newCinLc; // Return the new index for the next iteration
       });
     }, 800);
+    // Cleanup
     return () => {
-      clearInterval(interval);
-      clearInterval(in_lc);
+      clearInterval(animeInterval);
+      clearInterval(lcInterval);
     };
-  }, [animeData, icons, isLoading, cin_lc]); // Keep dependencies minimal
-
+  }, [isLoading]); // Only depend on `isLoading`
   var scroll = (direction, part) => {
     const scrollAmount = 300;
     if (part.current) {
@@ -185,18 +210,20 @@ const Intro = () => {
     return (
       <div className='hussein'>
         <div className='item-shape' style={{ backgroundImage: `linear-gradient(to left, rgba(29, 88, 239, 0.28) 50%, rgba(4, 30, 65, 0.8) 100%), url(${backgroundImage})` }}>
-          <div className='item-logo'>
-            <img src={logo} alt={`${title} logo`} />
-          </div>
-          <div className='item_logo_title'>
-            <h3><mark>#{trade}</mark> {title}</h3>
-            <h4>By <mark>@{instructor}</mark></h4>
-            <p><mark>${price}</mark> {description}</p>
-            <div className='tags'>
-              {tags.map((tag, index) => (
-                <div key={index} className={`tag_ tag_${tag.toLowerCase().replace(/\s+/g, '_')}`}>#{tag}</div>
-              ))}
+          <div className='shape_flex'>
+            <div className='item-logo'>
+              <img src={logo} alt={`${title} logo`} />
             </div>
+            <div className='item_logo_title'>
+              <h3><mark>#{trade}</mark> {title}</h3>
+              <h4>By <mark>@{instructor}</mark></h4>
+              <p><mark>${price}</mark> {description}</p>
+            </div>
+          </div>
+          <div className='tags'>
+            {tags.map((tag, index) => (
+              <div key={index} className={`tag_ tag_${tag.toLowerCase().replace(/\s+/g, '_')}`}>#{tag}</div>
+            ))}
           </div>
         </div>
       </div>
@@ -213,14 +240,6 @@ const Intro = () => {
       {isLoading ? <>
         <Header login={false} ask={true} pic="https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=2080&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
 
-        {showCookiesBanner && (
-          <div className="cookies-banner">
-            <div className='cct' onClick={handleAcceptCookies}><img src={x} width='16px' /></div>
-            <h2> <img src={cookies} width='23px' /> Cookies Used </h2>
-            <p>This website uses cookies to enhance user experience. By continuing to browse, you agree to our use of cookies.</p>
-            <button onClick={handleAcceptCookies} className='accept_cookie'>Accept and close</button>
-          </div>
-        )}
         <div className='intro'>
           <div className='web_intro'>
             <title> University IO: Learn, Teach, Succeed - Your Gateway to Skills and Opportunities </title>
@@ -425,6 +444,14 @@ const Intro = () => {
             />
           </div>
         </section>
+        {showCookiesBanner && (
+          <div className="cookies-banner">
+            <div className='cct' onClick={handleAcceptCookies}><img src={x} width='16px' /></div>
+            <h2> <img src={cookies} width='23px' /> Cookies Used </h2>
+            <p>This website uses cookies to enhance user experience. By continuing to browse, you agree to our use of cookies.</p>
+            <button onClick={handleAcceptCookies} className='accept_cookie'>Accept and close</button>
+          </div>
+        )}
 
         <End login={false} ask={true} />
       </> : <Loading />}
