@@ -594,20 +594,14 @@
   .main_header_selected {
     display: none;
   }
+  .library-container {
+    display: block !important;
+  }
 }
 
 @media only screen and (max-width: 800px) {
   .wild_intro {
     display: block;
-  }
-  .liberay {
-    display: block;
-    position: relative;
-    overflow: hidden;
-  }
-
-  .liberay_container {
-    min-height: 400px;
   }
 
   .anime {
