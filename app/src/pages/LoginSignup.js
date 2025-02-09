@@ -146,7 +146,7 @@ function LoginSignup(props) {
         setLoading(true);
         setMessage(`Success! ${isLogin ? 'You are logged in.' : 'Your account has been created.'}`);
         // *** SET COOKIES PROCESS ***
-        setTimeout(() => navigate('/home'), 1000);
+        setTimeout(() => navigate('/home'), 500);
       } else {
         setLoading(false);
         setMessage(response.data.message || 'An unexpected error occurred.');
