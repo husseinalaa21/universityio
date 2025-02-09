@@ -3,9 +3,14 @@
 }
 .home_header_pck {
     background-color: #eff6fc6b;
-    padding: 20px;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    z-index: 10000;
+    border: 0;
 }
 .home_header {
+    padding: 20px;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,6 +22,7 @@
     overflow: hidden;
     width: 80%;
     text-align: center;
+    max-width: 500px;
 }
 .home_header_pack_two {
     width: 20%;
@@ -29,14 +35,14 @@
     margin-left: 10px;
 }
 .home_header_pack_two div {
-    padding: 15px;
+    padding: 16px;
     width: 100%;
     text-align: center;
     cursor: pointer;
     background-color: #f0f6fa;
 }
 .home_header_pack_one div{
-    padding: 15px;
+    padding: 16px;
     width: 100%;
     text-align: center;
     cursor: pointer;
@@ -49,13 +55,14 @@
     justify-content: center;
     text-align: center;
     margin: auto;
-    width: 17px;
+    width: 16px;
     filter: brightness(0.9) contrast(1.1) grayscale(100%);
 }
 
 .active {
     background-color: #d4ebff !important;
     border-right: 0 !important;
+    border-top: 3px solid #96ccfb;
 }
 .active img{
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;

@@ -111,18 +111,18 @@ function Header(props) {
                     </div>
                 )}
             </header>
-            {props.ask?
-            <div className='panel'> <div className='basic_panel'>
-                    {!pageLocated.isHome && <div className='main_header_selected' onClick={() => navigate('/')}> <img src={homeIcon} width='20px'/> </div>}
+            {props.ask ?
+                <div className='panel'> <div className='basic_panel'>
+                    {!pageLocated.isHome && <div className='main_header_selected' onClick={() => navigate('/')}> <img src={homeIcon} width='20px' /> </div>}
                     <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>
                     <div className={pageLocated.isSupport ? 'header_selected' : ''} onClick={() => navigate('/support')}> Support </div>
                     <div className={pageLocated.isFaq ? 'header_selected' : ''} onClick={() => navigate('/faq')}> FAQ </div>
                 </div>
-                <div className='right_panel'>
-                    <a className='explore_courses explore_web' href="#explore"> Explore Courses </a>
-                    <div className='panel_more' onClick={toggleList}> More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" /> </div>
-                </div>
-            </div>: null}
+                    <div className='right_panel'>
+                        <a className='explore_courses explore_web' href="#explore"> Explore Courses </a>
+                        <div className='panel_more' onClick={toggleList}> More <img src={showList ? caret_up : caret_down} width='10px' alt="Toggle" /> </div>
+                    </div>
+                </div> : null}
             {showList && (
                 <div className="dropdown_content">
                     <div className="dropdown_section">
