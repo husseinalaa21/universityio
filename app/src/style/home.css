@@ -2,7 +2,7 @@
     overflow: hidden;
 }
 .home_header_pck {
-    background-color: #eff6fc6b;
+    background-color: #dbe7f3;
     position: fixed;
     width: 100%;
     bottom: 0;
@@ -14,6 +14,8 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    max-width: 700px;
+    margin: auto;
 }
 .home_header_pack_one {
     display: flex;
@@ -22,7 +24,6 @@
     overflow: hidden;
     width: 80%;
     text-align: center;
-    max-width: 500px;
 }
 .home_header_pack_two {
     width: 20%;
@@ -32,17 +33,23 @@
     justify-content: center;
     border-radius: 20px;
     overflow: hidden;
-    margin-left: 10px;
+    margin-left: 5px;
 }
 .home_header_pack_two div {
-    padding: 16px;
+    display: flex;
+    height: 20px;
+    border: 2px solid #f0f6fa;
+    padding: 16px 20px 16px 20px;
     width: 100%;
     text-align: center;
     cursor: pointer;
     background-color: #f0f6fa;
 }
 .home_header_pack_one div{
-    padding: 16px;
+    display: flex;
+    height: 20px;
+    border: 2px solid #f0f6fa;
+    padding: 16px 20px 16px 20px;
     width: 100%;
     text-align: center;
     cursor: pointer;
@@ -56,13 +63,15 @@
     text-align: center;
     margin: auto;
     width: 16px;
-    filter: brightness(0.9) contrast(1.1) grayscale(100%);
+    filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(60%) contrast(100%);
 }
 
 .active {
     background-color: #d4ebff !important;
     border-right: 0 !important;
-    border-top: 3px solid #96ccfb;
+    border-top: 3px solid #96ccfb !important;
+    border-bottom: 2px solid #d4ebff !important;
+    border-left: 2px solid #d4ebff !important;
 }
 .active img{
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
