@@ -181,27 +181,27 @@ function Home() {
             </Helmet>
 
             {isLoading ? <>
-                <Header login={true} ask={false} pic={user.picture} />
+                <Header login={true} ask={false} pic={user.picture} io={io} fetchDataForKey={fetchDataForKey} cookie_log={cookie_log} />
 
                 <div className='home_page'>
                     <div className='home_header_pck'>
                         <div className='home_header'>
                             <div className='home_header_pack_one'>
-                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.course ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.course ? 'active' : ''}`}>
                                     <img src={courseIcon} alt="Course" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.profile ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.profile ? 'active' : ''}`}>
                                     <img src={profileIcon} alt="Profile" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, false, "coos")} className={`container_change ${io.search ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.search ? 'active' : ''}`}>
                                     <img src={searchIcon} alt="Search" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('notifications', cookie_log.cookie, cookie_log.email, false, "coos")} className={`container_change ${io.notifications ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('notifications', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change notifications_icon_bottom ${io.notifications ? 'active' : ''}`}>
                                     <img src={bell_solid} alt="bell_solid" width='16px' />
                                 </div>
                             </div>
                             <div className='home_header_pack_two'>
-                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email, false)} className={`container_change ${io.messages ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.messages ? 'active' : ''}`}>
                                     <img src={comments_regular} alt="messages" width='18px' />
                                 </div>
                             </div>
@@ -213,7 +213,6 @@ function Home() {
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
-                                setCookie_log={setCookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
@@ -224,7 +223,6 @@ function Home() {
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
-                                setCookie_log={setCookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
@@ -235,7 +233,6 @@ function Home() {
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
-                                setCookie_log={setCookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
@@ -246,7 +243,6 @@ function Home() {
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
-                                setCookie_log={setCookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
@@ -255,7 +251,6 @@ function Home() {
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
-                                setCookie_log={setCookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}

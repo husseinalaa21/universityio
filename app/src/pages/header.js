@@ -7,12 +7,13 @@ import axios from 'axios';
 import caret_down from '../svg/caret-down-solid.svg'
 import caret_up from '../svg/caret-up-solid.svg'; // Make sure you have this image
 import homeIcon from '../svg/house-solid.svg'
+import bell_solid from '../svg/bell-solid.svg';
 import fire_solid from '../svg/fire-solid.svg'
 import moon_regular from '../svg/moon-regular.svg'
 import moon_solid from '../svg/moon-solid.svg'
 
 
-function Header(props) {
+function Header({ ask, login, pic, fetchDataForKey, io, cookie_log }) {
     const API_BASE_URL = window.location.hostname === 'localhost'
         ? 'http://localhost:5000'
         : 'https://server.universityio.com';
@@ -87,15 +88,20 @@ function Header(props) {
                     <img className="logo" src={logo} alt="logo" />
                 </div>
 
-                {props.login ?
+                {login ?
                     <>
-                        {!props.ask && (
-                            <div className='picure_header' onClick={toggleOptions}>
-                                <img src={props.pic} alt="Profile" />
+                        {!ask && (
+                            <div className='pn'>
+                                <div onClick={() => fetchDataForKey('notifications', cookie_log.cookie, cookie_log.email, false, "co")} className={`notifications_icon_top ${io.notifications ? 'active_ntop' : ''}`}>
+                                    <img src={bell_solid} alt="bell_solid" width='16px' />
+                                </div>
+                                <div className='picure_header' onClick={toggleOptions}>
+                                    <img src={pic} alt="Profile" />
+                                </div>
                             </div>
                         )}
                     </>
-                    : props.ask ?
+                    : ask ?
                         <div className='header_intro'>
                             <div className='header-ask'>
                                 <div className='header-login' onClick={() => navigate('/login')} > Login </div>
@@ -111,7 +117,7 @@ function Header(props) {
                     </div>
                 )}
             </header>
-            {props.ask ?
+            {ask ?
                 <div className='panel'> <div className='basic_panel'>
                     {!pageLocated.isHome && <div className='main_header_selected' onClick={() => navigate('/')}> <img src={homeIcon} width='20px' /> </div>}
                     <div className={pageLocated.isAbout ? 'header_selected' : ''} onClick={() => navigate('/about')} > About US </div>

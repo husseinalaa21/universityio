@@ -76,6 +76,12 @@
 .active img{
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
+.active_ntop img{
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
+.active_ntop {
+    border: 3px solid #c8d7f8; /* Initial border color */
+}
 
 .course_container {
     background-color: #eff6fce4;
