@@ -9,6 +9,8 @@ body {
     font-optical-sizing: auto;
     font-weight: 400;
     font-style: normal;
+
+    touch-action: manipulation;
 }
 
 code {
@@ -120,23 +122,29 @@ code {
     overflow: hidden;
     width: 35px;
     height: 35px;
-    background-color: #8cc0ee; /* Initial background color */
-    border: 3px solid #8cc0ee; /* Initial border color */
+    background-color: #8cc0ee;
+    /* Initial background color */
+    border: 3px solid #8cc0ee;
+    /* Initial border color */
     cursor: pointer;
-    animation: colorChange 3s infinite; /* Apply the animation */
+    animation: colorChange 3s infinite;
+    /* Apply the animation */
 }
 
 @keyframes colorChange {
     0% {
         border-color: #8cc0ee;
     }
+
     50% {
         border-color: #b22ff9;
     }
+
     100% {
         border-color: #8cc0ee;
     }
 }
+
 .picure_header img {
     width: 100%;
     height: auto;
