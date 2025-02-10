@@ -14,7 +14,7 @@ import searchIcon from '../svg/seach-icon.svg';
 import profileIcon from '../svg/user-solid.svg';
 import comments_regular from '../svg/message-solid.svg';
 import bell_solid from '../svg/bell-solid.svg';
-import hippo_solid from '../svg/hippo-solid.svg';
+import hippo_solid from '../svg/shield-dog-solid.svg';
 
 // CONTAINERS FOR HOME PAGE
 import Course from './containers/course.js';
