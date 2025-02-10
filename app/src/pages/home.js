@@ -40,6 +40,7 @@ function Home() {
         username: ""
     })
     const [login, setLogin] = useState(false)
+    const [title, setTitle] = useState("Home")
     const [io, setIo] = useState({
         course: false,
         search: false,
@@ -115,10 +116,13 @@ function Home() {
                         } else {
                             cu = `/?type=${key}`;
                         }
+                        setTitle(`${key}`)
                         if (key == "profile") {
+                            setTitle(`${dd.data.firstName} ${dd.data.lastName}`)
                             cu = `/${dd.data.username}`;
                         }
                         if (key == "lookup") {
+                            setTitle(`${dd.data.firstName} ${dd.data.lastName}`)
                             cu = `/${dd.data.username}`;
                         }
                         navigate(cu);
@@ -207,7 +211,7 @@ function Home() {
     return (
         <>
             <Helmet>
-                <title>University IO - Home</title>
+                <title>University IO - {title}</title>
                 <meta name="description" content="Explore new skills or teach your own at University IO. Start learning or sharing your expertise in programming, IT, and entrepreneurship today." />
             </Helmet>
 
