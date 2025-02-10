@@ -50,7 +50,7 @@ const Search = ({ db, cookie_log, fetchDataForKey, API_BASE_URL, profileIcon, ap
             {db.map((user, index) => (
                 <div key={index} className="user_item">
                     <div className='user_image'><img src={user.profile_image || profileIcon} width="18px" /></div>
-                    <div className='user_info'><div className='user_info_name'>{user.firstName}{user.lastName}</div> <div className='user_info_username'>{user.username}</div><div className='user_info_bio'>{user.bio}</div></div>
+                    <div className='user_info'><div className='user_info_name'>{user.firstName} {user.lastName}</div> <div className='user_info_username' onClick={() => fetchDataForKey('lookup', cookie_log.cookie, cookie_log.email, api_url.api_inside, user.username)}>@{user.username}</div><div className='user_info_bio'>{user.bio || "No bio yet"}</div></div>
                     {/* Adjust according to your data */}
                 </div>
             ))}

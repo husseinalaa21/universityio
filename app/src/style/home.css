@@ -1,6 +1,7 @@
 .container {
     overflow: hidden;
 }
+
 .home_header_pck {
     background-color: #dbe7f3;
     position: fixed;
@@ -9,6 +10,7 @@
     z-index: 10000;
     border: 0;
 }
+
 .home_header {
     padding: 20px;
     display: flex;
@@ -17,6 +19,7 @@
     max-width: 700px;
     margin: auto;
 }
+
 .home_header_pack_one {
     display: flex;
     justify-content: center;
@@ -25,6 +28,7 @@
     width: 80%;
     text-align: center;
 }
+
 .home_header_pack_two {
     width: 20%;
     max-width: 80px;
@@ -35,6 +39,7 @@
     overflow: hidden;
     margin-left: 5px;
 }
+
 .home_header_pack_two div {
     display: flex;
     height: 20px;
@@ -45,7 +50,8 @@
     cursor: pointer;
     background-color: #f0f6fa;
 }
-.home_header_pack_one div{
+
+.home_header_pack_one div {
     display: flex;
     height: 20px;
     border: 2px solid #f0f6fa;
@@ -56,9 +62,13 @@
     background-color: #f0f6fa;
     border-right: 2px solid #e8eff5;
 }
-.home_header_pack_one div img, .home_header_pack_two div img{
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers vertically */
+
+.home_header_pack_one div img,
+.home_header_pack_two div img {
+    display: flex;
+    /* Enables flexbox */
+    align-items: center;
+    /* Centers vertically */
     justify-content: center;
     text-align: center;
     margin: auto;
@@ -73,14 +83,18 @@
     border-bottom: 2px solid #d4ebff !important;
     border-left: 2px solid #d4ebff !important;
 }
-.active img{
+
+.active img {
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
-.active_ntop img{
+
+.active_ntop img {
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
+
 .active_ntop {
-    border: 3px solid #c8d7f8; /* Initial border color */
+    border: 3px solid #c8d7f8;
+    /* Initial border color */
 }
 
 .course_container {
@@ -104,18 +118,26 @@
     max-width: 40px;
     background-color: #aae0ce;
     padding: 20px;
-    display: flex; /* Enables flexbox */
-    align-items: center; /* Centers vertically */
-    justify-content: center; /* Centers horizontally */
+    display: flex;
+    /* Enables flexbox */
+    align-items: center;
+    /* Centers vertically */
+    justify-content: center;
+    /* Centers horizontally */
 }
+
 .ch_a_comment {
     width: 100%;
     background-color: #d8eee7;
     padding: 20px;
-    display: flex; /* Enables flexbox */
-    align-items: left; /* Centers vertically */
-    justify-content: left; /* Centers horizontally */
+    display: flex;
+    /* Enables flexbox */
+    align-items: left;
+    /* Centers vertically */
+    justify-content: left;
+    /* Centers horizontally */
 }
+
 .ch_b_top_head {
     display: flex;
     justify-content: space-between;
@@ -132,13 +154,16 @@
     display: flex;
     align-items: center;
 }
+
 .error_container img {
     margin-right: 30px;
     margin-left: 10px;
 }
+
 .profile_main {
     background-color: #f2f8fc;
 }
+
 .chicago_bar {
     display: flex;
     justify-content: space-around;
@@ -152,7 +177,8 @@
     font-size: 16px;
     font-weight: 600;
 }
-.chicago_bar_selected{
+
+.chicago_bar_selected {
     border-bottom: 3px solid #2996f5;
 }
 
@@ -167,7 +193,8 @@
     background-color: #2996f556;
     overflow: hidden;
 }
-.conver_pic img{
+
+.conver_pic img {
     width: 100%;
     height: auto;
     align-items: center;
@@ -190,9 +217,11 @@
     border-radius: 500px;
     overflow: hidden;
 }
-.pic_pic img{
+
+.pic_pic img {
     width: 100%;
 }
+
 .pic_edit {
     display: flex;
     align-items: center;
@@ -204,64 +233,79 @@
     width: 120px;
     cursor: pointer;
 }
-.pic_edit:hover{
+
+.pic_edit:hover {
     background-color: #c2daee;
 }
-.pic_edit img{
+
+.pic_edit img {
     margin-right: 10px;
     margin-left: 4px;
 }
+
 .username_and_discription {
     margin: 0px 30px 0px 30px;
     position: relative;
     top: -80px;
 }
+
 .name_co_ {
     font-size: 22px;
 }
+
 .username_con_ {
     color: #4f5558;
     font-size: 16px;
 }
+
 .description_con_ {
     margin-top: 20px;
     font-size: 17px;
 }
+
 .chicago_mine {
     top: -20px;
     position: relative;
     margin: 0px 30px 0px 30px;
 }
+
 .info_chicago {
     display: flex;
     justify-content: space-between;
 }
+
 .info_chicago_ {
     margin: auto;
     margin-bottom: 40px;
     margin-top: 20px;
 }
-.info_chicago div{
+
+.info_chicago div {
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 16px;
 }
-.info_chicago div img{
+
+.info_chicago div img {
     margin-right: 8px;
 }
+
 .edit_profile {
     background-color: #F2F9FF;
 }
+
 .edit_profile_header {
     padding: 10px;
     width: 90%;
     margin: auto;
 }
+
 .edit_profile_header {
     display: flex;
     justify-content: space-between;
 }
+
 .exit_editor {
     padding: 8px;
     width: 60px;
@@ -274,6 +318,7 @@
     border: 1px solid #ec453d;
     cursor: pointer;
 }
+
 .save_editor {
     padding: 8px;
     width: 60px;
@@ -286,19 +331,23 @@
     border: 1px solid #4155eb;
     cursor: pointer;
 }
+
 .cover_edit {
     width: 100%;
     height: 200px;
     overflow: hidden;
     position: relative;
 }
+
 ._cover_edit {
     height: 100%;
 }
-._cover_edit img{
+
+._cover_edit img {
     width: 100%;
 
 }
+
 ._cover_edit_ {
     position: absolute;
     width: 100%;
@@ -324,17 +373,19 @@
     overflow: hidden;
     position: relative;
     top: -50px;
-    border:4px solid #c2daee;
+    border: 4px solid #c2daee;
     width: 125px;
     height: 125px;
     margin-left: 20px;
     border-radius: 100px;
 }
+
 ._pic_edit_ {
     position: absolute;
     width: 100%;
     height: 100%;
 }
+
 ._pic_edit_ label {
     position: absolute;
     width: 100%;
@@ -345,7 +396,8 @@
     display: flex;
     justify-content: center;
 }
-._pic_edit_ label img{
+
+._pic_edit_ label img {
     text-align: center;
     margin: auto;
     align-items: center;
@@ -359,21 +411,25 @@
     border-radius: 10px;
     cursor: pointer;
 }
+
 .input_edit_group {
     width: 88%;
     margin: auto;
     display: flex;
     justify-content: space-between;
 }
+
 .input_edit_group div {
     margin-right: 10px;
     width: 45%;
 }
+
 .input_edit_ {
     width: 100%;
     position: relative;
     padding-bottom: 40px;
 }
+
 .input_edit_ label {
     position: absolute;
     top: -15px;
@@ -382,7 +438,8 @@
     left: 10px;
     background-color: #F2F9FF;
 }
-.input_edit_ input{
+
+.input_edit_ input {
     width: 95%;
     padding: 10px;
     margin: auto;
@@ -390,11 +447,13 @@
     border-radius: 4px;
     font-size: 16px;
 }
+
 .input_edit_ind {
     width: 90%;
     margin: auto;
     margin-bottom: 20px;
 }
+
 .edit_faild {
     padding: 10px;
     font-size: 17px;
@@ -406,6 +465,7 @@
     margin-top: 20px;
     border-radius: 4px;
 }
+
 .cr {
     display: flex;
     justify-content: center;
@@ -424,9 +484,15 @@
 }
 
 @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
+    0% {
+        transform: rotate(0deg);
+    }
+
+    100% {
+        transform: rotate(360deg);
+    }
 }
+
 .edit_succ {
     padding: 20px;
     margin: 10px;
@@ -439,7 +505,136 @@
     background-color: #9accec;
     width: 100%;
 }
+
 ._pic_edit img {
     width: 100%;
     height: 100%;
+}
+
+.search_container {
+    background-color: #eaf2f8;
+    position: relative;
+    padding: 20px;
+}
+
+.search_box {
+    position: relative;
+    display: flex;
+    width: 100%;
+    /* Takes 90% of the page width */
+    align-items: center;
+    padding: 8px;
+    margin: auto;
+    width: 90%;
+    margin: auto;
+}
+
+.search_box input {
+    /* Takes the remaining space (80%) */
+    padding: 20px;
+    border: none;
+    outline: none;
+    width: 100%;
+    font-size: 14px;
+    border-radius: 10px;
+    background-color: #d3eaf7;
+    padding-left: 23px;
+    /* Ensures text inside input is also aligned */
+    border: 1px solid #d4ebff;
+    margin-right: 10px;
+    color: rgb(48, 50, 51);
+}
+
+.search_box input::placeholder {
+    font-size: 14px;
+    /* Optional: Makes placeholder text lighter */
+}
+
+
+.search_button {
+    cursor: pointer;
+    position: absolute;
+    right: 30px;
+    flex-shrink: 0;
+    /* Prevents shrinking */
+    width: 20%;
+    /* Takes 20% of the width */
+    width: 40px;
+    height: 40px;
+    /* Max width to prevent it from being too large */
+    background-color: #eaf3f8;
+    color: white;
+    border: none;
+    border-radius: 500px;
+}
+
+.search_button img {
+    width: 16px;
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
+
+.search_button:hover {
+    background-color: #c6e1f9;
+}
+
+.search_suggestions {
+    margin: auto;
+}
+
+.results {
+    background-color: #eaf3f8;
+    padding: 20px;
+}
+
+.sort {
+    display: flex;
+    justify-content: space-between;
+    padding: 20px;
+    font-size: 14px;
+    border-top: 1px solid #c2daee;
+}
+
+.user_item {
+    width: auto;
+    margin: auto;
+    display: flex;
+    align-items: normal;
+    padding: 12px;
+    background-color: #48a8fc;
+    margin-bottom: 20px;
+    border-radius: 34px;
+    color: white;
+    min-height: 80px;
+}
+.user_info_name {
+    font-size: 15px;
+    font-weight: 600;
+}
+.user_info_username {
+    font-size: 14px;
+    margin-top: 3px;
+    text-decoration: underline solid;
+    cursor: pointer;
+}
+.user_info_bio {
+    font-size: 15px;
+    width: 90%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.user_image {
+    position: relative;
+    border-radius: 500px;
+    min-width: 70px;
+    max-width: 70px;
+    min-height: 70px;
+    max-height: 70px;
+    margin-right: 10px;
+    border: 3px solid #71b7f4;
+    overflow: hidden;
+}
+
+.user_image img {
+    position: absolute;
+    width: 100%;
 }
