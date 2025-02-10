@@ -63,6 +63,7 @@ function Home() {
         "delete",
         "buy"
     ]
+    const [url_v, setUrl_v] = useState("")
 
     const [api_url, setApi_url] = useState({
         api_inside: "",
@@ -112,20 +113,16 @@ function Home() {
                             picture: dd.profile_image || profileIcon,
                             name: dd.firstName
                         })
-                        setApi_url({
-                            api_inside: dd.api_inside,
-                            api_v: dd.api_v
-                        })
-                        if (dd.api_inside !== false) {
-                            cu = `?type=${key}&${dd.api_inside}=${dd.api_v}`
+                        if (dd.api_inside !== false && dd.api_inside !== "false" && dd.api_inside !== undefined) {
+                            cu = `?type=${key}&${dd.api_inside}=${dd.api_v}`;
+                            setUrl_v(vi)
                         } else {
-                            cu = `?type=${key}`
+                            cu = `?type=${key}`;
                         }
-                        navigate(`${cu}`);
+                        navigate(cu);
                         setCr(true)
                     } else {
                         cu = `?type=${key}`
-                        navigate(`${cu}`);
                         setCr(true)
                         //reload_()
                     }
@@ -137,6 +134,15 @@ function Home() {
     };
 
     useEffect(() => {
+        // Function to handle the popstate event (back/forward navigation)
+        const handlePopState = () => {
+            window.location.reload(); // Reload the page
+        };
+
+        // Add event listener for popstate
+        window.addEventListener('popstate', handlePopState);
+
+        // Your existing logic
         if (!isLoading) {
             cc()
                 .then(e => {
@@ -156,9 +162,9 @@ function Home() {
                                     return fetchDataForKey(urlType, e.c, e.m, ii, iii);
                                 }
                             }
-                            fetchDataForKey(urlType, e.c, e.m, false, "Ds");
+                            fetchDataForKey(urlType, e.c, e.m, false, "");
                         } else {
-                            fetchDataForKey('profile', e.c, e.m, false, "Ds");
+                            fetchDataForKey('profile', e.c, e.m, false, "");
                         }
                     } else {
                         navigate('/', { replace: true });
@@ -169,8 +175,12 @@ function Home() {
                     navigate('/', { replace: true });
                 });
         }
-    }, [isLoading, searchParams, navigate]);
 
+        // Cleanup the event listener on component unmount
+        return () => {
+            window.removeEventListener('popstate', handlePopState);
+        };
+    }, [isLoading, searchParams, navigate]);
 
     // RENDER MAIN HOME
     return (
@@ -187,21 +197,21 @@ function Home() {
                     <div className='home_header_pck'>
                         <div className='home_header'>
                             <div className='home_header_pack_one'>
-                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.course ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.course ? 'active' : ''}`}>
                                     <img src={courseIcon} alt="Course" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.profile ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.profile ? 'active' : ''}`}>
                                     <img src={profileIcon} alt="Profile" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.search ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('search', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.search ? 'active' : ''}`}>
                                     <img src={searchIcon} alt="Search" width='16px' />
                                 </div>
-                                <div onClick={() => fetchDataForKey('notifications', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change notifications_icon_bottom ${io.notifications ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('notifications', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change notifications_icon_bottom ${io.notifications ? 'active' : ''}`}>
                                     <img src={bell_solid} alt="bell_solid" width='16px' />
                                 </div>
                             </div>
                             <div className='home_header_pack_two'>
-                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email, false, "ha")} className={`container_change ${io.messages ? 'active' : ''}`}>
+                                <div onClick={() => fetchDataForKey('messages', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.messages ? 'active' : ''}`}>
                                     <img src={comments_regular} alt="messages" width='18px' />
                                 </div>
                             </div>
@@ -216,8 +226,8 @@ function Home() {
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
-                                api_url={api_url}
-                                setApi_url={setApi_url}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
                             />}
                             {io.lookup && <Lookup
                                 db={db}
@@ -226,8 +236,8 @@ function Home() {
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
-                                api_url={api_url}
-                                setApi_url={setApi_url}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
                             />}
                             {io.search && <Search
                                 db={db}
@@ -236,8 +246,8 @@ function Home() {
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
-                                api_url={api_url}
-                                setApi_url={setApi_url}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
                             />}
                             {io.profile && <Profile
                                 db={db}
@@ -246,6 +256,8 @@ function Home() {
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
                             />}
                             {io.messages && <Messages
                                 db={db}
@@ -254,6 +266,8 @@ function Home() {
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
                                 profileIcon={profileIcon}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
                             />}
                         </div> : <div className='cr'></div>}
                 </div>
