@@ -84,7 +84,7 @@ function Header({ ask, login, pic, fetchDataForKey, io, cookie_log }) {
     return (
         <>
             <header className="main_header" onClick={toggleOptions_advance}>
-                <div className='logo-main' onClick={() => navigate('/')}>
+                <div className='logo-main' onClick={() => navigate('/', { replace: true })}>
                     <img className="logo" src={logo} alt="logo" />
                 </div>
 

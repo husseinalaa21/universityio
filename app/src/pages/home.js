@@ -104,6 +104,7 @@ function Home() {
             axios.post(`${API_BASE_URL}/home/${key}`, { email, cookie, inside: inside, vi })
                 .then(response => {
                     if (response.status === 200) {
+                        setIsLoading(true);
                         var dd = response.data
                         setDb(dd.data);
                         setUser({
@@ -152,7 +153,6 @@ function Home() {
                 .then(e => {
                     if (e.s === true) {
                         // TRUE LOGIN
-                        setIsLoading(true);
                         setCookie_log({
                             cookie: e.c,
                             email: e.m
@@ -181,7 +181,6 @@ function Home() {
                         }
                     } else {
                         setLogin(false)
-                        setIsLoading(true);
                         // Function to handle the popstate eve
                         // Extract the dynamic segment (e.g., "hussein")
                         const url = window.location.href;
