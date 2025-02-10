@@ -13,11 +13,11 @@
       "sizes": "512x512"
     }
   ],
-  "id": "/?source=pwa",
-  "start_url": "/?source=pwa",
+  "id": "/in?source=pwa",
+  "start_url": "/in?source=pwa",
   "background_color": "#8cc0ee",
   "display": "standalone",
-  "scope": "/",
+  "scope": "/in",
   "theme_color": "#eff6fce4",
   "shortcuts": [
     {

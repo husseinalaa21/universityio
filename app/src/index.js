@@ -21,10 +21,10 @@ root.render(
     <Router>
       <Routes>
         {/* Home route */}
-        <Route path="/" element={<Introducing />} />
+        <Route path="/" element={<Home />} />
 
         {/* HOME PAGE */}
-        <Route path="/home" element={<Home />} />
+        <Route path="/in" element={<Introducing />} />
 
         {/* Login and Sign Up route */}
         <Route path="/auth" element={<LoginSignup type={true}/>} />
@@ -48,7 +48,7 @@ root.render(
         <Route path="/user" element={<User />} />
 
         {/* Redirect unknown paths to home */}
-        <Route path="*" element={<Navigate to="/" replace />} />
+        <Route path="*" element={<Home replace />} />
       </Routes>
     </Router>
   </React.StrictMode>

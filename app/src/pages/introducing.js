@@ -116,7 +116,7 @@ const Intro = () => {
       cc()
         .then((e) => {
           if (e.s === true) {
-            navigate("/home", { replace: true });
+            navigate("/", { replace: true });
           } else {
             setIsLoading(true);
           }

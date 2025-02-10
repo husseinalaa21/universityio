@@ -83,7 +83,7 @@ function Home() {
                     window.location.reload();
                 }, 1000);
             } else if (num_reload >= 3) {
-                navigate('/', { replace: true });
+                navigate('/in', { replace: true });
             } else {
                 setTimeout(() => {
                     navigate(`${cu}&nr=0`);
@@ -114,15 +114,21 @@ function Home() {
                             name: dd.firstName
                         })
                         if (dd.api_inside !== false && dd.api_inside !== "false" && dd.api_inside !== undefined) {
-                            cu = `?type=${key}&${dd.api_inside}=${dd.api_v}`;
+                            cu = `/?type=${key}&${dd.api_inside}=${dd.api_v}`;
                             setUrl_v(vi)
                         } else {
-                            cu = `?type=${key}`;
+                            cu = `/?type=${key}`;
+                        }
+                        if (key == "profile") {
+                            cu = `/${dd.data.username}`;
+                        }
+                        if (key == "lookup") {
+                            cu = `/${dd.data.username}`;
                         }
                         navigate(cu);
                         setCr(true)
                     } else {
-                        cu = `?type=${key}`
+                        cu = `/?type=${key}`
                         setCr(true)
                         //reload_()
                     }
@@ -167,7 +173,7 @@ function Home() {
                             fetchDataForKey('profile', e.c, e.m, false, "");
                         }
                     } else {
-                        navigate('/', { replace: true });
+                        navigate('/in', { replace: true });
                     }
                 })
                 .catch(error => {
