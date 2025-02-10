@@ -3,8 +3,10 @@ import Bug from "./bug";
 import link_pic from '../../svg/link-solid.svg'
 import join_pic from '../../svg/calendar-days-solid.svg'
 import location_pic from '../../svg/location-dot-solid.svg'
+import profileIcon from '../../svg/user-solid.svg';
+import verified from '../../svg/verified.svg';
 
-const Lookup = ({ db, cookie_log, setDb, fetchDataForKey, API_BASE_URL, profileIcon }) => {
+const Lookup = ({ db, cookie_log, fetchDataForKey }) => {
     const [chicago, setChicago] = useState('course');
     const change_chicago = (cc) => {
         if (cc == "degree") {
@@ -45,14 +47,20 @@ const Lookup = ({ db, cookie_log, setDb, fetchDataForKey, API_BASE_URL, profileI
         fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, "", "")
         return true
     }
+    const dashShow = (v, t) => {
+        if (v == undefined || v.length == 0) {
+            return t
+        }
+        return v
+    }
     var firstName = db.firstName,
         lastName = db.lastName,
         username = db.username,
-        bio = db.bio,
-        profile_image = db.profile_image,
+        bio = dashShow(db.bio, "No bio"),
+        profile_image = db.profile_image || profileIcon,
         cover = db.cover,
-        link = db.link,
-        location = db.location;
+        link = dashShow(db.link, "No Link"),
+        location = dashShow(db.location, "No location");
     return <>
         {isNoResul ? <> No User Found! </> :
             <div className="search_suggestions">
@@ -68,7 +76,7 @@ const Lookup = ({ db, cookie_log, setDb, fetchDataForKey, API_BASE_URL, profileI
                                 </div>
                             </div>
                             <div className='username_and_discription'>
-                                <div className='name_co_'>{firstName} {lastName}</div>
+                                <div className='name_co_'>{firstName} {lastName} {db.verified && <img className='verified' src={verified} width="22px" />}</div>
                                 <div className='username_con_'>@{username}</div>
                                 <div className='description_con_'>{bio}</div>
                             </div>
@@ -78,7 +86,7 @@ const Lookup = ({ db, cookie_log, setDb, fetchDataForKey, API_BASE_URL, profileI
                                         <img src={location_pic} width='14px' /> {location}
                                     </div>
                                     <div>
-                                        <img src={join_pic} width='14px' /> Joined {chicago_date(db.join)}
+                                        <img src={join_pic} width='14px' /> Joined {chicago_date(db.dateJoin)}
                                     </div>
                                 </div>
                                 <div className='info_chicago_'>

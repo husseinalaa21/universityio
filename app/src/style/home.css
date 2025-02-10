@@ -250,7 +250,16 @@
 }
 
 .name_co_ {
+    display: flex;
+    justify-content: left;
+    align-items: center;
     font-size: 22px;
+}
+
+.verified {
+    margin-left: 5px;
+    width: 24px;
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
 
 .username_con_ {

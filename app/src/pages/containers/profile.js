@@ -18,6 +18,7 @@ import upload_solid from '../../svg/upload-solid.svg'
 import link_pic from '../../svg/link-solid.svg'
 import join_pic from '../../svg/calendar-days-solid.svg'
 import location_pic from '../../svg/location-dot-solid.svg'
+import verified from '../../svg/verified.svg';
 // Array of cover images
 const bps = [bp_0, bp_1, bp_2, bp_3, bp_4, bp_5, bp_6, bp_7, bp_8, bp_9];
 // Randomly select a cover image from the bps array
@@ -319,7 +320,7 @@ const Profile = ({ db, cookie_log, setDb, fetchDataForKey, API_BASE_URL, profile
                             </div>
                         </div>
                         <div className='username_and_discription'>
-                            <div className='name_co_'>{firstName} {lastName}</div>
+                            <div className='name_co_'>{firstName} {lastName}{db.verified && <img className='verified' src={verified} width="22px" />}</div>
                             <div className='username_con_'>@{username}</div>
                             <div className='description_con_'>{bio}</div>
                         </div>
