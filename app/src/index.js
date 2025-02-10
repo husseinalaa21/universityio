@@ -12,7 +12,6 @@ import Policy from './pages/policy';
 import Support from './pages/support';
 import ContactUs from './pages/contact';
 import Faq from './pages/faq';
-import User from './pages/user';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -45,7 +44,6 @@ root.render(
         <Route path="/contactus" element={<ContactUs />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/faq" element={<Faq />} />
-        <Route path="/user" element={<User />} />
 
         {/* Redirect unknown paths to home */}
         <Route path="*" element={<Home replace />} />

@@ -612,22 +612,26 @@
     color: white;
     min-height: 80px;
 }
+
 .user_info_name {
     font-size: 15px;
     font-weight: 600;
 }
+
 .user_info_username {
     font-size: 14px;
     margin-top: 3px;
     text-decoration: underline solid;
     cursor: pointer;
 }
+
 .user_info_bio {
     font-size: 15px;
     width: 90%;
     margin-top: 10px;
     margin-bottom: 10px;
 }
+
 .user_image {
     position: relative;
     border-radius: 500px;
@@ -643,4 +647,95 @@
 .user_image img {
     position: absolute;
     width: 100%;
+}
+
+.sign_offer {
+    position: fixed;
+    width: 90%;
+    max-width: 600px;
+    left: 50%;
+    bottom: 10px;
+    transform: translateX(-50%);
+    align-items: center;
+    border: 1px solid rgb(231, 244, 254);
+    background: rgba(231, 244, 254, 0.729);
+    /* Slightly transparent white-blue background */
+    backdrop-filter: blur(10px);
+    /* Blurry effect */
+    border-radius: 10px;
+    z-index: 100;
+    text-align: center;
+    color: #4f5558;
+}
+
+.sign_offer p {
+    width: 70%;
+    margin: auto;
+    padding: 16px;
+    font-size: 17px;
+    font-weight: 700;
+    border: 0;
+    border-bottom: 1px solid #c7d4dbb6;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.sign_offer p img {
+    filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(60%) contrast(100%);
+    margin-right: 10px;
+}
+
+.sign_offer p mark {
+    font-family: "Pacifico", serif;
+    font-style: normal;
+    background: none;
+    color: #369aff;
+    margin: 0 6px;
+}
+
+.sign_bott {
+    font-size: 14px;
+    padding: 10px;
+}
+
+.offer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    padding: 10px;
+    padding-top: 15px;
+    margin-right: 0;
+    font-weight: 700;
+}
+
+.so_login {
+    padding: 10px;
+    width: 60px;
+    text-align: center;
+    background-color: #04b3f2;
+    color: aliceblue;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-right: 6px;
+}
+
+.so_signup {
+    padding: 10px;
+    width: 80px;
+    text-align: center;
+    background-color: #28c872;
+    color: white;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 6px;
+}
+
+.so_signup:hover {
+    background-color: #0d954d;
+}
+
+.so_login:hover {
+    background-color: #2298ff;
 }
