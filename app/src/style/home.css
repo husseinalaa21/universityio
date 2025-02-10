@@ -525,7 +525,7 @@
     align-items: center;
     padding: 8px;
     margin: auto;
-    width: 90%;
+    width: 100%;
     margin: auto;
 }
 
@@ -543,10 +543,11 @@
     border: 1px solid #d4ebff;
     margin-right: 10px;
     color: rgb(48, 50, 51);
+    font-size: 15px;
 }
 
 .search_box input::placeholder {
-    font-size: 14px;
+    font-size: 15px;
     /* Optional: Makes placeholder text lighter */
 }
 
@@ -559,8 +560,8 @@
     /* Prevents shrinking */
     width: 20%;
     /* Takes 20% of the width */
-    width: 40px;
-    height: 40px;
+    width: 45px;
+    height: 45px;
     /* Max width to prevent it from being too large */
     background-color: #eaf3f8;
     color: white;
@@ -569,7 +570,7 @@
 }
 
 .search_button img {
-    width: 16px;
+    width: 17px;
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
 
