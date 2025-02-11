@@ -133,7 +133,7 @@ function Home() {
                     }
                 })
                 .catch(error => {
-                    navigate('/in', { replace: true });
+                    reload_()
                 });
         }
     };
