@@ -119,6 +119,7 @@ const Intro = () => {
             navigate("/", { replace: true });
           } else {
             setIsLoading(true);
+            
           }
         })
         .catch(() => {
