@@ -300,7 +300,7 @@ function Home() {
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
                             />}
-                            {io.messages && <Settings
+                            {io.settings && <Settings
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
