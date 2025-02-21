@@ -111,8 +111,8 @@ function Header({ ask, login, pic, fetchDataForKey, io, cookie_log }) {
                 {/**isNight ? <div className='night_on'> <img src={moon_solid} width='20px'></img></div> : <div className='night_off'></div>**/}
                 {showOptions && (
                     <div className='dropdown_menu'>
-                        <div onClick={() => navigate('/profile')}>Profile</div>
-                        <div onClick={() => navigate('/settings')}>Settings</div>
+                        <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false, "")}>Profile</div>
+                        <div onClick={() => fetchDataForKey('settings', cookie_log.cookie, cookie_log.email, false, "")}>Settings</div>
                         <div onClick={logout}>Logout</div>
                     </div>
                 )}

@@ -22,6 +22,7 @@ import Profile from './containers/profile.js';
 import Search from './containers/search.js';
 import Lookup from './containers/lookup.js';
 import Messages from './containers/messages.js';
+import Settings from './containers/settings.js';
 
 function Home() {
     const navigate = useNavigate();
@@ -290,6 +291,16 @@ function Home() {
                                 setUrl_v={setUrl_v}
                             />}
                             {io.messages && <Messages
+                                db={db}
+                                setDb={setDb}
+                                cookie_log={cookie_log}
+                                fetchDataForKey={fetchDataForKey}
+                                API_BASE_URL={API_BASE_URL}
+                                profileIcon={profileIcon}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
+                            />}
+                            {io.messages && <Settings
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
