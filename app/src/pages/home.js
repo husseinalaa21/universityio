@@ -4,6 +4,7 @@ import { useParams, useSearchParams } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
 import axios from 'axios';
 import '../style/home.css';
+import '../style/course.css';
 import cc from '../pages/cc.js'
 import Header from './header';
 import End from './end';

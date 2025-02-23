@@ -97,52 +97,6 @@
     /* Initial border color */
 }
 
-.course_container {
-    background-color: #eff6fce4;
-    height: 400px;
-}
-
-.container_home {
-    padding-top: 10px;
-}
-
-.ch_a {
-    margin: 20px;
-    display: flex;
-    border-radius: 10px;
-    overflow: hidden;
-}
-
-.ch_a_note {
-    width: 20%;
-    max-width: 40px;
-    background-color: #aae0ce;
-    padding: 20px;
-    display: flex;
-    /* Enables flexbox */
-    align-items: center;
-    /* Centers vertically */
-    justify-content: center;
-    /* Centers horizontally */
-}
-
-.ch_a_comment {
-    width: 100%;
-    background-color: #d8eee7;
-    padding: 20px;
-    display: flex;
-    /* Enables flexbox */
-    align-items: left;
-    /* Centers vertically */
-    justify-content: left;
-    /* Centers horizontally */
-}
-
-.ch_b_top_head {
-    display: flex;
-    justify-content: space-between;
-    margin: 30px;
-}
 
 .error_container {
     padding: 20px;
@@ -521,7 +475,7 @@
 }
 
 .search_container {
-    background-color: #eaf2f8;
+    background-color: #e7f0f8;
     position: relative;
     padding: 20px;
 }

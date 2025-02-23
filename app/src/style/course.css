@@ -1,0 +1,122 @@
+.course_container {
+    min-height: 600px;
+}
+
+.ch_a {
+    margin: 20px;
+    display: flex;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.ch_a_note {
+    width: 20%;
+    max-width: 40px;
+    background-color: #aae0ce;
+    padding: 20px;
+    display: flex;
+    /* Enables flexbox */
+    align-items: center;
+    /* Centers vertically */
+    justify-content: center;
+    /* Centers horizontally */
+}
+
+.ch_a_comment {
+    width: 100%;
+    background-color: #d8eee7;
+    padding: 20px;
+    display: flex;
+    /* Enables flexbox */
+    align-items: left;
+    /* Centers vertically */
+    justify-content: left;
+    /* Centers horizontally */
+}
+
+.ch_b_top_head {
+    display: flex;
+    justify-content: space-between;
+    margin: 30px;
+}
+.upload_course {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    width: 90%;
+    margin: auto;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    border-radius: 4px;
+    background-color: #d8eee7;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.upload_course:hover {
+    background-color: #aae0ce;
+}
+
+.upload_course div {
+    margin-left: 10px;
+}
+
+.upload_img {
+    margin-right: 10px;
+    padding: 6px;
+    border-radius: 500px;
+    width: 40px;
+    height: 40px;
+    align-items: center;
+    background-color: #aae0ce;
+    justify-content: center;
+    display: flex;
+    text-align: center;
+}
+
+.type_view {
+    display: flex;
+    justify-content: left;
+    background-color: #e7f0f8;
+    padding: 20px;
+}
+
+.type_view div {
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 500;
+    padding: 10px 18px 10px 18px;
+    border-bottom: 3px solid #e1f1f8;
+}
+
+.type_view div img {
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
+}
+
+.type_view .__selected {
+    color: #3399f2;
+    border-bottom: 3px solid #96ccfb;
+}
+.teach_ad {
+    display: flex;
+    justify-content: center;
+}
+.new_t {
+    margin-left: 10px;
+    position: relative;
+    color: #3399f2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 10px !important;
+    background-color: #c5e1fa;
+    padding: 4px !important;
+    border-radius: 20px;
+    width: 50px;
+    height: 10px;
+}
+.new_t img {
+    margin-left: 5px;
+}
