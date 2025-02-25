@@ -89,15 +89,27 @@
     font-weight: 500;
     padding: 10px 18px 10px 18px;
     border-bottom: 3px solid #e1f1f8;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.type_view div img {
+    position: relative;
+    padding-right: 7px;
+    filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(60%) contrast(100%);
 }
 
-.type_view div img {
+.new_t img {
+    padding-right: 0 !important;
     filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
 
 .type_view .__selected {
     color: #3399f2;
     border-bottom: 3px solid #96ccfb;
+}
+.type_view .__selected img{
+    filter: invert(63%) sepia(23%) saturate(1055%) hue-rotate(168deg) brightness(103%) contrast(93%) !important;
 }
 .teach_ad {
     display: flex;
