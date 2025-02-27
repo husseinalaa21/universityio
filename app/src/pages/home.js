@@ -25,6 +25,7 @@ import Search from './containers/search.js';
 import Lookup from './containers/lookup.js';
 import Messages from './containers/messages.js';
 import Settings from './containers/settings.js';
+import Edit_course from './containers/edit_course.js';
 
 function Home() {
     const navigate = useNavigate();
@@ -51,7 +52,9 @@ function Home() {
         messages: false,
         lookup: false,
         settings: false,
-        notifications: false
+        notifications: false,
+        setup_course: false,
+        edit_course: false
     });
 
     const API_BASE_URL = window.location.hostname === 'localhost'
@@ -101,7 +104,8 @@ function Home() {
                 profile: false,
                 messages: false,
                 settings: false,
-                lookup: false
+                lookup: false,
+                setup_course: false
             };
             newStates[key] = true;
             setCr(false)
@@ -308,6 +312,16 @@ function Home() {
                                 setUrl_v={setUrl_v}
                             />}
                             {io.settings && <Settings
+                                db={db}
+                                setDb={setDb}
+                                cookie_log={cookie_log}
+                                fetchDataForKey={fetchDataForKey}
+                                API_BASE_URL={API_BASE_URL}
+                                profileIcon={profileIcon}
+                                url_v={url_v}
+                                setUrl_v={setUrl_v}
+                            />}
+                            {io.edit_course && <Edit_course
                                 db={db}
                                 setDb={setDb}
                                 cookie_log={cookie_log}
