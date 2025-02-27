@@ -11,6 +11,7 @@ import End from './end';
 import Loading from '../pages/loading.js'
 // Import necessary images
 import courseIcon from '../svg/book-solid.svg';
+import houseIcon from '../svg/house-solid.svg'
 import searchIcon from '../svg/seach-icon.svg';
 import profileIcon from '../svg/user-solid.svg';
 import comments_regular from '../svg/message-solid.svg';
@@ -66,9 +67,12 @@ function Home() {
         "user",
         "add",
         "delete",
-        "buy"
+        "buy",
+        "teach",
+        "learn"
     ]
     const [url_v, setUrl_v] = useState("")
+    const [url_inside, setUrl_inside] = useState("")
 
     // Important to set defult view so can't get error ?nr=0 = null and not able to try
     function reload_() {
@@ -119,6 +123,7 @@ function Home() {
                         } else {
                             cu = `/?type=${key}`;
                         }
+                        setUrl_inside(inside)
                         setTitle(`${key}`)
                         if (key == "profile") {
                             setTitle(`${dd.data.firstName} ${dd.data.lastName}`)
@@ -223,8 +228,8 @@ function Home() {
                         <div className='home_header_pck'>
                             <div className='home_header'>
                                 <div className='home_header_pack_one'>
-                                    <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.course ? 'active' : ''}`}>
-                                        <img src={courseIcon} alt="Course" width='16px' />
+                                    <div onClick={() => fetchDataForKey('course', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change homeicon ${io.course ? 'active' : ''}`}>
+                                        <img src={houseIcon} alt="Course" width='16px' />
                                     </div>
                                     <div onClick={() => fetchDataForKey('profile', cookie_log.cookie, cookie_log.email, false, "")} className={`container_change ${io.profile ? 'active' : ''}`}>
                                         <img src={profileIcon} alt="Profile" width='16px' />
@@ -260,6 +265,7 @@ function Home() {
                                 profileIcon={profileIcon}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
                             />}
                             {io.lookup && <Lookup
                                 db={db}

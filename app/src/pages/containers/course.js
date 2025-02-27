@@ -7,24 +7,25 @@ import stars_icon from '../../svg/star-solid.svg';
 import learn_icon from '../../svg/book-solid.svg';
 import teach_icon from '../../svg/chalkboard-user-solid.svg';
 
-const Course = (props) => {
+const Course = ({ db, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v, url_inside }) => {
+    var hasValue = false
+    if(url_inside == "learn" || url_inside == "teach"){
+        hasValue = true
+    }
     const [type_show, setType_show] = useState({
-        learn: false,
-        teach: false,
-        overall: true
+        learn: hasValue? url_inside == "learn" ? true : false : false,
+        teach: hasValue? url_inside == "teach" ? true : false : true
     })
     const type_show_ = (t) => {
         setType_show({
             learn: t === "learn",
-            teach: t === "teach",
-            overall: t === "overall"
+            teach: t === "teach"
         });
+        fetchDataForKey('course', cookie_log.cookie, cookie_log.email, t, "")
     };
-    var db = props.db
 
     return <div className='course_container'>
         <div className="type_view">
-            <div className={type_show.overall && "__selected"} onClick={() => type_show_("overall")}> <img src={overall_icon} width="14px" /> Public </div>
             <div className={type_show.learn && "__selected"} onClick={() => type_show_("learn")}> <img src={learn_icon} width="12px" /> Learn </div>
             <div className={type_show.teach ? "__selected teach_ad" : "teach_ad"} onClick={() => type_show_("teach")}> <img src={teach_icon} width="17px" /> Teach <div className="new_t">Join <img src={stars_icon} width="8px" /></div></div>
         </div>
@@ -50,9 +51,6 @@ const Course = (props) => {
                             Find your courses here—whether they're courses you've purchased or courses you've created.
                         </div>
                     </div>
-                </div> : <></>}
-            {type_show.overall ?
-                <div className="overall">
                 </div> : <></>}
         </div>
     </div>

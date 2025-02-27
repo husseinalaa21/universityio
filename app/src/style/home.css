@@ -76,6 +76,10 @@
     filter: invert(30%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(60%) contrast(100%);
 }
 
+.homeicon img{
+    width: 19px !important;
+}
+
 .active {
     background-color: #d4ebff !important;
     border-right: 0 !important;
