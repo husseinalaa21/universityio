@@ -26,7 +26,7 @@ const Course = ({ db, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v,
 
     return <div className='course_container'>
         <div className="type_view">
-            <div className={type_show.learn && "__selected"} onClick={() => type_show_("learn")}> <img src={learn_icon} width="12px" /> Learn </div>
+            <div className={type_show.learn && "__selected"} onClick={() => type_show_("learn")}> <img src={learn_icon} width="15px" /> Courses </div>
             <div className={type_show.teach ? "__selected teach_ad" : "teach_ad"} onClick={() => type_show_("teach")}> <img src={teach_icon} width="17px" /> Teach <div className="new_t">Join <img src={stars_icon} width="8px" /></div></div>
         </div>
         <div className='ch_b'>
