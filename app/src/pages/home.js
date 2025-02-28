@@ -266,7 +266,7 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
                                 url_inside={url_inside}
