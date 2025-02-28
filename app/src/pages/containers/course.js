@@ -131,7 +131,7 @@ const Course = ({ db, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v,
             }
             {type_show.new_course &&
                 <div className="create_course_form_">
-                    <div className="back" onClick={() => type_show_("teach")}> <img src={back_icon} width="14px" /> </div>
+                    <div className="back_now" onClick={() => type_show_("teach")}> <img src={back_icon} width="14px" /> </div>
                     {isNew_course()}
                     <div className="create_course_form">
                         <h2>Create New <mark>Course</mark></h2>
