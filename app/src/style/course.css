@@ -289,10 +289,12 @@
     font-weight: 600;
     cursor: pointer;
 }
-
+.profile_main_con {
+    padding: 20px;
+}
 .course_has {
     background-color: #b3cedc;
-    padding: 20px;
+    padding: 30px;
 }
 .hussein_ {
     border-radius: 40px;
@@ -318,6 +320,7 @@
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 10px;
 }
 .item-shape_:hover {
     filter: brightness(0.8); /* Darken the background */
@@ -343,9 +346,12 @@
 }
 
 .item-logo_ img {
-    height: 100%;
     width: 80px;
     margin-right: 13px;
+    margin: auto !important;
+    text-align: center !important;
+    align-items: center !important;
+    height: 100%;
 }
 
 .item_logo_title_ {
@@ -371,7 +377,7 @@
 .item_logo_title_ h4 {
     padding: 8px 0 0 0px;
     margin: 0;
-    font-size: 14px;
+    font-size: 15px;
     font-weight: 400;
 }
 
@@ -382,11 +388,11 @@
     cursor: pointer;
 }
 
-.item_logo_title_ p {
-    padding: 7px 0 0 0;
-    margin: 0;
-    font-size: 15px;
-    text-align: left;
+.price {
+    padding: 7px 0 0 0 !important;
+    margin: 0 !important;
+    font-size: 14px !important;
+    text-align: left !important;
 }
 
 .item_logo_title_ mark {
@@ -395,7 +401,8 @@
     color: #fbfcfe;
 }
 
-.tags {
+.description_ {
     display: flex;
-    margin-left: 20px;
+    padding: 20px;
+    font-size: 16px !important;
 }

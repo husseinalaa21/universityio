@@ -36,7 +36,8 @@ function Home() {
     const [cr, setCr] = useState(true)
     const [user, setUser] = useState({
         picture: "",
-        name: ""
+        name: "",
+        username: ""
     })
     const [cookie_log, setCookie_log] = useState({
         cookie: "",
@@ -117,9 +118,11 @@ function Home() {
                         setIsLoading(true);
                         var dd = response.data
                         setDb(dd.data);
+                        var name_ = dd.firstName + " " + dd.data.lastName
                         setUser({
                             picture: dd.profile_image || profileIcon,
-                            name: dd.firstName
+                            name: name_,
+                            username: dd.data.username
                         })
                         if (dd.api_inside !== false && dd.api_inside !== "false" && dd.api_inside !== undefined) {
                             cu = `/?type=${key}&${dd.api_inside}=${dd.api_v}`;
@@ -270,6 +273,7 @@ function Home() {
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
                                 url_inside={url_inside}
+                                user={user}
                             />}
                             {io.lookup && <Lookup
                                 db={db}

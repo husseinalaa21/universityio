@@ -8,7 +8,7 @@ import learn_icon from '../../svg/book-solid.svg';
 import teach_icon from '../../svg/chalkboard-user-solid.svg';
 import back_icon from '../../svg/angle-left-solid.svg'
 
-const Course = ({ db, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v, url_inside }) => {
+const Course = ({ db, user, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v, url_inside }) => {
     var hasValue = false
     // SETING UP NEW COURSE
     const [courseName, setCourseName] = useState('');
@@ -111,13 +111,13 @@ const Course = ({ db, cookie_log, fetchDataForKey, profileIcon, setUrl_v, url_v,
                                                     </div>
                                                     <div className='item_logo_title_'>
                                                         <h3>{course.name}</h3>
-                                                        <h4>By <mark>You</mark></h4>
-                                                        <p>{course.description}</p>
-                                                        <p>Price ${course.price}</p>
+                                                        <h4>By {user.name}</h4>
+                                                        <h4 onClick={() => fetchDataForKey('lookup', cookie_log.cookie, cookie_log.email, "lookup", user.username)}>@<mark>{user.username}</mark></h4>
+                                                        <p className='price'>Price ${course.price}</p>
                                                     </div>
                                                 </div>
-                                                <div className='tags'>
-
+                                                <div className='description_'>
+                                                    {course.description}
                                                 </div>
                                             </div>
                                         </div>
