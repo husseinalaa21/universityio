@@ -5,47 +5,36 @@ import join_pic from '../../svg/calendar-days-solid.svg'
 import location_pic from '../../svg/location-dot-solid.svg'
 import profileIcon from '../../svg/user-solid.svg';
 import verified from '../../svg/verified.svg';
+import CourseStyle from './course_style.js'
 
-const Lookup = ({ db, cookie_log, fetchDataForKey }) => {
-    const [chicago, setChicago] = useState('course');
+const Lookup = ({ db, user, cookie_log, fetchDataForKey }) => {
+    const [chicago, setChicago] = useState('courses');
     const change_chicago = (cc) => {
-        if (cc == "degree") {
-            setChicago("degree")
-        } else if (cc == "course") {
-            setChicago("course")
-        } else if (cc == "activates") {
-            setChicago("activates")
-        }
+        setChicago(cc)
     }
 
     const chicago_con = () => {
         if (chicago == "degree") {
             return "This user didn't has degrees from university io"
-        } else if (chicago == "course") {
+        } else if (chicago == "courses") {
             return Object.values(db.courses_has)
                 .filter(course => typeof course === "object" && course.name && course.description) // Ensures course is valid
                 .length > 0 ? (
                 Object.values(db.courses_has)
                     .filter(course => typeof course === "object" && course.name && course.description)
                     .map((course, index) => (
-                        <div className='hussein_'>
-                            <div className='item-shape_' style={{ backgroundImage: `linear-gradient(to left, rgba(29, 88, 239, 0.28) 50%, rgba(4, 30, 65, 0.8) 100%), url(${course.cover})` }}>
-                                <div className='shape_flex_'>
-                                    <div className='item-logo_'>
-                                        <img src={profileIcon} alt={`${course.title} logo`} />
-                                    </div>
-                                    <div className='item_logo_title_'>
-                                        <h3>{course.name}</h3>
-                                        <h4>By {db.firstName + " " + db.lastName}</h4>
-                                        <h4 onClick={() => fetchDataForKey('lookup', cookie_log.cookie, cookie_log.email, "lookup", db.username)}>@<mark>{db.username}</mark></h4>
-                                        <p className='price'>Price ${course.price}</p>
-                                    </div>
-                                </div>
-                                <div className='description_'>
-                                    {course.description}
-                                </div>
-                            </div>
-                        </div>
+                        <CourseStyle
+                            cover={course.cover}
+                            profile_image={db.profile_image}
+                            name={course.name}
+                            user={db.firstName + db.lastName}
+                            username={db.username}
+                            link={course.link}
+                            cookie_log={cookie_log}
+                            price={course.price}
+                            description={course.description}
+                            fetchDataForKey={fetchDataForKey}
+                        />
                     ))
             ) : (
                 <p>No courses yet</p>
@@ -55,13 +44,6 @@ const Lookup = ({ db, cookie_log, fetchDataForKey }) => {
         }
     }
 
-    const show = (m, t) => {
-        Object.values(db[m]).filter(v => typeof v === "object") // Ensures course is valid
-            .length > 0 && (
-                <div onClick={() => change_chicago(m)} className={chicago == m && "chicago_bar_selected"}>
-                    {t}
-                </div>)
-    }
     const chicago_date = (dd) => {
         const date = new Date(dd);
 
@@ -129,10 +111,15 @@ const Lookup = ({ db, cookie_log, fetchDataForKey }) => {
                             </div>
                         </div>
                         <div className='chicago_bar'>
-                            {show("course", "Courses")}
-                            {show("course_has")}
-                            {show("degrees")}
-                            {show("activates")}
+                            <div onClick={() => change_chicago("courses")} className={chicago == "courses" && "chicago_bar_selected"}>
+                                Courses
+                            </div>
+                            <div onClick={() => change_chicago("degrees")} className={chicago == "degrees" && "chicago_bar_selected"}>
+                                Degrees
+                            </div>
+                            <div onClick={() => change_chicago("activates")} className={chicago == "activates" && "chicago_bar_selected"}>
+                                Activates
+                            </div>
                         </div>
                     </div>
 

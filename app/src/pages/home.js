@@ -281,9 +281,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                             {io.search && <Search
                                 db={db}
@@ -291,9 +293,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                             {io.profile && <Profile
                                 db={db}
@@ -301,9 +305,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                             {io.messages && <Messages
                                 db={db}
@@ -311,9 +317,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                             {io.settings && <Settings
                                 db={db}
@@ -321,9 +329,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                             {io.edit_course && <Edit_course
                                 db={db}
@@ -331,9 +341,11 @@ function Home() {
                                 cookie_log={cookie_log}
                                 fetchDataForKey={fetchDataForKey}
                                 API_BASE_URL={API_BASE_URL}
-                                profileIcon={profileIcon}
+                                profileIcon={user.picture}
                                 url_v={url_v}
                                 setUrl_v={setUrl_v}
+                                url_inside={url_inside}
+                                user={user}
                             />}
                         </div> : <div className='cr'></div>}
                 </div>
